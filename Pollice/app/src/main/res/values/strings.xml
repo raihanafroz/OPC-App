@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pollice</string>
+    <string name="sign_in_button">SignIn</string>
+    <string name="sign_up_button">SignUp</string>
+    <string name="reset_button">Reset</string>
+    <string name="cancle_button">Cancle</string>
+    <string name="login_email">Enter e-mail</string>
+    <string name="login_password">Password</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="signin_btn_back">#9fbef7</color>
+    <color name="signup_btn_back">#83ea87</color>
+    <color name="sign_inup_text">#000000</color>
+    <color name="black">#000000</color>
+    <color name="sign_inup_back">#fadede</color>
+    <color name="reset_back">#effdb4</color>
+    <color name="back_hint">#92977c</color>
+    <color name="green">#30ab30</color>
+    <color name="yeallo">#fffc35</color>
+    <color name="alert_gradint_start">#faa6f6</color>
+    <color name="alert_gradint_end">#a8ddf1</color>
+    <color name="alert_gradint_center">#b3b3b3</color>
+</resources>

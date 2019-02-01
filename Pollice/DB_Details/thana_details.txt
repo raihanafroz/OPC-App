@@ -1,0 +1,5 @@
+Name of Thana					Latitude	Longitude	Area		Immediate_Action	Diary		For_someone
+Ramna Model Police Station 			23.745664	90.404598 	Ramna,Dhaka 	1.mail			2.mail		3.mail
+Dhaka Metropolitan Police Headquarters		23.743610 	90.404858	Ramna,Dhaka	1.mail			2.mail		3.mail
+Shahbagh Police Station				23.737195	90.396188	Sahbag,Dhaka
+Tejgaon Police Station 				23.761438	90.389769	Tejgaon,Dhaka

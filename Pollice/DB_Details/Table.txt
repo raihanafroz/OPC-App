@@ -1,0 +1,53 @@
+CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(70) NOT NULL , `password` VARCHAR(64) NOT NULL , `address` VARCHAR(100) NOT NULL , `gender` VARCHAR(20) NOT NULL , `contact_number` VARCHAR(20) NOT NULL , `permanent_latitude` VARCHAR(20) , `permanent_longitude` VARCHAR(20) ) ENGINE = InnoDB 
+	
+	//data 
+	INSERT INTO `user_info` (`first_name`, `last_name`, `e-mail`, `password`, `address`, `gender`, `contact_number`, `permanent_latitude`, `permanent_longitude`) VALUES 
+	('aaa', 'bbb', 'abcd@gmail.com', '1111', 'ramna,dhaka', 'male', '123456789', '00.000001', '90.000001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001'), 
+	('bb', 'ccc', 'cccccc@gmail.com', '123456', 'ramna,Dhaka', 'Female', '123456789', '00.000010', '90.100001');
+
+
+
+// available police station
+CREATE TABLE `project_db`.`available_station` ( `station_name` VARCHAR(150) NOT NULL , `latitude` VARCHAR(12) NOT NULL , `longitude` VARCHAR(12) NOT NULL , `area_name` VARCHAR(150) NOT NULL , `immediate_mail` VARCHAR(50) NOT NULL , `diary_mail` VARCHAR(50) NOT NULL , `for_someone_diary_mail` VARCHAR(50) NOT NULL ) ENGINE = InnoDB 
+
+
+	//data
+	INSERT INTO `available_station` (`station_name`, `latitude`, `longitude`, `area_name`, `immediate_mail`, `diary_mail`, `for_someone_diary_mail`) VALUES 
+	('Ramna Model Police Station ', '23.745664', '90.404598 ', 'Ramna,Dhaka', '1.mail', '2.mail', '3.mail'), 
+	('Dhaka Metropolitan Police Headquarters', '23.743610', '90.404858', 'Ramna,Dhaka', '1.mail', '2.mail', '3.mail'),
+	('Shahbagh Police Station', '23.737195', '90.396188', 'Shabag,Dhaka', '1.mail', '2.mail', '3.mail'),
+	('Tejgaon Police Station', '23.761438', '90.389769', 'Tejgaon,Dhaka', '1.mail', '2.mail', '3.mail');
+
