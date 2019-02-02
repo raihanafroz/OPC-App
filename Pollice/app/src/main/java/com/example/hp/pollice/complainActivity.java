@@ -28,4 +28,20 @@ public class complainActivity extends AppCompatActivity {
     public void btnSend_click(View view) {
         Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon, Toast.LENGTH_LONG).show();
     }
+
+    public void showComplainList(View view) {
+        Toast.makeText(getApplicationContext(), "List", Toast.LENGTH_LONG).show();
+    }
+
+    public void complainForOther(View view) {
+        Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_LONG).show();
+    }
+
+    public void yourComplain(View view) {
+        Toast.makeText(getApplicationContext(), "Self", Toast.LENGTH_LONG).show();
+    }
+
+    public void immediateComplain(View view) {
+        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon, Toast.LENGTH_LONG).show();
+    }
 }
