@@ -9,7 +9,7 @@
     android:padding="5dp"
     tools:context=".complainActivity">
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
@@ -166,6 +166,136 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>-->
+
+    <!-- ==============================NEW VIEW OF COMPLAIN=====================================-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="#A3D578"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="#ffff23"
+                android:gravity="center"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:weightSum="2">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#ffff23"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="#FFFFFF"
+                        android:layout_marginRight="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 Button"
+                            android:textAllCaps="false"
+                            android:textAlignment="center"
+                            android:textColor="#FF0000"
+                            android:textStyle="bold"
+                            android:textSize="40sp"
+                            android:autoSizeMinTextSize="20sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="#FFFFFF"
+                        android:layout_marginLeft="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 Button"
+                            android:textAllCaps="false"
+                            android:textAlignment="center"
+                            android:textColor="#FF0000"
+                            android:textStyle="bold"
+                            android:textSize="40sp"
+                            android:autoSizeMinTextSize="20sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#ffff23"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="#FFFFFF"
+                        android:layout_marginRight="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 Button"
+                            android:textAllCaps="false"
+                            android:textAlignment="center"
+                            android:textColor="#FF0101"
+                            android:textStyle="bold"
+                            android:textSize="40sp"
+                            android:autoSizeMinTextSize="20sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="#FFFFFF"
+                        android:layout_marginLeft="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 Button"
+                            android:textAllCaps="false"
+                            android:textAlignment="center"
+                            android:textColor="#FF0000"
+                            android:textStyle="bold"
+                            android:textSize="40sp"
+                            android:autoSizeMinTextSize="20sp"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

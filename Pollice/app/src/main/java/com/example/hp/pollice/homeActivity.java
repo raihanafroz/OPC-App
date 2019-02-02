@@ -153,21 +153,7 @@ public class homeActivity extends AppCompatActivity {
 
         return (float) (AVERAGE_RADIUS_OF_EARTH_KM * c);
     }
-/*
 
-    private double distanceBetween(double lat1, double lon1, double lat2, double lon2) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1))
-                * Math.sin(deg2rad(lat2))
-                + Math.cos(deg2rad(lat1))
-                * Math.cos(deg2rad(lat2))
-                * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = dist * 180.0 / Math.PI;
-        dist = dist * 60 * 1.1515*1000;
-        return (dist);
-    }
-*/
 
     private double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);

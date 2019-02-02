@@ -21,7 +21,7 @@ public class complainActivity extends AppCompatActivity {
             lat=extra.getDouble("Latitude");
             lon=extra.getDouble("Longitude");
         }
-        btnSend=(Button)findViewById(R.id.btnSend);
+        //btnSend=(Button)findViewById(R.id.btnSend);
 
     }
 
