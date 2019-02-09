@@ -9,7 +9,7 @@
     android:padding="5dp"
     tools:context=".complainActivity">
 
-    <!--<ScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
@@ -169,9 +169,9 @@
 
         </LinearLayout>
 
-    </ScrollView>-->
+    </ScrollView>
 
-    <!-- ==============================NEW VIEW OF COMPLAIN=====================================-->
+    <!-- ==============================NEW VIEW OF COMPLAIN=====================================
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -305,6 +305,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </ScrollView>-->
 
 </LinearLayout>
