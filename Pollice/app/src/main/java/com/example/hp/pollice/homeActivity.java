@@ -257,6 +257,7 @@ public class homeActivity extends AppCompatActivity {
             }
         }
     }
+
     private class downloadImageFromServer extends AsyncTask<Void, Void, Bitmap>{
         String imageName="";
         public downloadImageFromServer(String imageName){
