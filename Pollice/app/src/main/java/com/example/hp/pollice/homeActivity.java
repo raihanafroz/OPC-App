@@ -36,7 +36,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class homeActivity extends AppCompatActivity {
-    GPSTracker gps;
+
     Context mContext;
     private TextView profileName,profileEmail,profileGender,profileAddress,profileContactNO,testCase;
     private ImageView profilePic;
@@ -103,7 +103,7 @@ public class homeActivity extends AppCompatActivity {
     }
 
     public void goto_complaine(View view) {
-        double loca[]=getLocation();
+        double loca[]=new publicClass().getLocation(mContext, homeActivity.this);
         if(loca[0]!=0 && loca[1]!=0){
             Intent i=new Intent(getApplicationContext(),complainActivity.class);
             i.putExtra("User_mail", email);
@@ -113,31 +113,8 @@ public class homeActivity extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
         }
     }
-    private double []getLocation(){
-        double []loc={0.0000000,0.0000000};
-        gps = new GPSTracker(mContext, homeActivity.this);
-        //Check wifi
-        WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        if (wifi.isWifiEnabled()) {
-            // Check if GPS enabled
-            if (gps.canGetLocation()) {
-                double latitude = gps.getLatitude();
-                double longitude = gps.getLongitude();
-                loc[0]=latitude;
-                loc[1]=longitude;
-            } else {
-                // Can't get location.
-                // GPS or network is not enabled.
-                // Ask user to enable GPS/network in settings.
-                gps.showSettingsAlert();
-            }
-        }else{
-            //Wifi is disable
-            wifi.setWifiEnabled(true);
-            getLocation();
-        }
-        return loc;
-    }
+
+
     public final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
     private float distanceBetween(double userLat, double userLng,
                                                      double venueLat, double venueLng) {

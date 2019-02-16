@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //signin=(Button)findViewById(R.id.sign_in);
         //signup=(Button)findViewById(R.id.sign_up);
-        SQLiteDatabaseHelper sdh = new SQLiteDatabaseHelper(getApplicationContext());
-        SQLiteDatabase ad = sdh.getWritableDatabase();
-        vr = (TextView) findViewById(R.id.version);
-        checkuser_data();
 
+        vr = (TextView) findViewById(R.id.version);
+            SQLiteDatabaseHelper sdh = new SQLiteDatabaseHelper(getApplicationContext());
+            SQLiteDatabase ad = sdh.getWritableDatabase();
+            checkuser_data();
     }
 
     public void signin_page(View view) {

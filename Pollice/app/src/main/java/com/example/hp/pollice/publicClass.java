@@ -1,5 +1,9 @@
 package com.example.hp.pollice;
 
+import android.app.Activity;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+
 public class publicClass {
     //String ip_address="192.168.43.32";    //phone
     String ip_address="192.168.0.100";  //Room WIFI
@@ -13,4 +17,42 @@ public class publicClass {
     public String url_changeDetails = "http://"+ip_address+"/New_folder/Pollice/server/changeDetails.php";
     public String url_imgPath= "http://"+ip_address+"/New_folder/Pollice/server/Profile_Pic/";
     public String url_complain1 = "http://"+ip_address+"/New_folder/Pollice/server/complain1.php";
+
+
+
+
+    GPSTracker gps;
+    protected double []getLocation(Context mContext, Activity mActivity){
+        double []loc={0.0000000,0.0000000};
+        gps = new GPSTracker(mContext, mActivity);
+        //Check wifi
+        WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        if (wifi.isWifiEnabled()) {
+            // Check if GPS enabled
+            if (gps.canGetLocation()) {
+                double latitude = gps.getLatitude();
+                double longitude = gps.getLongitude();
+                loc[0]=latitude;
+                loc[1]=longitude;
+            } else {
+                // Can't get location.
+                // GPS or network is not enabled.
+                // Ask user to enable GPS/network in settings.
+                gps.showSettingsAlert();
+            }
+        }else{
+            //Wifi is disable
+            wifi.setWifiEnabled(true);
+            getLocation(mContext,mActivity);
+        }
+        return loc;
+    }
+
+
+
+
+
+
+
+
 }
