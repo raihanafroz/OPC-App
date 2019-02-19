@@ -46,9 +46,9 @@ public class complainActivity extends AppCompatActivity {
 
 
     public void btnSend_click(View view) {
-        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon, Toast.LENGTH_LONG).show();
 
-        new complain1().execute("complain", email, email, String.valueOf(lat), String.valueOf(lon));
+        //new complain1().execute("complain", email, email, String.valueOf(lat), String.valueOf(lon));
 
     }
 
@@ -81,7 +81,7 @@ public class complainActivity extends AppCompatActivity {
                     huc.setDoOutput(true);
                     OutputStream os = huc.getOutputStream();
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
+                    String data = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
                             URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(cemail, "UTF-8") + "&" +
                             URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(clat, "UTF-8") + "&" +
                             URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(clon, "UTF-8");
@@ -170,7 +170,7 @@ public class complainActivity extends AppCompatActivity {
                     huc.setDoOutput(true);
                     OutputStream os = huc.getOutputStream();
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
+                    String data = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
                             URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(cemail, "UTF-8") + "&" +
                             URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(clat, "UTF-8") + "&" +
                             URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(clon, "UTF-8");
@@ -219,12 +219,15 @@ public class complainActivity extends AppCompatActivity {
     }
 
     public void yourComplain(View view) {
-
+        Intent i=new Intent(getApplicationContext(),yourComplain.class);
+        i.putExtra("User_mail", email);
+        startActivity(i);
        // Toast.makeText(getApplicationContext(), "Distence: "+new publicClass().calculateDistanceInMeter(23.748791, 90.407925, 23.745631, 90.406095), Toast.LENGTH_LONG).show();
     }
 
     public void immediateComplain(View view) {
-        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon+"\n"+email, Toast.LENGTH_LONG).show();
+        double loca[]=new publicClass().getLocation(this, complainActivity.this);
+        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
         new complain1().execute("complain", email, email, String.valueOf(lat), String.valueOf(lon));
     }
 }

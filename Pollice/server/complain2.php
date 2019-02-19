@@ -29,28 +29,30 @@
 	
 	$lon= 90.393531;
 	
-	$nearableThana=array("","","","","");
-	$sql_check= "SELECT `Name`, `latitude`, `longitude`, `phoneNo` FROM `tbl_station_thana`";
+	$nearableThana=array("","","","","","");
+	$sql_check= "SELECT `thanaName`, `latitude`, `longitude`, `phoneNo` ,`thanaId` FROM `tbl_station_thana`";
 	
 	$query=mysqli_query($connect, $sql_check);
 	if($query){	
 		while($row=mysqli_fetch_array($query)){
 			$distence=calculateDistanceInMeter($lat, $lon, $row["latitude"], $row["longitude"]);
-                if($nearableThana[0]==""){
+            if($nearableThana[0]==""){
+                $nearableThana[0]= $distence; 
+                $nearableThana[1]= $row["thanaName"];
+                $nearableThana[2]= $row["latitude"];
+                $nearableThana[3]= $row["longitude"];
+                $nearableThana[4]= $row["phoneNo"];
+                $nearableThana[5]= $row["thanaId"];
+            }else{
+                if($distence<$nearableThana[0]){
                     $nearableThana[0]= $distence; 
-                    $nearableThana[1]= $row["Name"];
-                    $nearableThana[2]= $row["latitude"];
-                    $nearableThana[3]= $row["longitude"];
-                    $nearableThana[4]= $row["phoneNo"];
-                }else{
-                    if($distence<$nearableThana[0]){
-                        $nearableThana[0]= $distence; 
-						$nearableThana[1]= $row["Name"];
-						$nearableThana[2]= $row["latitude"];
-						$nearableThana[3]= $row["longitude"];
-						$nearableThana[4]= $row["phoneNo"];
-                    }
+					$nearableThana[1]= $row["thanaName"];
+					$nearableThana[2]= $row["latitude"];
+					$nearableThana[3]= $row["longitude"];
+					$nearableThana[4]= $row["phoneNo"];
+					$nearableThana[5]= $row["thanaId"];
                 }
+            }
         }
     }
 	
