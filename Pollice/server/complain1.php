@@ -12,20 +12,23 @@
 	
 	require 'init.php';
 	
-	/*$firseName="Raihan";
-	$lastName="Topu";
-	$email="raihan@gmail.com";
-	$passrord="1111";
-	$address="Dhaka";
-	$gender="Male";
-	$contactNmuber="01797325129";*/
+	/*$name="";
+	$email="1";
+	$lat="0000000";
+	$lon="0000000";
+	$complainDate="";*/
 	
-	$name=$_POST['userName'];
+
+	
+	$name="";
 	$email=$_POST['email'];
 	$lat=$_POST['latitude'];
 	$lon=$_POST['longitude'];
+	$complainDate=$_POST['currentTime'];
+
 	
 	
+	// getting nearable thana
 	
 	$nearableThana=array("","","","","","");
 	$sql_check_thana= "SELECT `thanaName`, `latitude`, `longitude`, `phoneNo` ,`thanaId` FROM `tbl_station_thana`";
@@ -54,9 +57,30 @@
         }
     }
 	
+	// getting user name 
+	
+	$sql_get_name= "SELECT `first_name`, `last_name`FROM `user_info` WHERE `e-mail`='$email'";
+	
+	$query=mysqli_query($connect, $sql_get_name);
+	if($query){	
+		while($row=mysqli_fetch_array($query)){
+			$name=$row['first_name']." ".$row['last_name'];
+		}
+	}
+	
+	//database date formate
+	if($complainDate==""){
+		$complainTime="0000-00-00 00:00:00";
+	}else{
+		$complainTime = date ("Y-m-d h:i:s a", strtotime($complainDate));
+	}
 	
 	
-	//$email=1;
+	
+	
+	
+	//insert complain into database
+	
 	
 	$sql_check="SELECT COUNT(`email`) FROM `tbl_complain1` WHERE `email` LIKE '$email';";
 	
@@ -71,7 +95,7 @@
 		
 		$complainNo+=1;
 		
-		$sql_insert="INSERT INTO `tbl_complain1` (`username`, `email`, `latitude`, `longitude`, `usercomplainNo`,`thanaId`) VALUES ('$name', '$email', '$lat', '$lon', '$complainNo', '$nearableThana[5]');";
+		$sql_insert="INSERT INTO `tbl_complain1` (`username`, `email`, `latitude`, `longitude`, `usercomplainNo`,`thanaId`, `complainTime`) VALUES ('$name', '$email', '$lat', '$lon', '$complainNo', '$nearableThana[5]', '$complainTime');";
 		
 		//echo $sql_insert;
 		

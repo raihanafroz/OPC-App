@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -70,10 +68,10 @@ public class complainActivity extends AppCompatActivity {
             //String url_reg = "http://192.168.0.100/New_folder/Pollice/server/insert_data.php";
             String method = voids[0];
             if (method == "complain") {
-                String cname = voids[1];
-                String cemail = voids[2];
-                String clat = voids[3];
-                String clon = voids[4];
+                String currentemail = voids[1];
+                String currentlat = voids[2];
+                String currentlon = voids[3];
+                String currentTime = voids[4];
                 try {
                     URL url = new URL(new publicClass().url_complain1);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -81,10 +79,10 @@ public class complainActivity extends AppCompatActivity {
                     huc.setDoOutput(true);
                     OutputStream os = huc.getOutputStream();
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String data = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
-                            URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(cemail, "UTF-8") + "&" +
-                            URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(clat, "UTF-8") + "&" +
-                            URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(clon, "UTF-8");
+                    String data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(currentemail, "UTF-8") + "&" +
+                            URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(currentlat, "UTF-8") + "&" +
+                            URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(currentlon, "UTF-8") + "&" +
+                            URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8");
                     bw.write(data);
                     bw.flush();
                     bw.close();
@@ -141,83 +139,6 @@ public class complainActivity extends AppCompatActivity {
 
 
 
-    public class complain2 extends AsyncTask<String, Void, String> {
-
-        ProgressDialog pd;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pd = new ProgressDialog(complainActivity.this);
-            pd.setTitle("Sending Complain");
-            pd.setMessage("Please wait...");
-            pd.show();
-        }
-
-        @Override
-        protected String doInBackground(String... voids) {
-            //String url_reg = "http://192.168.0.100/New_folder/Pollice/server/insert_data.php";
-            String method = voids[0];
-            if (method == "Complain2") {
-                String cname = voids[1];
-                String cemail = voids[2];
-                String clat = voids[3];
-                String clon = voids[4];
-                try {
-                    URL url = new URL(new publicClass().url_complain1);
-                    HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-                    huc.setRequestMethod("POST");
-                    huc.setDoOutput(true);
-                    OutputStream os = huc.getOutputStream();
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String data = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(cname, "UTF-8") + "&" +
-                            URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(cemail, "UTF-8") + "&" +
-                            URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(clat, "UTF-8") + "&" +
-                            URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(clon, "UTF-8");
-                    bw.write(data);
-                    bw.flush();
-                    bw.close();
-                    os.close();
-
-                    InputStream is = huc.getInputStream();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
-                    String respose = "";
-                    String line = "";
-                    while ((line = br.readLine()) != null) {
-                        respose += line;
-                    }
-                    br.close();
-                    is.close();
-                    huc.disconnect();
-
-                    return respose;
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    //return e.getMessage();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    //return e.getMessage();
-                }
-            }
-            return null;
-        }
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            pd.dismiss();
-            if (result.equals("Successfully Complained.")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(getApplicationContext(), complainActivity.class));
-            } else {
-                Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
     public void yourComplain(View view) {
         Intent i=new Intent(getApplicationContext(),yourComplain.class);
         i.putExtra("User_mail", email);
@@ -228,6 +149,6 @@ public class complainActivity extends AppCompatActivity {
     public void immediateComplain(View view) {
         double loca[]=new publicClass().getLocation(this, complainActivity.this);
         Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
-        new complain1().execute("complain", email, email, String.valueOf(lat), String.valueOf(lon));
+        new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new publicClass().getCurrentDate());
     }
 }

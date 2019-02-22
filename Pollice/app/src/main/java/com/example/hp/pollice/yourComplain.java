@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+
+
 public class yourComplain extends AppCompatActivity {
     private String email="";
     @Override
@@ -20,6 +22,7 @@ public class yourComplain extends AppCompatActivity {
 
     public void go(View view) {
         double loca[]=new publicClass().getLocation(this, yourComplain.this);
-        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
+
+        Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
     }
 }

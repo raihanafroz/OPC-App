@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class publicClass {
     //String ip_address="192.168.43.32";    //phone
     String ip_address="192.168.0.100";  //Room WIFI
@@ -48,7 +51,12 @@ public class publicClass {
         return loc;
     }
 
-
+    String getCurrentDate(){
+        Calendar calendar = Calendar.getInstance();
+        //SimpleDateFormat mdformat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss aa"); //12-12-2019 08:12:12 PM
+        SimpleDateFormat mdformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); //12-12-2019 20:12:12
+        return mdformat.format(calendar.getTime());
+    }
 
 
 

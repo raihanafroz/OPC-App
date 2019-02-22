@@ -75,7 +75,7 @@ CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `las
 			
 //tbl_complain1
 
-	CREATE TABLE `project_db`.`tbl_complain1` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL ) ENGINE = InnoDB;
+	CREATE TABLE `project_db`.`tbl_complain1` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL, `complainTime` DATETIME NOT NULL ) ENGINE = InnoDB;
 	
 
 // tbl_complain2
