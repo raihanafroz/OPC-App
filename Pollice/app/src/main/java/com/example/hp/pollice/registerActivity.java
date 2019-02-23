@@ -121,7 +121,7 @@ public class registerActivity extends AppCompatActivity {
 
             new register_Android_to_Mysql().execute("register", firstName.getText().toString(), lastName.getText().toString(),
                     email.getText().toString(), address.getText().toString(), contactNumber.getText().toString(),
-                    gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap));
+                    gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new publicClass().getCurrentDate());
         }
     }
     private boolean check(){
@@ -176,6 +176,7 @@ public class registerActivity extends AppCompatActivity {
                 String gender = voids[6];
                 String pass = voids[7];
                 String image=voids[8];
+                String currentTime=voids[9];
                 try {
                     URL url = new URL(new publicClass().url_reg);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -190,7 +191,8 @@ public class registerActivity extends AppCompatActivity {
                             URLEncoder.encode("contactNumber", "UTF-8") + "=" + URLEncoder.encode(contactNumber, "UTF-8") + "&" +
                             URLEncoder.encode("gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8") + "&" +
                             URLEncoder.encode("pass", "UTF-8") + "=" + URLEncoder.encode(pass, "UTF-8") + "&" +
-                            URLEncoder.encode("Image", "UTF-8") + "=" + URLEncoder.encode(image, "UTF-8");
+                            URLEncoder.encode("Image", "UTF-8") + "=" + URLEncoder.encode(image, "UTF-8") + "&" +
+                            URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8");
                     bw.write(data);
                     bw.flush();
                     bw.close();
@@ -229,8 +231,11 @@ public class registerActivity extends AppCompatActivity {
             if (result.equals("Data Added.")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            } else {
-                Toast.makeText(getApplicationContext(), "Sorry", Toast.LENGTH_SHORT).show();
+            } else if(result.equals("Already have an account.")){
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                //new registerActivity().reset(getCurrentFocus());
             }
         }
     }
