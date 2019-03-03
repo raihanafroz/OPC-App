@@ -19,6 +19,7 @@ public class publicClass {
     public String url_changePhoto = "http://"+ip_address+"/New_folder/Pollice/server/changePhoto.php";
     public String url_changeDetails = "http://"+ip_address+"/New_folder/Pollice/server/changeDetails.php";
     public String url_imgPath= "http://"+ip_address+"/New_folder/Pollice/server/Profile_Pic/";
+    public String url_getPhoneNO = "http://"+ip_address+"/New_folder/Pollice/server/getPhoneNO.php";
     public String url_complain1 = "http://"+ip_address+"/New_folder/Pollice/server/complain1.php";
     public String url_complain2 = "http://"+ip_address+"/New_folder/Pollice/server/complain2.php";
 

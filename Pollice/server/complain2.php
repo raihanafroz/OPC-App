@@ -100,7 +100,7 @@
 	//insert complain2 into database
 	
 	
-	/*$sql_check="SELECT COUNT(`email`) FROM `tbl_complain1` WHERE `email` LIKE '$email';";
+	$sql_check="SELECT COUNT(`email`) FROM `tbl_complain2` WHERE `email` LIKE '$email';";
 	
 	$query=mysqli_query($connect, $sql_check);
 	if($query)
@@ -113,27 +113,17 @@
 		
 		$complainNo+=1;
 		
-		$sql_insert="INSERT INTO `tbl_complain1` (`username`, `email`, `latitude`, `longitude`, `usercomplainNo`,`thanaId`, `complainTime`) VALUES ('$name', '$email', '$lat', '$lon', '$complainNo', '$nearableThana[5]', '$complainTime');";
+		$sql_insert="INSERT INTO `tbl_complain2` (`userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `thanaId`, `complainTime`) VALUES ('$name', '$email', '$complainCuse', '$complainDescription', '$complainAddress', '$complainNo', '$nearableThana[5]', '$complainTime');";
 		
 		//echo $sql_insert;
 		
 		if(mysqli_query($connect, $sql_insert)){
 			echo "Successfully Complained.";
-		}
+		}else{echo 'Error';}
     }
 	
 	
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	echo "Name: ".$name." <==> Email: ".$email." <==> Address: ".$complainAddress." <==> Cause: ".$complainCuse." <==> Description: ".$complainDescription." <==> DateTime: ".$complainTime;
+	//echo "Name: ".$name." <==> Email: ".$email." <==> Cause: ".$complainCuse." <==> Description: ".$complainDescription." <==> Address: ".$complainAddress."  <==> ComplainNo: ".$complainNo."<==> DateTime: ".$complainTime;
 	
 
 	
