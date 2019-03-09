@@ -56,6 +56,8 @@ public class complainActivity extends AppCompatActivity {
 
     }
 
+
+
     public class complain1 extends AsyncTask<String, Void, String> {
 
         ProgressDialog pd;
@@ -154,7 +156,7 @@ public class complainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_profile = "http://192.168.0.100/New_folder/Pollice/server/profile.php";
+            //String url_getPhoneNO = "http://192.168.0.100/New_folder/Pollice/server/profile.php";
             String method = voids[0];
             if (method.equals("PhoneNo")) { //        select data from database
                 String user_email = voids[1];
@@ -210,6 +212,7 @@ public class complainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
             }
         }
+    }
 
 
         public void showComplainList(View view) {
@@ -227,7 +230,7 @@ public class complainActivity extends AppCompatActivity {
             startActivity(i);
             // Toast.makeText(getApplicationContext(), "Distence: "+new publicClass().calculateDistanceInMeter(23.748791, 90.407925, 23.745631, 90.406095), Toast.LENGTH_LONG).show();
         }
-    }
+
 
     public void immediateComplain(View view) {
         double loca[]=new publicClass().getLocation(this, complainActivity.this);

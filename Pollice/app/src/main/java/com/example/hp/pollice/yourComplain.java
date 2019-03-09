@@ -21,6 +21,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 
 public class yourComplain extends AppCompatActivity {
     private String email="";
@@ -129,11 +138,16 @@ public class yourComplain extends AppCompatActivity {
     public void go(View view) {
         //double loca[]=new publicClass().getLocation(this, yourComplain.this);
         //Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
-        if(currentAddress.getText().toString().isEmpty() || cause.getText().toString().isEmpty() || description.getText().toString().isEmpty()){
+
+       /* if(currentAddress.getText().toString().isEmpty() || cause.getText().toString().isEmpty() || description.getText().toString().isEmpty()){
             Toast.makeText(getApplicationContext(), "One or more field are empty.", Toast.LENGTH_SHORT).show();
         }else {
             new complain2().execute("complain2", email, currentAddress.getText().toString(), cause.getText().toString(), description.getText().toString(), new publicClass().getCurrentDate());
-        }
+        }*/
+        GeocodingLocation locationAddress = new GeocodingLocation();
+        locationAddress.getAddressFromLocation(currentAddress.getText().toString(),
+                getApplicationContext(), new GeocoderHandler());
+        Toast.makeText(getApplicationContext(), loca, Toast.LENGTH_SHORT).show();
     }
 
     public void clearField(View view) {
@@ -142,4 +156,24 @@ public class yourComplain extends AppCompatActivity {
         cause.setText("");
         description.setText("");
     }
+
+    String loca="";
+
+    private class GeocoderHandler extends Handler {
+        @Override
+        public void handleMessage(Message message) {
+            String locationAddress;
+            switch (message.what) {
+                case 1:
+                    Bundle bundle = message.getData();
+                    locationAddress = bundle.getString("address");
+                    break;
+                default:
+                    locationAddress = null;
+            }
+            //latLongTV.setText(locationAddress);
+            loca=locationAddress;
+        }
+    }
+
 }
