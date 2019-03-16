@@ -1,6 +1,5 @@
 package com.example.hp.pollice;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -43,6 +43,12 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         user_email=(TextInputEditText) findViewById(R.id.login_email);
         user_pass=(TextInputEditText) findViewById(R.id.login_password);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent i= new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
     }
 
     public void cancle(View view) {

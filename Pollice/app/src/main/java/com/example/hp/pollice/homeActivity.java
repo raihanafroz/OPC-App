@@ -2,12 +2,14 @@ package com.example.hp.pollice;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -66,6 +68,16 @@ public class homeActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed(){
+        new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
+                homeActivity.this.finishAffinity();     //minimum sdk 16
+                System.exit(0);
+            }
+        }).setNegativeButton("No", null).show();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi=getMenuInflater();
         mi.inflate(R.menu.home_activity_menu, menu);
@@ -84,11 +96,14 @@ public class homeActivity extends AppCompatActivity {
             i.putExtra("Email", email);
             i.putExtra("From", "HomeActivity");
             startActivity(i);
-
         }else if (item.getItemId()==R.id.profileDetailsMenu){
             Intent i =new Intent(getApplicationContext(), changeDetails.class);
             i.putExtra("Email", email);
             i.putExtra("From", "HomeActivity");
+            startActivity(i);
+        }else if (item.getItemId()==R.id.profileSignOut){
+            new SQLiteDatabaseHelper(getApplicationContext()).drop();
+            Intent i =new Intent(getApplicationContext(), loginActivity.class);
             startActivity(i);
         }else if (item.getItemId()==R.id.share){
             Intent intent=new Intent(Intent.ACTION_SEND);

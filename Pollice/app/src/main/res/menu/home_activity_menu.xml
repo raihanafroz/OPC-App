@@ -15,6 +15,10 @@
         android:title="Change Details"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/profileSignOut"
+        android:title="Log Out"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/share"
         android:title="Change Address"
         app:showAsAction="always"

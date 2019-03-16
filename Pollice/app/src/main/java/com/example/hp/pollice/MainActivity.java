@@ -2,6 +2,7 @@ package com.example.hp.pollice;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             checkuser_data();
     }
 
+    @Override
+    public void onBackPressed(){
+        new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
+                MainActivity.this.finishAffinity();     //minimum sdk 16
+                System.exit(0);
+            }
+        }).setNegativeButton("No", null).show();
+    }
     public void signin_page(View view) {
         Intent i = new Intent(getApplicationContext(), loginActivity.class);
         startActivity(i);
@@ -84,4 +95,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }

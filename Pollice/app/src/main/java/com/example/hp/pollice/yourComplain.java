@@ -1,6 +1,7 @@
 package com.example.hp.pollice;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -21,15 +22,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
 
 public class yourComplain extends AppCompatActivity {
     private String email="";
@@ -136,6 +130,7 @@ public class yourComplain extends AppCompatActivity {
 
 
     public void go(View view) {
+
         //double loca[]=new publicClass().getLocation(this, yourComplain.this);
         //Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
 
@@ -144,11 +139,13 @@ public class yourComplain extends AppCompatActivity {
         }else {
             new complain2().execute("complain2", email, currentAddress.getText().toString(), cause.getText().toString(), description.getText().toString(), new publicClass().getCurrentDate());
         }*/
+
         GeocodingLocation locationAddress = new GeocodingLocation();
-        locationAddress.getAddressFromLocation(currentAddress.getText().toString(),
-                getApplicationContext(), new GeocoderHandler());
-        Toast.makeText(getApplicationContext(), loca, Toast.LENGTH_SHORT).show();
+        locationAddress.getAddressFromLocation(currentAddress.getText().toString(), getApplicationContext(), new GeocoderHandler());
+        Toast.makeText(getApplicationContext(), "Address: "+currentAddress.getText().toString()+" \n "+cause.getText().toString()+"\n"+description.getText().toString()+"\n Location: "+loca, Toast.LENGTH_SHORT).show();
     }
+
+
 
     public void clearField(View view) {
         Toast.makeText(getApplicationContext(), description.getText().toString(), Toast.LENGTH_SHORT).show();
