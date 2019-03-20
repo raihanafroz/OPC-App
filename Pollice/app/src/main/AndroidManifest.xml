@@ -19,6 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OffLineMode"></activity>
         <activity android:name=".startProgressBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".registerActivity" />
-        <activity android:name=".homeActivity" android:theme="@style/Profile"/>
+        <activity
+            android:name=".homeActivity"
+            android:theme="@style/Profile" />
         <activity android:name=".complainActivity" />
         <activity android:name=".Forget_Password" />
         <activity android:name=".Change_Password" />

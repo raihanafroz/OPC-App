@@ -33,8 +33,6 @@ public class startProgressBar extends AppCompatActivity {
 
                             progressBar.setProgress(pStatus);
                             txtProgress.setText(pStatus + " %");
-                            progressBar.setProgress(pStatus);
-                            txtProgress.setText(pStatus + " %");
 
                         }
                     });

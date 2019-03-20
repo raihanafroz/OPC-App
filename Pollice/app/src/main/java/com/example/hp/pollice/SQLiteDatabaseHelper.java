@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     private static final String database_name="pollice";
     private static final String table_name="user";
-    private static final int database_version=8;
+    private static final int database_version=9;
     private static final String email="email";
     private static final String password="password";
     private static final String create_table="CREATE TABLE `"+table_name+"` ( `"+email+"` VARCHAR(40), `"+password+"` VARCHAR(40))";

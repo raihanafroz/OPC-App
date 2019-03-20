@@ -30,7 +30,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class complainActivity extends AppCompatActivity {
-    private String email;
+    private String email,password;
     private double lat,lon;
     private Button btnSend;
     @Override
@@ -41,6 +41,7 @@ public class complainActivity extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("User_mail");
+            password=extra.getString("Password");
             lat=extra.getDouble("Latitude");
             lon=extra.getDouble("Longitude");
         }
@@ -56,6 +57,12 @@ public class complainActivity extends AppCompatActivity {
 
     }
 
+    public void goToListView(View view) {
+        Intent i = new Intent(getApplicationContext(), OffLineMode.class);
+        i.putExtra("Email",email);
+        i.putExtra("Password",password);
+        startActivity(i);
+    }
 
 
     public class complain1 extends AsyncTask<String, Void, String> {

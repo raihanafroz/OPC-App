@@ -1,72 +1,72 @@
 // user info table
-
-CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(70) NOT NULL , `password` VARCHAR(64) NOT NULL , `address` VARCHAR(100) NOT NULL , `gender` VARCHAR(20) NOT NULL , `contact_number` VARCHAR(20) NOT NULL , `createTime` DATETIME NOT NULL ) ENGINE = InnoDB
+	DROP TABLE `project_db`.`user_info`;
+	CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(70) NOT NULL , `password` VARCHAR(64) NOT NULL , `address` VARCHAR(100) NOT NULL , `gender` VARCHAR(20) NOT NULL , `contact_number` VARCHAR(20) NOT NULL , `createTime` DATETIME NOT NULL ) ENGINE = InnoDB
 
 
 
 //tbl station thana
-	
+	DROP TABLE `project_db`.`tbl_station_thana`;
 	CREATE TABLE `project_db`.`tbl_station_thana` ( `thanaName` VARCHAR(150) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `phoneNo` VARCHAR(15) NOT NULL , `thanaId` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`thanaId`)) ENGINE = InnoDB;
 
 //	data
-	INSERT INTO `tbl_station_thana` (`thanaName`, `latitude`, `longitude`, `phoneNo`) VALUES 
-			('Gandaria Police Station', '23.699555', '90.421057', '01713-398331'),
-			('Sutrapur Police Station', '23.702421', '90.418168', '02-7116233'),
+	INSERT INTO `project_db`.`tbl_station_thana` (`thanaName`, `latitude`, `longitude`, `phoneNo`) VALUES 
+			('Gandaria Police Station', '23.699555', '90.421057', '01713398331'),
+			('Sutrapur Police Station', '23.702421', '90.418168', '027116233'),
 			('Konapara Police Fari', '23.716327', '90.469815', ''),
-			('Demra Police Station', '23.725309', '90.494664', '01765-968112'),
-			('Jatrabari Thana', '23.710330', '90.435480', '01713-373146'),
-			('Kodomtoli Thana', '23.697248', '90.457718', '01913-36662'),
-			('Sorai Old Police Camp', '23.700202', '90.440819', '02-7419505'),
+			('Demra Police Station', '23.725309', '90.494664', '01765968112'),
+			('Jatrabari Thana', '23.710330', '90.435480', '01713373146'),
+			('Kodomtoli Thana', '23.697248', '90.457718', '0191336662'),
+			('Sorai Old Police Camp', '23.700202', '90.440819', '027419505'),
 			('Kotwali Police Station', '23.707322', '90.409335', ''),
-			('Narinda Police Outpost', '23.711386', '90.418544', '01786-006666'),
-			('Bangshal Police Station', '23.714125', '90.410381', '02-9565700'),
+			('Narinda Police Outpost', '23.711386', '90.418544', '01786006666'),
+			('Bangshal Police Station', '23.714125', '90.410381', '029565700'),
 			('Wari Thana', '23.715013', '90.418848', '02-9553377'),
 			('Wari Police Station', '23.717806', '90.420167', ''),
-			('Chawk bazar Model Thana', '23.717223', '90.395708', '02-7313966'),
-			('Lalbagh Police Station', '23.716110', '90.384355', '01618-048956'),
-			('Mugda Police Station', '23.728798', '90.433431', '01769-058061'),
-			('Motijheel Police Station', '23.729962', '90.417041', '02-9571000'),
-			('Paltan Model Thana', '23.736072', '90.416162', '02-9360802'),
-			('New Market Police Station', '23.733057', '90.386928', '02-8631942'),
-			('Shahbagh Police Station', '23.737080', '90.396159', '02-9676699'),
-			('Dhanmondi Model Thana', '23.743266', '90.381490', '02-8631941'),
-			('Ramna Model Police Station', '23.745656', '90.404624', '01769-691652'),
-			('Shabujbagh Police Station', '23.740581', '90.428340', '01713-373153'),
-			('Kalabagan Police Station', '23.743463', '90.388227', '01713-398339'),
-			('Mohammadpur Police Station', '23.755408', '90.363858', '01713-373182'),
-			('Khilgaon Police Station', '23.750947', '90.425197', '02-47219090'),
-			('Hazaribag Police Station', '23.735166', '90.369094', '02-9669900'),
-			('Rampura Police Station', '23.761317', '90.443615', '01817-602050'),
-			('Badda Police Station', '23.771379', '90.427480', '01713-373173'),
-			('Modhubagh Police Fari', '23.757721', '90.411271', '02-9350468'),
-			('Tejgaon Industrial Area Police Station', '23.765306', '90.400557', '01713-373181'),
-			('Tejgaon Police Station', '23.761447', '90.389735', '01713-373181'),
-			('Dhaka Metro Politon Police Adabor Thana', '23.765987', '90.348171', '01794-430060'),
-			('Adabar Police Station', '23.770914', '90.359211', '02-9133265'),
+			('Chawk bazar Model Thana', '23.717223', '90.395708', '027313966'),
+			('Lalbagh Police Station', '23.716110', '90.384355', '01618048956'),
+			('Mugda Police Station', '23.728798', '90.433431', '01769058061'),
+			('Motijheel Police Station', '23.729962', '90.417041', '029571000'),
+			('Paltan Model Thana', '23.736072', '90.416162', '029360802'),
+			('New Market Police Station', '23.733057', '90.386928', '028631942'),
+			('Shahbagh Police Station', '23.737080', '90.396159', '029676699'),
+			('Dhanmondi Model Thana', '23.743266', '90.381490', '028631941'),
+			('Ramna Model Police Station', '23.745656', '90.404624', '01769691652'),
+			('Shabujbagh Police Station', '23.740581', '90.428340', '01713373153'),
+			('Kalabagan Police Station', '23.743463', '90.388227', '01713398339'),
+			('Mohammadpur Police Station', '23.755408', '90.363858', '01713373182'),
+			('Khilgaon Police Station', '23.750947', '90.425197', '0247219090'),
+			('Hazaribag Police Station', '23.735166', '90.369094', '029669900'),
+			('Rampura Police Station', '23.761317', '90.443615', '01817602050'),
+			('Badda Police Station', '23.771379', '90.427480', '01713373173'),
+			('Modhubagh Police Fari', '23.757721', '90.411271', '029350468'),
+			('Tejgaon Industrial Area Police Station', '23.765306', '90.400557', '01713373181'),
+			('Tejgaon Police Station', '23.761447', '90.389735', '01713373181'),
+			('Dhaka Metro Politon Police Adabor Thana', '23.765987', '90.348171', '01794430060'),
+			('Adabar Police Station', '23.770914', '90.359211', '029133265'),
 			('Sher-E-Bangla Nagar Police Station', '23.776067', '90.376831', ''),
-			('Mohakhali Police Box', '23.777812', '90.398000', '01927-925327'),
-			('Banani Police Station', '23.789961', '90.401842', '01769-058053'),
+			('Mohakhali Police Box', '23.777812', '90.398000', '01927925327'),
+			('Banani Police Station', '23.789961', '90.401842', '01769058053'),
 			('Techinical Police Fari', '23.782042', '90.351318', ''),
-			('Darussalam Police Station', '23.792115', '90.342869', '08032-333'),
-			('Kafrul Police Station', '23.801244', '90.381451', '02-9871771'),
-			('Mirpur Model Police Station', '23.804450', '90.363062', '02-9001001'),
-			('Shah Ali Police Station', '23.805410', '90.348877', '01191-005500'),
-			('Vashantek Police Fari', '23.813472', '90.391177', '02-8713023'),
-			('Rupnagor Police Station', '23.817361', '90.360074', '01713-373190'),
-			('Pallabi Police station', '23.826183', '90.366415', '01713-373190'),
-			('Vatara Police Station', '23.794859', '90.413959', '01769-058055'),
-			('Khilkhet Police Station', '23.828151', '90.419681', '01769-691792'),
-			('Cantonment Police Station', '23.824454', '90.405608', '02-8829179'),
-			('Airport Police Station', '23.850225', '90.409143', '01713-373162'),
-			('Biman Bandor Thana', '23.857502', '90.398960', '01713-373162'),
-			('Dakshinkhan Police Station', '23.859424', '90.426785', '02-8931777'),
-			('Uttarkhan Police Station', '23.870894', '90.432511', '01713-373164'),
-			('Uttara East Police Station', '23.866923', '90.400611', '01199-883740'),
-			('Police Bureau of Investigation', '23.873450', '90.381440', '01769-058066'),
-			('Uttara West Police Station', '23.875744', '90.387483', '01794-449949'),
-			('Abdullahpur Police Barrack', '23.879809', '90.401377', '01794-449949'),
+			('Darussalam Police Station', '23.792115', '90.342869', '08032333'),
+			('Kafrul Police Station', '23.801244', '90.381451', '029871771'),
+			('Mirpur Model Police Station', '23.804450', '90.363062', '029001001'),
+			('Shah Ali Police Station', '23.805410', '90.348877', '01191005500'),
+			('Vashantek Police Fari', '23.813472', '90.391177', '028713023'),
+			('Rupnagor Police Station', '23.817361', '90.360074', '01713373190'),
+			('Pallabi Police station', '23.826183', '90.366415', '01713373190'),
+			('Vatara Police Station', '23.794859', '90.413959', '01769058055'),
+			('Khilkhet Police Station', '23.828151', '90.419681', '01769691792'),
+			('Cantonment Police Station', '23.824454', '90.405608', '028829179'),
+			('Airport Police Station', '23.850225', '90.409143', '01713373162'),
+			('Biman Bandor Thana', '23.857502', '90.398960', '01713373162'),
+			('Dakshinkhan Police Station', '23.859424', '90.426785', '028931777'),
+			('Uttarkhan Police Station', '23.870894', '90.432511', '01713373164'),
+			('Uttara East Police Station', '23.866923', '90.400611', '01199883740'),
+			('Police Bureau of Investigation', '23.873450', '90.381440', '01769058066'),
+			('Uttara West Police Station', '23.875744', '90.387483', '01794449949'),
+			('Abdullahpur Police Barrack', '23.879809', '90.401377', '01794449949'),
 			('Uttara East Police Station', '23.887525', '90.386596', ''),
-			('Turag Police Station', '23.889202', '90.370933', '02-8982111');
+			('Turag Police Station', '23.889202', '90.370933', '028982111');
 			
 			
 			
@@ -74,9 +74,10 @@ CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `las
 			
 			
 //tbl_complain1
-
+	DROP TABLE `project_db`.`tbl_complain1`;
 	CREATE TABLE `project_db`.`tbl_complain1` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL, `complainTime` DATETIME NOT NULL ) ENGINE = InnoDB;
 	
 
 // tbl_complain2
+	DROP TABLE `project_db`.`tbl_complain2`;
 	CREATE TABLE `project_db`.`tbl_complain2` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `cause` VARCHAR(250) NOT NULL , `description` VARCHAR(3000) NOT NULL , `currentAddress` VARCHAR(250) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL ) ENGINE = InnoDB;

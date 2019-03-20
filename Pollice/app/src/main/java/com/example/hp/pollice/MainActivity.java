@@ -1,24 +1,14 @@
 package com.example.hp.pollice;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import java.time.Instant;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +22,15 @@ public class MainActivity extends AppCompatActivity {
         //signup=(Button)findViewById(R.id.sign_up);
 
         vr = (TextView) findViewById(R.id.version);
+
+        if(new publicClass().checkInternetConnection(getApplicationContext())){
             SQLiteDatabaseHelper sdh = new SQLiteDatabaseHelper(getApplicationContext());
             SQLiteDatabase ad = sdh.getWritableDatabase();
-            checkuser_data();
+            checkUserData(true);
+        }else {
+            vr.setText("No Internet");
+            checkUserData(false);
+        }
     }
 
     @Override
@@ -80,14 +76,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(callIntent);*/
 
     }
-    public void checkuser_data(){
+    public void checkUserData(boolean userType){
         Cursor cursor=new SQLiteDatabaseHelper(this).check_user();
         if(cursor!=null){
             if(cursor.getCount()==1){
                 while(cursor.moveToNext()){
                     String email=cursor.getString(0);
                     String pass=cursor.getString(1);
-                    Intent i = new Intent(getApplicationContext(),homeActivity.class);
+                    //String userName=cursor.getString(2);
+                    Intent i;
+                    if(userType) {
+                        i = new Intent(getApplicationContext(), homeActivity.class);
+                    }else{
+                        i = new Intent(getApplicationContext(), OffLineMode.class);
+                        //i.putExtra("UserName",userName);
+                    }
                     i.putExtra("Email",email);
                     i.putExtra("Password",pass);
                     startActivity(i);

@@ -122,6 +122,7 @@ public class homeActivity extends AppCompatActivity {
         if(loca[0]!=0 && loca[1]!=0){
             Intent i=new Intent(getApplicationContext(),complainActivity.class);
             i.putExtra("User_mail", email);
+            i.putExtra("Password", password);
             i.putExtra("Latitude",loca[0]);
             i.putExtra("Longitude",loca[1]);
             startActivity(i);

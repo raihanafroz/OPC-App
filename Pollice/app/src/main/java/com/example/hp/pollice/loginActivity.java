@@ -167,6 +167,7 @@ public class loginActivity extends AppCompatActivity {
                     i.putExtra("Email",jo.getString("e-mail"));
                     i.putExtra("Password",jo.getString("password"));
                     //add user on SQLite Database to remember user
+                    //String name=jo.getString("first_name")+" "+jo.getString("last_name");
                     new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"));
                     startActivity(i);
                 }else{

@@ -2,10 +2,15 @@ package com.example.hp.pollice;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import static android.support.v4.content.ContextCompat.getSystemService;
+
 
 public class publicClass {
     //String ip_address="192.168.43.32";    //phone
@@ -20,6 +25,7 @@ public class publicClass {
     public String url_changeDetails = "http://"+ip_address+"/New_folder/Pollice/server/changeDetails.php";
     public String url_imgPath= "http://"+ip_address+"/New_folder/Pollice/server/Profile_Pic/";
     public String url_getPhoneNO = "http://"+ip_address+"/New_folder/Pollice/server/getPhoneNO.php";
+    public String url_stationDetails = "http://"+ip_address+"/New_folder/Pollice/server/stationDetails.php";
     public String url_complain1 = "http://"+ip_address+"/New_folder/Pollice/server/complain1.php";
     public String url_complain2 = "http://"+ip_address+"/New_folder/Pollice/server/complain2.php";
 
@@ -60,9 +66,27 @@ public class publicClass {
         return mdformat.format(calendar.getTime());
     }
 
+    boolean checkInternetConnection(Context context){
+        boolean status= false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            status = true;
+        }
+        else
+            status = false;
+        return status;
+    }
 
 
+        String mm="not null";
 
+        public String getMm() {
+            return mm;
+        }
 
-
+        public void setMm(String mm) {
+            this.mm = mm;
+        }
 }
