@@ -4,6 +4,5 @@
         android:startColor="@color/alert_gradint_start"
         android:centerColor="@color/alert_gradint_center"
         android:endColor="@color/alert_gradint_end"
-        android:angle="45"
-        />
+        android:angle="90"/>
 </shape>

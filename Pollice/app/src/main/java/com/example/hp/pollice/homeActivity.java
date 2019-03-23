@@ -118,15 +118,19 @@ public class homeActivity extends AppCompatActivity {
     }
 
     public void goto_complaine(View view) {
-        double loca[]=new publicClass().getLocation(mContext, homeActivity.this);
-        if(loca[0]!=0 && loca[1]!=0){
-            Intent i=new Intent(getApplicationContext(),complainActivity.class);
-            i.putExtra("User_mail", email);
-            i.putExtra("Password", password);
-            i.putExtra("Latitude",loca[0]);
-            i.putExtra("Longitude",loca[1]);
-            startActivity(i);
-            //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
+        if(new publicClass().checkInternetConnection(this)) {
+            double loca[] = new publicClass().getLocation(mContext, homeActivity.this);
+            if (loca[0] != 0 && loca[1] != 0) {
+                Intent i = new Intent(getApplicationContext(), complainActivity.class);
+                i.putExtra("User_mail", email);
+                i.putExtra("Password", password);
+                i.putExtra("Latitude", loca[0]);
+                i.putExtra("Longitude", loca[1]);
+                startActivity(i);
+                //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
+            }
+        }else{
+            new Alert_Builder().settingAlert(this, homeActivity.this, false);
         }
     }
 

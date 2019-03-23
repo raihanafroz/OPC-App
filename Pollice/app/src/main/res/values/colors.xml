@@ -12,7 +12,7 @@
     <color name="back_hint">#92977c</color>
     <color name="green">#30ab30</color>
     <color name="yeallo">#fffc35</color>
-    <color name="alert_gradint_start">#faa6f6</color>
-    <color name="alert_gradint_end">#a8ddf1</color>
-    <color name="alert_gradint_center">#b3b3b3</color>
+    <color name="alert_gradint_start">#FFEAF8</color>
+    <color name="alert_gradint_end">#D0F7FF</color>
+    <color name="alert_gradint_center">#FFDEDE</color>
 </resources>

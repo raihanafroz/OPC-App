@@ -4,11 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
             checkUserData(true);
         }else {
             vr.setText("No Internet");
-            checkUserData(false);
+            //new Alert_Builder().settingAlert(this.getApplicationContext(),MainActivity.this);
+            ///checkUserData(false);
+            Toast.makeText(getApplicationContext(),"No Internet.",Toast.LENGTH_SHORT).show();
+
+            new Alert_Builder().settingAlert(this,MainActivity.this,true);
         }
     }
 
@@ -43,13 +49,21 @@ public class MainActivity extends AppCompatActivity {
         }).setNegativeButton("No", null).show();
     }
     public void signin_page(View view) {
-        Intent i = new Intent(getApplicationContext(), loginActivity.class);
-        startActivity(i);
+        if(new publicClass().checkInternetConnection(getApplicationContext())){
+            Intent i = new Intent(getApplicationContext(), loginActivity.class);
+            startActivity(i);
+        }else {
+            new Alert_Builder().settingAlert(this,MainActivity.this,false);
+        }
     }
 
     public void signup_page(View view) {
-        Intent i = new Intent(getApplicationContext(), registerActivity.class);
-        startActivity(i);
+        if(new publicClass().checkInternetConnection(getApplicationContext())){
+            Intent i = new Intent(getApplicationContext(), registerActivity.class);
+            startActivity(i);
+        }else {
+            new Alert_Builder().settingAlert(this,MainActivity.this, false);
+        }
     }
 
     public void drop(View view) {
