@@ -1,13 +1,13 @@
 // user info table
-	DROP TABLE `sql12284662`.`user_info`;
-	CREATE TABLE `sql12284662`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(70) NOT NULL , `password` VARCHAR(64) NOT NULL , `address` VARCHAR(100) NOT NULL , `gender` VARCHAR(20) NOT NULL , `contact_number` VARCHAR(20) NOT NULL , `createTime` DATETIME NOT NULL ) ENGINE = InnoDB
+	DROP TABLE `project_db`.`user_info`;
+	CREATE TABLE `project_db`.`user_info` ( `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `e-mail` VARCHAR(70) NOT NULL , `password` VARCHAR(64) NOT NULL , `address` VARCHAR(100) NOT NULL , `gender` VARCHAR(20) NOT NULL , `contact_number` VARCHAR(20) NOT NULL , `createTime` DATETIME NOT NULL ) ENGINE = InnoDB
 
 //tbl station thana
-	DROP TABLE `sql12284662`.`tbl_station_thana`;
-	CREATE TABLE `sql12284662`.`tbl_station_thana` ( `thanaName` VARCHAR(150) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `phoneNo` VARCHAR(15) NOT NULL , `thanaId` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`thanaId`)) ENGINE = InnoDB;
+	DROP TABLE `project_db`.`tbl_station_thana`;
+	CREATE TABLE `project_db`.`tbl_station_thana` ( `thanaName` VARCHAR(150) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `phoneNo` VARCHAR(15) NOT NULL , `thanaId` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`thanaId`)) ENGINE = InnoDB;
 
 //	data
-	INSERT INTO `sql12284662`.`tbl_station_thana` (`thanaName`, `latitude`, `longitude`, `phoneNo`) VALUES 
+	INSERT INTO `project_db`.`tbl_station_thana` (`thanaName`, `latitude`, `longitude`, `phoneNo`) VALUES 
 			('Gandaria Police Station', '23.699555', '90.421057', '01713398331'),
 			('Sutrapur Police Station', '23.702421', '90.418168', '027116233'),
 			('Konapara Police Fari', '23.716327', '90.469815', ''),
@@ -72,10 +72,10 @@
 			
 			
 //tbl_complain1
-	DROP TABLE `sql12284662`.`tbl_complain1`;
-	CREATE TABLE `sql12284662`.`tbl_complain1` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL, `complainTime` DATETIME NOT NULL ) ENGINE = InnoDB;
+	DROP TABLE `project_db`.`tbl_complain1`;
+	CREATE TABLE `project_db`.`tbl_complain1` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `latitude` VARCHAR(15) NOT NULL , `longitude` VARCHAR(15) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL, `complainTime` DATETIME NOT NULL ) ENGINE = InnoDB;
 	
 
 // tbl_complain2
-	DROP TABLE `sql12284662`.`tbl_complain2`;
-	CREATE TABLE `sql12284662`.`tbl_complain2` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `cause` VARCHAR(250) NOT NULL , `description` VARCHAR(3000) NOT NULL , `currentAddress` VARCHAR(250) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL ) ENGINE = InnoDB;
+	DROP TABLE `project_db`.`tbl_complain2`;
+	CREATE TABLE `project_db`.`tbl_complain2` ( `userName` VARCHAR(100) NOT NULL , `email` VARCHAR(100) NOT NULL , `cause` VARCHAR(250) NOT NULL , `description` VARCHAR(3000) NOT NULL , `currentAddress` VARCHAR(250) NOT NULL , `usercomplainNo` VARCHAR(15) NOT NULL , `thanaId` VARCHAR(15) NOT NULL ) ENGINE = InnoDB;

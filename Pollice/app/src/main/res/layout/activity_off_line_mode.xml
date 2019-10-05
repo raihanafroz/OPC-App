@@ -7,26 +7,19 @@
     tools:context=".OffLineMode"
     android:orientation="vertical"
     android:gravity="center|top"
-    android:weightSum="50"
     android:padding="5dp">
-    <LinearLayout
-        android:layout_weight="5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Off Line Mode"
+            android:layout_height="wrap_content"
+            android:text="Police Station List"
             android:textStyle="bold"
             android:textSize="40sp"
             android:textColor="#000000"
             android:textAlignment="center"
             android:padding="5dp"/>
-    </LinearLayout>
     <LinearLayout
-        android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="right"
         android:gravity="right">
@@ -40,16 +33,23 @@
             android:id="@+id/userEmail"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="42"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="5dp">
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView">
+            android:id="@+id/listView"></ListView>
 
-        </ListView>
+
+        <!--<com.baoyz.swipemenulistview.SwipeMenuListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView">
+        </com.baoyz.swipemenulistview.SwipeMenuListView>-->
+
+
     </LinearLayout>
 </LinearLayout>

@@ -44,6 +44,7 @@ public class registerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         firstName=(TextInputEditText) findViewById(R.id.ResFirstName);
         lastName=(TextInputEditText) findViewById(R.id.ResLasstName);
         email=(TextInputEditText) findViewById(R.id.ResEmail);

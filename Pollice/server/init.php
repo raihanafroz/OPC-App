@@ -1,8 +1,8 @@
 <?php
-	$serverName = "sql12.freemysqlhosting.net";
-	$databaseName="sql12284662";
-	$userName="sql12284662";
-	$password="MpUIkYQp2Y";
+	$serverName = "localhost";
+	$databaseName="project_db";
+	$userName="root";
+	$password="";
 	
 	$connect=mysqli_connect($serverName, $userName, $password, $databaseName);
 ?>

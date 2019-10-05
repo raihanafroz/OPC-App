@@ -59,7 +59,7 @@ public class yourComplain extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_reg = "http://192.168.0.100/New_folder/Pollice/server/insert_data.php";
+            String url_reg = "http://192.168.0.100/New_folder/Pollice/server/complain2.php";
             String method = voids[0];
             if (method == "complain2") {
                 String currentemail = voids[1];
@@ -78,8 +78,6 @@ public class yourComplain extends AppCompatActivity {
                             URLEncoder.encode("complainAddress", "UTF-8") + "=" + URLEncoder.encode(complainAddress, "UTF-8") + "&" +
                             URLEncoder.encode("complainCuse", "UTF-8") + "=" + URLEncoder.encode(complainCuse, "UTF-8") + "&" +
                             URLEncoder.encode("complainDescription", "UTF-8") + "=" + URLEncoder.encode(complainDescription, "UTF-8") + "&" +
-                            /*URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(currentlat, "UTF-8") + "&" +
-                            URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(currentlon, "UTF-8") + "&" +*/
                             URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8");
                     bw.write(data);
                     bw.flush();

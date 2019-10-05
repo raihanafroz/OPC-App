@@ -10,6 +10,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -37,12 +39,60 @@ import java.net.URLEncoder;
 public class loginActivity extends AppCompatActivity {
     //EditText user_email;
     TextInputEditText user_pass,user_email;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         user_email=(TextInputEditText) findViewById(R.id.login_email);
         user_pass=(TextInputEditText) findViewById(R.id.login_password);
+
+
+        /*
+        *   checking email valid or not
+        **/
+        user_email.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            Toast.makeText( getApplicationContext(), "asjh", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(charSequence.equals(null)){
+                    user_email.setError(null);
+                }else {
+                    if (charSequence.toString().trim().matches(emailPattern)) {
+                        user_email.setError(null);
+                    } else {
+                        user_email.setError("Invalid email address");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking password minimu 6 digit or not
+         **/
+        user_pass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.toString().length() >= 6) {
+                    user_pass.setError(null);
+                } else {
+                    user_pass.setError("Minimum 6 letters");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
     }
 
     @Override
@@ -50,7 +100,9 @@ public class loginActivity extends AppCompatActivity {
         Intent i= new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
-
+    /*
+    *
+    * */
     public void cancle(View view) {
         /*Intent i=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(i);*/
@@ -60,6 +112,7 @@ public class loginActivity extends AppCompatActivity {
     public void reset(View view) {
         user_email.setText("");
         user_pass.setText("");
+        user_email.requestFocus();
     }
 
 
