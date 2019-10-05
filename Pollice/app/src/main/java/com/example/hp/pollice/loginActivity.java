@@ -54,13 +54,11 @@ public class loginActivity extends AppCompatActivity {
         user_email.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            Toast.makeText( getApplicationContext(), "asjh", Toast.LENGTH_SHORT).show();
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
-                if(charSequence.equals(null)){
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
                     user_email.setError(null);
                 }else {
                     if (charSequence.toString().trim().matches(emailPattern)) {
@@ -83,10 +81,14 @@ public class loginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().length() >= 6) {
+                if(i== 0 && i1 ==0 && i2 ==0){
                     user_pass.setError(null);
-                } else {
-                    user_pass.setError("Minimum 6 letters");
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        user_pass.setError(null);
+                    } else {
+                        user_pass.setError("Minimum 6 letters");
+                    }
                 }
             }
 
@@ -117,13 +119,29 @@ public class loginActivity extends AppCompatActivity {
 
 
     void alart(){
-        if(user_email.getText().toString().isEmpty()){
-            new Alert_Builder().create_alart_1_btn("Error","Add a valid e-mail.", loginActivity.this);
-        }else{
+/*            new Alert_Builder().create_alart_1_btn("Error","Add a valid e-mail.", loginActivity.this);
             if(user_pass.getText().toString().isEmpty()){
                 new Alert_Builder().create_alart_1_btn("Error","Enter yout password.", loginActivity.this);
+            }*/
+        if(user_email.getText().toString().isEmpty()){
+            user_email.requestFocus();
+        }else{
+            if(user_pass.getText().toString().isEmpty()) {
+                user_pass.requestFocus();
             }else{
-                new login_Android_to_Mysql().execute("login", user_email.getText().toString(), new EncryptedText().encrypt(user_pass.getText().toString()));
+                if (user_email.getText().toString().trim().matches(emailPattern)) {
+                    user_email.setError(null);
+                    if (user_pass.getText().toString().length() >= 6) {
+                        user_pass.setError(null);
+                        new login_Android_to_Mysql().execute("login", user_email.getText().toString(), new EncryptedText().encrypt(user_pass.getText().toString()));
+                    } else {
+                        user_pass.setError("Minimum 6 letters");
+                        user_pass.requestFocus();
+                    }
+                } else {
+                    user_email.setError("Invalid email address");
+                    user_email.requestFocus();
+                }
             }
         }
     }
