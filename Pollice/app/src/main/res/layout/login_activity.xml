@@ -63,7 +63,7 @@
                         android:inputType="text"
                         android:id="@+id/login_email"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp"/>
+                        android:paddingRight="10dp" />
                 </android.support.design.widget.TextInputLayout>
 
 

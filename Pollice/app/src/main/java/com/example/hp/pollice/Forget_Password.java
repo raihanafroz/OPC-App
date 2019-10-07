@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,21 +26,65 @@ import java.net.URLEncoder;
 
 public class Forget_Password extends AppCompatActivity {
     private TextInputEditText email,contactNumber;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget__password);
         email=(TextInputEditText) findViewById(R.id.forgetEmail);
         contactNumber=(TextInputEditText) findViewById(R.id.forgetContactNumber);
+
+        /*
+         *   checking email valid or not
+         **/
+        email.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    email.setError(null);
+                }else {
+                    if (charSequence.toString().trim().matches(emailPattern)) {
+                        email.setError(null);
+                    } else {
+                        email.setError("Invalid email address");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+
+
+        /*
+         *   checking phone minimu 11 digit or not
+         **/
+        contactNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    contactNumber.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 11) {
+                        contactNumber.setError(null);
+                    } else {
+                        contactNumber.setError("Minimum 11 digit");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
     }
 
-    public void cancle(View view) {
-        finish();
-    }
-
-    public void EnterBtn(View view) {
-        new ForgetUserCheck_Android_to_Mysql().execute("checkForForgetPassword",email.getText().toString(), contactNumber.getText().toString());
-    }
 
     public class ForgetUserCheck_Android_to_Mysql extends AsyncTask<String, Void, String> {
         private  String forgetPasswordEmail="",forgetPasswordContactNumber="";
@@ -58,6 +104,7 @@ public class Forget_Password extends AppCompatActivity {
             //String url_checkForForgetPassword = "http://192.168.0.100/New_folder/Pollice/server/checkForForgetPassword.php";
             String method = voids[0];
             if (method.equals("checkForForgetPassword")) { //     check forget password user
+//                Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_SHORT).show();
                 forgetPasswordEmail = voids[1];
                 forgetPasswordContactNumber = voids[2];
                 try {
@@ -85,13 +132,14 @@ public class Forget_Password extends AppCompatActivity {
                     br.close();
                     is.close();
                     huc.disconnect();
+//                    Toast.makeText(getApplicationContext(), respose, Toast.LENGTH_SHORT).show();
                     return respose;
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
-                    //return e.getMessage();
+                    return e.getMessage();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    //return e.getMessage();
+                    return e.getMessage();
                 }
             }
             return null;
@@ -104,6 +152,7 @@ public class Forget_Password extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             if (result.equals("Forget User Found")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(getApplicationContext(), Change_Password.class);
@@ -116,5 +165,39 @@ public class Forget_Password extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+
+
+
+
+    public void cancle(View view) {
+        Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    public void EnterBtn(View view) {
+        if(email.getText().toString().isEmpty()){
+            email.requestFocus();
+        }else{
+            if(contactNumber.getText().toString().isEmpty()) {
+                contactNumber.requestFocus();
+            }else{
+                if (email.getText().toString().trim().matches(emailPattern)) {
+                    email.setError(null);
+                    if (contactNumber.getText().toString().length() >= 6) {
+                        contactNumber.setError(null);
+                        new ForgetUserCheck_Android_to_Mysql().execute("checkForForgetPassword",email.getText().toString(), contactNumber.getText().toString());
+                    } else {
+                        contactNumber.setError("Minimum 11 digit");
+                        contactNumber.requestFocus();
+                    }
+                } else {
+                    email.setError("Invalid email address");
+                    email.requestFocus();
+                }
+            }
+        }
+
     }
 }
