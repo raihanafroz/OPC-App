@@ -180,11 +180,11 @@ public class Forget_Password extends AppCompatActivity {
         if(email.getText().toString().isEmpty()){
             email.requestFocus();
         }else{
-            if(contactNumber.getText().toString().isEmpty()) {
-                contactNumber.requestFocus();
-            }else{
-                if (email.getText().toString().trim().matches(emailPattern)) {
-                    email.setError(null);
+            if (email.getText().toString().trim().matches(emailPattern)) {
+                email.setError(null);
+                if(contactNumber.getText().toString().isEmpty()) {
+                    contactNumber.requestFocus();
+                }else{
                     if (contactNumber.getText().toString().length() >= 6) {
                         contactNumber.setError(null);
                         new ForgetUserCheck_Android_to_Mysql().execute("checkForForgetPassword",email.getText().toString(), contactNumber.getText().toString());
@@ -192,11 +192,13 @@ public class Forget_Password extends AppCompatActivity {
                         contactNumber.setError("Minimum 11 digit");
                         contactNumber.requestFocus();
                     }
-                } else {
-                    email.setError("Invalid email address");
-                    email.requestFocus();
                 }
+
+            } else {
+                email.setError("Invalid email address");
+                email.requestFocus();
             }
+
         }
 
     }

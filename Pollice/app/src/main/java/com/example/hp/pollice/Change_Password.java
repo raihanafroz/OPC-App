@@ -7,6 +7,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -41,28 +43,166 @@ public class Change_Password extends AppCompatActivity {
         }
         if (state.equals("ForgetPass")){
             layer.setVisibility(View.INVISIBLE);
+            oldpass.setVisibility(View.INVISIBLE);
             contactNumber=extra.getString("ContactNumber");
         }else{
             layer.setVisibility(View.VISIBLE);
+            oldpass.setVisibility(View.VISIBLE);
         }
 
+
+
+        /*
+         *   checking old password minimu 6 digit or not
+         **/
+        oldpass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    oldpass.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        oldpass.setError(null);
+                    } else {
+                        oldpass.setError("Minimum 6 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking old password minimu 6 digit or not
+         **/
+        newpass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    newpass.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        newpass.setError(null);
+                    } else {
+                        newpass.setError("Minimum 6 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+
+        /*
+         *   checking old password minimu 6 digit or not
+         **/
+        confirmpass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    confirmpass.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        if (charSequence.toString().equals(newpass.getText().toString())) {
+                            confirmpass.setError(null);
+                        } else {
+                            confirmpass.setError("New password not match");
+                        }
+                    } else {
+                        confirmpass.setError("Minimum 6 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
     }
 
     public void cancle(View view) {
-        finish();
+//        finish();
+        if(oldpass.getVisibility() == View.VISIBLE) {
+            Toast.makeText(getApplicationContext(), "visiable", Toast.LENGTH_SHORT).show();
+        }
     }
+
 
     public void SaveBtn(View view) {
         MySQLDatabaseHelper mdh =new MySQLDatabaseHelper(this);
-        if (newpass.getText().toString().equals(confirmpass.getText().toString())){
-            if(oldpass.getText().toString().isEmpty()) {
-                new change_Android_to_Mysql().execute("ChangePassword", email, oldpass.getText().toString(), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+        if(oldpass.getVisibility() == View.INVISIBLE) {
+            if(newpass.getText().toString().isEmpty()){
+                newpass.requestFocus();
             }else{
-                new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldpass.getText().toString()), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+                if(newpass.getText().toString().length() >=6){
+                    if(confirmpass.getText().toString().isEmpty()){
+                        confirmpass.requestFocus();
+                    }else{
+                        if(confirmpass.getText().toString().length() >=6){
+                            if(confirmpass.getText().toString().equals(newpass.getText().toString())){
+                                new change_Android_to_Mysql().execute("ChangePassword", email, oldpass.getText().toString(), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+                            }else{
+                                confirmpass.setError("New password not match");
+                                confirmpass.requestFocus();
+                            }
+                        }else{
+                            confirmpass.setError("Minimum 6 characters");
+                            confirmpass.requestFocus();
+
+                        }
+                    }
+                }else{
+                    newpass.setError("Minimum 6 characters");
+                    newpass.requestFocus();
+                }
             }
         }else{
-            Toast.makeText(getApplicationContext(), "New password not match", Toast.LENGTH_SHORT).show();
+            if(oldpass.getText().toString().isEmpty()){
+                oldpass.requestFocus();
+            }else {
+                if (oldpass.getText().toString().length() >= 6) {
+                    if (newpass.getText().toString().isEmpty()) {
+                        newpass.requestFocus();
+                    } else {
+                        if (newpass.getText().toString().length() >= 6) {
+                            if (confirmpass.getText().toString().isEmpty()) {
+                                confirmpass.requestFocus();
+                            } else {
+                                if (confirmpass.getText().toString().length() >= 6) {
+                                    if (confirmpass.getText().toString().equals(newpass.getText().toString())) {
+                                        new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldpass.getText().toString()), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+                                    } else {
+                                        confirmpass.setError("New password not match");
+                                        confirmpass.requestFocus();
+                                    }
+                                } else {
+                                    confirmpass.setError("Minimum 6 characters");
+                                    confirmpass.requestFocus();
+                                }
+                            }
+                        } else {
+                            newpass.setError("Minimum 6 characters");
+                            newpass.requestFocus();
+                        }
+                    }
+                } else {
+                    oldpass.setError("Minimum 6 characters");
+                    oldpass.requestFocus();
+                }
+            }
         }
+
+
     }
     public class change_Android_to_Mysql extends AsyncTask<String, Void, String> {
 
@@ -137,6 +277,8 @@ public class Change_Password extends AppCompatActivity {
                 new SQLiteDatabaseHelper(getApplicationContext()).drop();
                 startActivity(new Intent(getApplicationContext(), loginActivity.class));
             } else {
+                oldpass.setError("Old Password Not Match");
+                oldpass.requestFocus();
                 Toast.makeText(getApplicationContext(), result+"\nPassword not change", Toast.LENGTH_SHORT).show();
             }
         }
