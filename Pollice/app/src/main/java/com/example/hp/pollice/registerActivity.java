@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,8 @@ public class registerActivity extends AppCompatActivity {
     private ImageView chooseImage;
     private int ImgReq=1;
     private Bitmap bitmap=null;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String addressPattern = "[a-zA-Z0-9._-]+,[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,179 @@ public class registerActivity extends AppCompatActivity {
         chooseBTN=(Button)findViewById(R.id.chooseBTN);
         password=(TextInputEditText) findViewById(R.id.ResPassword);
         confirmPassword=(TextInputEditText) findViewById(R.id.ResConfirmPassword);
+
+        /*
+         *   checking firstname valid or not
+         **/
+        firstName.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    firstName.setError(null);
+                }else {
+                    if (charSequence.toString().length() > 1) {
+                        firstName.setError(null);
+                    } else {
+                        firstName.setError("Minimum 2 characters");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking lastname valid or not
+         **/
+        lastName.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    lastName.setError(null);
+                }else {
+                    if (charSequence.toString().length() > 2) {
+                        lastName.setError(null);
+                    } else {
+                        lastName.setError("Minimum 3 characters");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking email valid or not
+         **/
+        email.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    email.setError(null);
+                }else {
+                    if (charSequence.toString().trim().matches(emailPattern)) {
+                        email.setError(null);
+                    } else {
+                        email.setError("Invalid email address");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking address valid or not
+         **/
+        address.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    address.setError(null);
+                }else {
+                    if (charSequence.toString().trim().matches(addressPattern)) {
+                        address.setError(null);
+                    } else {
+                        address.setError("Full address required");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking Contact Number minimu 11 digit or not
+         **/
+        contactNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    contactNumber.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 11) {
+                        contactNumber.setError(null);
+                    } else {
+                        contactNumber.setError("Minimum 11 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking old password minimu 6 digit or not
+         **/
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    password.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        password.setError(null);
+                    } else {
+                        password.setError("Minimum 6 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+        /*
+         *   checking old password minimu 6 digit or not
+         **/
+        confirmPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    confirmPassword.setError(null);
+                }else {
+                    if (charSequence.toString().length() >= 6) {
+                        if (charSequence.toString().equals(password.getText().toString())) {
+                            confirmPassword.setError(null);
+                        } else {
+                            confirmPassword.setError("New password not match");
+                        }
+                    } else {
+                        confirmPassword.setError("Minimum 6 characters");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
     }
 
     public void choosePhoto(View view) {

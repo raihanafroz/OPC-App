@@ -209,7 +209,8 @@
                         android:textSize="30sp"
                         android:textScaleX=".7"
                         android:layout_marginRight="5dp"
-                        android:id="@+id/ResMale"/>
+                        android:id="@+id/ResMale"
+                        android:checked="true"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
