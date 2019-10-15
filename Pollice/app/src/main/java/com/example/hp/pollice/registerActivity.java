@@ -43,7 +43,7 @@ public class registerActivity extends AppCompatActivity {
     private int ImgReq=1;
     private Bitmap bitmap=null;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String addressPattern = "[a-zA-Z0-9._-]+,[a-z]+";
+    String addressPattern = "[a-zA-Z0-9._, -]+, [a-zA-Z0-9]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -221,7 +221,7 @@ public class registerActivity extends AppCompatActivity {
                         if (charSequence.toString().equals(password.getText().toString())) {
                             confirmPassword.setError(null);
                         } else {
-                            confirmPassword.setError("New password not match");
+                            confirmPassword.setError("Confirm password not match");
                         }
                     } else {
                         confirmPassword.setError("Minimum 6 characters");
@@ -302,30 +302,62 @@ public class registerActivity extends AppCompatActivity {
                     gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new publicClass().getCurrentDate());
         }
     }
+
+    //  checking field validation
     private boolean check(){
-        if(firstName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty() || email.getText().toString().isEmpty() || address.getText().toString().isEmpty() || contactNumber.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(), "One or more field are empty", Toast.LENGTH_LONG).show();
+        int count = 0;
+        if(firstName.getText().toString().length() < 2 ){
+            firstName.setError("Required minimum 2 characters");
+            firstName.requestFocus();
+            return false;
+        }else{ count++;}
+        if(lastName.getText().toString().length() < 3 ){
+            lastName.setError("Required minimum 3 characters");
+            lastName.requestFocus();
+            return false;
+        }else{ count++;}
+        if(email.getText().toString().trim().matches(emailPattern)) {
+            count++;
+        } else {
+            email.setError("Invalid email address");
+            email.requestFocus();
+            return false;
+        }
+        if(address.getText().toString().trim().matches(addressPattern)) {
+            count++;
+        } else {
+            address.setError("Full address required");
+            address.requestFocus();
+            return false;
+        }
+        if(contactNumber.getText().toString().length() < 11 ){
+            contactNumber.setError("Required minimum 11 characters");
+            contactNumber.requestFocus();
+            return false;
+        }else{ count++;}
+        if(password.getText().toString().length() < 6 ){
+            password.setError("Required minimum 6 characters");
+            password.requestFocus();
+            return false;
+        }else{ count++;}
+
+        if(confirmPassword.getText().toString().length() < 6 ){
+            confirmPassword.setError("Required minimum 6 characters");
+            confirmPassword.requestFocus();
             return false;
         }else{
-            if(!(male.isChecked())&&!(female.isChecked())){
-                Toast.makeText(getApplicationContext(), "Select your gender", Toast.LENGTH_LONG).show();
-                return false;
+            if(confirmPassword.getText().toString().equals(password.getText().toString())){
+                count++;
             }else{
-                if(password.getText().toString().isEmpty() || confirmPassword.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(), "One or more field are empty", Toast.LENGTH_LONG).show();
-                    return false;
-                }else{
-                    if(!password.getText().toString().equals(confirmPassword.getText().toString())){
-                        Toast.makeText(getApplicationContext(), "Password not match", Toast.LENGTH_LONG).show();
-                        password.setText("");
-                        confirmPassword.setText("");
-                        return false;
-                    }else {
-                        return true;
-                    }
-                }
+                confirmPassword.setError("Confirm password not match");
+                confirmPassword.requestFocus();
+                return false;
             }
         }
+        if(count == 7){
+            return true;
+        }
+        return false;
     }
 
     public class register_Android_to_Mysql extends AsyncTask<String, Void, String> {
