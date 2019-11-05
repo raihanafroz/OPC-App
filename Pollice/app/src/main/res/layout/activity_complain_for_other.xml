@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".yourComplain"
+    tools:context=".Complain_for_other"
     android:orientation="vertical"
     android:gravity="center|top"
     android:padding="2dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Complain"
-        android:textSize="60sp"
+        android:text="Complain for other"
+        android:textSize="40sp"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textScaleX="1"
@@ -41,6 +41,7 @@
                 android:textSize="15sp"
                 android:spinnerMode="dropdown">
             </Spinner>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
@@ -49,15 +50,50 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Occurrence place/area"
+                    android:hint="Victim Name"
                     android:textColor="@color/black"
                     android:textColorHint="@color/back_hint"
                     android:maxLines="1"
                     android:inputType="text"
-                    android:id="@+id/yourCurrentAddress"
+                    android:id="@+id/name"
                     android:padding="15dp"/>
-
             </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Victim Phone No"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/back_hint"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/phone"
+                    android:padding="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Victim's Address"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/back_hint"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/addres"
+                    android:padding="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
 
 
             <android.support.design.widget.TextInputLayout
@@ -73,33 +109,28 @@
                     android:textColorHint="@color/back_hint"
                     android:maxLines="2"
                     android:inputType="text"
-                    android:id="@+id/yourCause"
+                    android:id="@+id/complainCuse"
                     android:padding="15dp"/>
 
             </android.support.design.widget.TextInputLayout>
 
-
-            <!--
             <android.support.design.widget.TextInputLayout
+                android:layout_margin="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/yourDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Description"
-                    android:inputType="text"
-                    android:maxLines="10"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:hint="Occurrence place/area"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint" />
+                    android:textColorHint="@color/back_hint"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/complainAddress"
+                    android:padding="15dp"/>
 
             </android.support.design.widget.TextInputLayout>
-            -->
-
 
             <android.support.design.widget.TextInputLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -117,7 +148,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/yourDescription"
+                    android:id="@+id/complainDescription"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="#EDF3EB"
@@ -151,7 +182,7 @@
                     android:textStyle="bold"
                     android:textScaleX="1.2"
                     android:text="Send"
-                    android:onClick="go"/>
+                    android:onClick="send_complain"/>
             </LinearLayout>
 
         </LinearLayout>

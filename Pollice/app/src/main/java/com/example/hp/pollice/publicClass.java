@@ -11,6 +11,7 @@ import java.util.Calendar;
 
 
 public class publicClass {
+//    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
     String ip_address="192.168.0.111";  //Room WIFI
     //String ip_address="192.168.43.107";    //phone
@@ -25,8 +26,11 @@ public class publicClass {
     public String url_imgPath= "http://"+ip_address+"/New_folder/Pollice/server/Profile_Pic/";
     public String url_getPhoneNO = "http://"+ip_address+"/New_folder/Pollice/server/getPhoneNO.php";
     public String url_stationDetails = "http://"+ip_address+"/New_folder/Pollice/server/stationDetails.php";
+    public String url_thanaList = "http://"+ip_address+"/New_folder/Pollice/server/thanaList.php";
     public String url_complain1 = "http://"+ip_address+"/New_folder/Pollice/server/complain1.php";
     public String url_complain2 = "http://"+ip_address+"/New_folder/Pollice/server/complain2.php";
+    public String url_complain3 = "http://"+ip_address+"/New_folder/Pollice/server/complain3.php";
+    public String url_complainList = "http://"+ip_address+"/New_folder/Pollice/server/complainList.php";
 
 
 
@@ -64,9 +68,10 @@ public class publicClass {
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
             status = true;
-        }
-        else
+        } else {
+            new Alert_Builder().noInternet(context).show();
             status = false;
+        }
         return status;
     }
 }

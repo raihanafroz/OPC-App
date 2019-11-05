@@ -105,4 +105,22 @@ public class Alert_Builder {
         TextView textView = (TextView) alert11.findViewById(android.R.id.message);
         textView.setTextSize(20);
     }
+
+
+    public AlertDialog.Builder noInternet(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        return builder;
+    }
 }

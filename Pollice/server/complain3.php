@@ -1,45 +1,35 @@
 <?php
-
-    function calculateDistanceInMeter($userLat, $userLng, $venueLat, $venueLng) {
-		$earthRadius= 6371;
-        $latDistance = deg2rad($userLat - $venueLat);
-		$lngDistance = deg2rad($userLng - $venueLng);
-        $a = sin($latDistance / 2) * sin($latDistance / 2) + cos(deg2rad($userLat)) * cos(deg2rad($venueLat))  * sin($lngDistance / 2) * sin($lngDistance / 2);
-        $c = (double) (atan2(sqrt($a), sqrt(1 - $a)) * 2);
-        $dist= (double) ($earthRadius * $c);
-        return (double)($dist*1000);
-    }
-	
-	
-	//echo calculateDistanceInMeter(23.748791, 90.407925, 23.745631, 90.406094);
 	 
 	require 'init.php';
 	
-	
-	
-	$name="";
+	$userName="";
+	$thanaId="";
  	$thanaId="";
 	$email=$_POST['email'];
 	$thanaName=$_POST['thanaName'];
-	//$lat=$_POST['latitude'];
-	// $lon=$_POST['longitude'];
-
-	$complainAddress=$_POST['complainAddress'];
+	$name=$_POST['name'];
+	$phone=$_POST['phone'];
+	$address=$_POST['address'];
 	$complainCuse=$_POST['complainCuse'];
+	$complainAddress=$_POST['complainAddress'];
 	$complainDescription=$_POST['complainDescription'];
 	$currentTime=$_POST['currentTime'];
 	
 
 	// $email="raihanafroz9@gmail.com";
-	// $name="";
-	// $thanaId="";
 	// $thanaName="Jatrabari Thana";
-	// $complainAddress="Dhaka";
+	// $name="abcd";
+	// $phone="12345678900";
+	// $address="Dhaka, Bangladesh";
 	// $complainCuse="Nothing";
+	// $complainAddress="Dhaka";
 	// $complainDescription="1234567890";
 	// $currentTime="12-12-2019 12:12:12";
 
+	// $userName="";
+	// $thanaId="";
 	
+
 	// echo $thanaName;
 	// return 0;
 	// $lat=23.743210;
@@ -67,7 +57,7 @@
 	$query=mysqli_query($connect, $sql_get_name);
 	if($query){	
 		while($row=mysqli_fetch_array($query)){
-			$name=$row['first_name']." ".$row['last_name'];
+			$userName=$row['first_name']." ".$row['last_name'];
 		}
 	}
 	// echo $name;
@@ -86,7 +76,7 @@
 	//insert complain2 into database
 	
 	
-	$sql_check="SELECT COUNT(`email`) FROM `tbl_complain2` WHERE `email` LIKE '$email';";
+	$sql_check="SELECT COUNT(`email`) FROM `tbl_complain3` WHERE `email` LIKE '$email';";
 	
 	$query=mysqli_query($connect, $sql_check);
 	// echo $query;
@@ -100,10 +90,10 @@
 		
 		$complainNo+=1;
 		
-		$sql_insert="INSERT INTO `tbl_complain2` (`userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `thanaId`, `complainTime`) VALUES ('$name', '$email', '$complainCuse', '$complainDescription', '$complainAddress', '$complainNo', '$thanaId', '$complainTime');";
+		$sql_insert="INSERT INTO `tbl_complain3`(`name`, `phone`, `address`, `cause`, `description`, `complainAddress`, `thanaId`, `email`, `userName`, `complainTime`, `usercomplainNo`) VALUES ('$name','$phone', '$address', '$complainCuse', '$complainDescription', '$complainAddress', '$thanaId', '$email', '$userName', '$complainTime', '$complainNo');";
 		
 		// echo $sql_insert;
-		
+		// var_dump(mysqli_query($connect, $sql_insert));
 		if(mysqli_query($connect, $sql_insert)){
 			$output = "Successfully Complained";
 		}else{$output = "Error";}

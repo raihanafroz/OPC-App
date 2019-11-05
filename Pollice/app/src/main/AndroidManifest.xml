@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OffLineMode"></activity>
+        <activity android:name=".Complain_list"></activity>
+        <activity android:name=".Complain_for_other" />
+        <activity android:name=".OffLineMode" />
         <activity android:name=".startProgressBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +42,10 @@
         <activity android:name=".Change_Password" />
         <activity android:name=".ChangePhoto" />
         <activity android:name=".changeDetails" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

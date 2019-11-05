@@ -1,11 +1,14 @@
 package com.example.hp.pollice;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class startProgressBar extends AppCompatActivity {
 
@@ -42,7 +45,9 @@ public class startProgressBar extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if(pStatus==100){
-                        Intent i=new Intent(getApplicationContext(), MainActivity.class);
+
+
+                        Intent i=new Intent(getApplicationContext(), loginActivity.class);
                         startActivity(i);
                         //Toast.makeText(getApplicationContext(), "Limite Over", Toast.LENGTH_SHORT).show();
                     }
@@ -52,4 +57,5 @@ public class startProgressBar extends AppCompatActivity {
         }).start();
 
     }
+
 }

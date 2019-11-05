@@ -4,17 +4,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,14 +43,21 @@ import java.net.URLEncoder;
 
 public class loginActivity extends AppCompatActivity {
     //EditText user_email;
+    CheckBox rememberMe;
     TextInputEditText user_pass,user_email;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+        if(new publicClass().checkInternetConnection(this)){
+            checkUserData(true);
+        }
+
         user_email=(TextInputEditText) findViewById(R.id.login_email);
         user_pass=(TextInputEditText) findViewById(R.id.login_password);
+        rememberMe = (CheckBox)findViewById(R.id.remembarMe);
+        rememberMe.setTypeface(ResourcesCompat.getFont(this, R.font.kurale));
 
 
         /*
@@ -55,6 +67,7 @@ public class loginActivity extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 //                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
@@ -97,68 +110,91 @@ public class loginActivity extends AppCompatActivity {
         });
     }
 
+//    private boolean checkUser
     @Override
     public void onBackPressed(){
         Intent i= new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
+
+
+
+
+
+
+
+
+
+
+
     /*
     *
     * */
-    public void cancle(View view) {
-        /*Intent i=new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);*/
-        Toast.makeText(getApplicationContext(), new EncryptedText().encrypt(user_pass.getText().toString()), Toast.LENGTH_SHORT).show();
-    }
+//    public void cancle(View view) {
+//        /*Intent i=new Intent(getApplicationContext(),MainActivity.class);
+//        startActivity(i);*/
+//        Toast.makeText(getApplicationContext(), new EncryptedText().encrypt(user_pass.getText().toString()), Toast.LENGTH_SHORT).show();
+//    }
 
-    public void reset(View view) {
-        user_email.setText("");
-        user_pass.setText("");
-        user_email.requestFocus();
-    }
+//    public void reset(View view) {
+//        user_email.setText("");
+//        user_pass.setText("");
+//        user_email.requestFocus();
+//    }
 
 
-    void alart(){
-/*            new Alert_Builder().create_alart_1_btn("Error","Add a valid e-mail.", loginActivity.this);
-            if(user_pass.getText().toString().isEmpty()){
-                new Alert_Builder().create_alart_1_btn("Error","Enter yout password.", loginActivity.this);
-            }*/
-        if(user_email.getText().toString().isEmpty()){
-            user_email.requestFocus();
-        }else{
-            if(user_pass.getText().toString().isEmpty()) {
-                user_pass.requestFocus();
-            }else{
-                if (user_email.getText().toString().trim().matches(emailPattern)) {
-                    user_email.setError(null);
-                    if (user_pass.getText().toString().length() >= 6) {
-                        user_pass.setError(null);
-                        new login_Android_to_Mysql().execute("login", user_email.getText().toString(), new EncryptedText().encrypt(user_pass.getText().toString()));
-                    } else {
-                        user_pass.setError("Minimum 6 letters");
-                        user_pass.requestFocus();
-                    }
+    boolean checkValidation(){
+        boolean b = false;
+        if(new publicClass().checkInternetConnection(this)) {
+            if (user_email.getText().toString().isEmpty()) {
+                user_email.requestFocus();
+            } else {
+                if (user_pass.getText().toString().isEmpty()) {
+                    user_pass.requestFocus();
                 } else {
-                    user_email.setError("Invalid email address");
-                    user_email.requestFocus();
+                    if (user_email.getText().toString().trim().matches(emailPattern)) {
+                        user_email.setError(null);
+                        if (user_pass.getText().toString().length() >= 6) {
+                            user_pass.setError(null);
+                            b = true;
+                        } else {
+                            user_pass.setError("Minimum 6 letters");
+                            user_pass.requestFocus();
+                        }
+                    } else {
+                        user_email.setError("Invalid email address");
+                        user_email.requestFocus();
+                    }
                 }
             }
         }
+        return b;
     }
 
 
     public void SignIn(View view) {
-        alart();
+        String remember = "no";
+        if(rememberMe.isChecked()){
+            remember = "yes";
+        }
+        if(checkValidation()){
+            new login_Android_to_Mysql().execute("login", user_email.getText().toString(), new EncryptedText().encrypt(user_pass.getText().toString()), remember);
+        }
     }
 
     public void gotoforgetPage(View view) {
         startActivity(new Intent(getApplicationContext(), Forget_Password.class));
     }
 
+    public void Signup(View view) {
+        startActivity(new Intent(getApplicationContext(), registerActivity.class));
+    }
+
 
     public class login_Android_to_Mysql extends AsyncTask<String, Void, String> {
 
         ProgressDialog pd;
+        boolean rememberUser= false;
 
         @Override
         protected void onPreExecute() {
@@ -173,9 +209,13 @@ public class loginActivity extends AppCompatActivity {
         protected String doInBackground(String... voids) {
             //String url_login = "http://192.168.0.100/New_folder/Pollice/server/login.php";
             String method = voids[0];
+            if(voids[3].equals("yes")){
+                rememberUser= true;
+            }
             if (method.equals("login")) { //        login
                 String user_email = voids[1];
                 String user_password = voids[2];
+
                 try {
                     URL url = new URL(new publicClass().url_login);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -223,12 +263,13 @@ public class loginActivity extends AppCompatActivity {
             if (result.equals("Failed") || result.equals(null)) {//login
                 Toast.makeText(getApplicationContext(), "Sorry to login"+result, Toast.LENGTH_SHORT).show();
             } else {
-                parse(result);
+                parse(result, rememberUser);
                 //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }
         }
     }
-        private void parse(String data){
+
+    private void parse(String data, boolean rememberUser){
             try{
                 JSONArray ja=new JSONArray(data);
                 JSONObject jo=null;
@@ -239,7 +280,9 @@ public class loginActivity extends AppCompatActivity {
                     i.putExtra("Password",jo.getString("password"));
                     //add user on SQLite Database to remember user
                     //String name=jo.getString("first_name")+" "+jo.getString("last_name");
-                    new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"));
+                    if(rememberUser) {
+                        new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"));
+                    }
                     startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
@@ -248,4 +291,32 @@ public class loginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+    public void checkUserData(boolean userType){
+        Cursor cursor=new SQLiteDatabaseHelper(this).check_user();
+        if(cursor!=null){
+            if(cursor.getCount()==1){
+                while(cursor.moveToNext()){
+                    String email=cursor.getString(0);
+                    String pass=cursor.getString(1);
+                    //String userName=cursor.getString(2);
+                    Log.i("json data sending", email+" <<==>> "+pass);
+                    Log.i("json data sending", email+" <<==>> "+pass);
+                    Intent i;
+                    if(userType) {
+                        i = new Intent(getApplicationContext(), homeActivity.class);
+                    }else{
+                        i = new Intent(getApplicationContext(), OffLineMode.class);
+                        //i.putExtra("UserName",userName);
+                    }
+                    i.putExtra("Email",email);
+                    i.putExtra("Password",pass);
+                    startActivity(i);
+                }
+            }
+        }else {
+            Log.i("json data sending", "cursor null");
+        }
+    }
+
 }

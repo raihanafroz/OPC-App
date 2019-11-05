@@ -73,6 +73,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Data added", Toast.LENGTH_LONG).show();
         }
     }
+
     public Cursor check_user(){
         try{
             Cursor cursor=sd.rawQuery("SELECT *FROM "+table_name,null);
