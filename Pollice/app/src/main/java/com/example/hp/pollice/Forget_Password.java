@@ -31,8 +31,8 @@ public class Forget_Password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget__password);
-        email=(TextInputEditText) findViewById(R.id.forgetEmail);
-        contactNumber=(TextInputEditText) findViewById(R.id.forgetContactNumber);
+        email=(TextInputEditText) findViewById(R.id.forget_email);
+        contactNumber=(TextInputEditText) findViewById(R.id.forget_phone);
 
         /*
          *   checking email valid or not
@@ -50,7 +50,11 @@ public class Forget_Password extends AppCompatActivity {
                     if (charSequence.toString().trim().matches(emailPattern)) {
                         email.setError(null);
                     } else {
-                        email.setError("Invalid email address");
+                        if(email.getText().toString().equals("")){
+                            email.setError(null);
+                        }else {
+                            email.setError("Invalid email address");
+                        }
                     }
                 }
             }
@@ -75,7 +79,11 @@ public class Forget_Password extends AppCompatActivity {
                     if (charSequence.toString().length() >= 11) {
                         contactNumber.setError(null);
                     } else {
-                        contactNumber.setError("Minimum 11 digit");
+                        if(contactNumber.getText().toString().equals("")){
+                            contactNumber.setError(null);
+                        }else {
+                            contactNumber.setError("Minimum 11 digit");
+                        }
                     }
                 }
             }
@@ -172,7 +180,7 @@ public class Forget_Password extends AppCompatActivity {
 
 
     public void cancle(View view) {
-        Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
         finish();
     }
 
