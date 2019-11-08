@@ -7,8 +7,12 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,9 +36,16 @@ public class Change_Password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change__password);
-        oldpass=(TextInputEditText)findViewById(R.id.changeOldPassword);
-        newpass=(TextInputEditText)findViewById(R.id.changeNewPassword);
-        confirmpass=(TextInputEditText)findViewById(R.id.changeConfirmPassword);
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.change_password_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Change Password");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        oldpass=(TextInputEditText)findViewById(R.id.change_password_old);
+        newpass=(TextInputEditText)findViewById(R.id.change_password_new);
+        confirmpass=(TextInputEditText)findViewById(R.id.change_password_confirm);
         layer=(TextInputLayout)findViewById(R.id.checkFromWhere);
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
@@ -67,7 +78,11 @@ public class Change_Password extends AppCompatActivity {
                     if (charSequence.toString().length() >= 6) {
                         oldpass.setError(null);
                     } else {
-                        oldpass.setError("Minimum 6 characters");
+                        if(oldpass.getText().toString().equals("")){
+                            oldpass.setError(null);
+                        }else {
+                            oldpass.setError("Minimum 6 characters");
+                        }
                     }
                 }
             }
@@ -91,7 +106,11 @@ public class Change_Password extends AppCompatActivity {
                     if (charSequence.toString().length() >= 6) {
                         newpass.setError(null);
                     } else {
-                        newpass.setError("Minimum 6 characters");
+                        if(newpass.getText().toString().equals("")){
+                            newpass.setError(null);
+                        }else {
+                            newpass.setError("Minimum 6 characters");
+                        }
                     }
                 }
             }
@@ -120,7 +139,11 @@ public class Change_Password extends AppCompatActivity {
                             confirmpass.setError("New password not match");
                         }
                     } else {
-                        confirmpass.setError("Minimum 6 characters");
+                        if(confirmpass.getText().toString().equals("")){
+                            confirmpass.setError(null);
+                        }else {
+                            confirmpass.setError("Minimum 6 characters");
+                        }
                     }
                 }
             }
@@ -128,6 +151,25 @@ public class Change_Password extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) { }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi=getMenuInflater();
+        mi.inflate(R.menu.forget_password_app_bar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.new_password_save){
+//            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
+            SaveBtn();
+        }else if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void cancle(View view) {
@@ -138,8 +180,8 @@ public class Change_Password extends AppCompatActivity {
     }
 
 
-    public void SaveBtn(View view) {
-        MySQLDatabaseHelper mdh =new MySQLDatabaseHelper(this);
+    public void SaveBtn() {
+//        MySQLDatabaseHelper mdh =new MySQLDatabaseHelper(this);
         if(oldpass.getVisibility() == View.INVISIBLE) {
             if(newpass.getText().toString().isEmpty()){
                 newpass.requestFocus();
@@ -201,8 +243,6 @@ public class Change_Password extends AppCompatActivity {
                 }
             }
         }
-
-
     }
     public class change_Android_to_Mysql extends AsyncTask<String, Void, String> {
 
