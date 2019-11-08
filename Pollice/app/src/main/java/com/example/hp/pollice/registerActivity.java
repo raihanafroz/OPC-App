@@ -9,17 +9,21 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -36,30 +40,49 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 
 public class registerActivity extends AppCompatActivity {
+    private MaterialSpinner spinner;
     private TextInputEditText firstName,lastName,email,address,contactNumber,password,confirmPassword;
     private RadioButton male,female;
     private Button chooseBTN;
     private ImageView chooseImage;
     private int ImgReq=1;
     private Bitmap bitmap=null;
+    String namePattern = "[a-zA-Z]+";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String addressPattern = "[a-zA-Z0-9._, -]+, [a-zA-Z0-9]+";
+    String addressPattern = "^[#.0-9a-zA-Z\\s,-]+$";
+    String gender = "Gender";
+//    String[] SPINNER_DATA = {"Male","Female"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firstName=(TextInputEditText) findViewById(R.id.ResFirstName);
-        lastName=(TextInputEditText) findViewById(R.id.ResLasstName);
-        email=(TextInputEditText) findViewById(R.id.ResEmail);
-        address=(TextInputEditText) findViewById(R.id.ResAddress);
-        contactNumber=(TextInputEditText) findViewById(R.id.ResContactNumber);
-        male=(RadioButton)findViewById(R.id.ResMale);
-        female=(RadioButton)findViewById(R.id.ResFemale);
+        firstName=(TextInputEditText) findViewById(R.id.signup_first_name);
+        lastName=(TextInputEditText) findViewById(R.id.signup_last_name);
+        email=(TextInputEditText) findViewById(R.id.signup_email);
+        address=(TextInputEditText) findViewById(R.id.signup_address);
+        contactNumber=(TextInputEditText) findViewById(R.id.signup_phone);
+
+        spinner = (MaterialSpinner) findViewById(R.id.spinner);
+        spinner.setHint("Gender");
+        spinner.setItems("Gender", "Male", "Female");
+        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                if(item == "Gender"){
+                    spinner.setError("Wrong input selected");
+                }
+                gender = spinner.getText().toString();
+            }
+        });
+
+
+//        male=(RadioButton)findViewById(R.id.ResMale);
+//        female=(RadioButton)findViewById(R.id.ResFemale);
         chooseImage=(ImageView)findViewById(R.id.chooseImage);
         chooseBTN=(Button)findViewById(R.id.chooseBTN);
-        password=(TextInputEditText) findViewById(R.id.ResPassword);
-        confirmPassword=(TextInputEditText) findViewById(R.id.ResConfirmPassword);
+        password=(TextInputEditText) findViewById(R.id.signup_password);
+        confirmPassword=(TextInputEditText) findViewById(R.id.signup_confirm_password);
 
         /*
          *   checking firstname valid or not
@@ -75,7 +98,11 @@ public class registerActivity extends AppCompatActivity {
                     firstName.setError(null);
                 }else {
                     if (charSequence.toString().length() > 1) {
-                        firstName.setError(null);
+                        if (charSequence.toString().trim().matches(namePattern)) {
+                            firstName.setError(null);
+                        } else {
+                            firstName.setError("Wrong input");
+                        }
                     } else {
                         firstName.setError("Minimum 2 characters");
                     }
@@ -99,7 +126,11 @@ public class registerActivity extends AppCompatActivity {
                     lastName.setError(null);
                 }else {
                     if (charSequence.toString().length() > 2) {
-                        lastName.setError(null);
+                        if (charSequence.toString().trim().matches(namePattern)) {
+                            lastName.setError(null);
+                        } else {
+                            lastName.setError("Wrong input");
+                        }
                     } else {
                         lastName.setError("Minimum 3 characters");
                     }
@@ -149,7 +180,7 @@ public class registerActivity extends AppCompatActivity {
                     if (charSequence.toString().trim().matches(addressPattern)) {
                         address.setError(null);
                     } else {
-                        address.setError("Full address required");
+                        address.setError("Wrong input");
                     }
                 }
             }
@@ -265,30 +296,9 @@ public class registerActivity extends AppCompatActivity {
         return Base64.encodeToString(imbyte, Base64.DEFAULT);
     }
 
-    public void cancle(View view) {
-        finish();
-    }
-
-    public void reset(View view) {
-        firstName.setText("");
-        lastName.setText("");
-        email.setText("");
-        address.setText("");
-        contactNumber.setText("");
-        male.setChecked(false);
-        female.setChecked(false);
-        password.setText("");
-        confirmPassword.setText("");
-    }
 
     public void save(View view) {
         if (check()){
-            String gender="";
-            if (male.isChecked()) {
-                gender = "Male";
-            } else if (female.isChecked()) {
-                gender = "Female";
-            }
             if(bitmap==null) {
                 if (gender == "Male") {
                     bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_male);
@@ -306,13 +316,13 @@ public class registerActivity extends AppCompatActivity {
     //  checking field validation
     private boolean check(){
         int count = 0;
-        if(firstName.getText().toString().length() < 2 ){
-            firstName.setError("Required minimum 2 characters");
+        if(firstName.getText().toString().length() < 2 && firstName.getText().toString().trim().matches(namePattern)){
+            firstName.setError("Wrong input");
             firstName.requestFocus();
             return false;
         }else{ count++;}
-        if(lastName.getText().toString().length() < 3 ){
-            lastName.setError("Required minimum 3 characters");
+        if(lastName.getText().toString().length() < 3 && lastName.getText().toString().trim().matches(namePattern)){
+            lastName.setError("Wrong input");
             lastName.requestFocus();
             return false;
         }else{ count++;}
@@ -326,9 +336,18 @@ public class registerActivity extends AppCompatActivity {
         if(address.getText().toString().trim().matches(addressPattern)) {
             count++;
         } else {
-            address.setError("Full address required");
+            address.setError("Wrong input");
             address.requestFocus();
             return false;
+        }
+        if(gender != "Gender"){
+            count++;
+        }else{
+            spinner.setError("Wrong input selected");
+            spinner.setFocusableInTouchMode(true);
+            spinner.setFocusable(true);
+            spinner.requestFocus();
+            spinner.performClick();
         }
         if(contactNumber.getText().toString().length() < 11 ){
             contactNumber.setError("Required minimum 11 characters");
@@ -354,7 +373,7 @@ public class registerActivity extends AppCompatActivity {
                 return false;
             }
         }
-        if(count == 7){
+        if(count == 8){
             return true;
         }
         return false;
@@ -375,7 +394,6 @@ public class registerActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_reg = "http://192.168.0.100/New_folder/Pollice/server/insert_data.php";
             String method = voids[0];
             if (method == "register") {
                 String fname = voids[1];
@@ -439,8 +457,8 @@ public class registerActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             pd.dismiss();
             if (result.equals("Data Added.")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Toast.makeText(getApplicationContext(), "Registration Successfull", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), loginActivity.class));
             } else if(result.equals("Already have an account.")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }else{

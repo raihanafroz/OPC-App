@@ -110,37 +110,12 @@ public class loginActivity extends AppCompatActivity {
         });
     }
 
-//    private boolean checkUser
     @Override
     public void onBackPressed(){
-        Intent i= new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
+        // exit from app
+        this.finishAffinity();
+        System.exit(0);
     }
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    *
-    * */
-//    public void cancle(View view) {
-//        /*Intent i=new Intent(getApplicationContext(),MainActivity.class);
-//        startActivity(i);*/
-//        Toast.makeText(getApplicationContext(), new EncryptedText().encrypt(user_pass.getText().toString()), Toast.LENGTH_SHORT).show();
-//    }
-
-//    public void reset(View view) {
-//        user_email.setText("");
-//        user_pass.setText("");
-//        user_email.requestFocus();
-//    }
 
 
     boolean checkValidation(){
