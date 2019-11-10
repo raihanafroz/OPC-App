@@ -404,7 +404,6 @@ public class registerActivity extends AppCompatActivity {
                 String gender = voids[6];
                 String pass = voids[7];
                 String image=voids[8];
-                String currentTime=voids[9];
                 try {
                     URL url = new URL(new publicClass().url_reg);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -419,8 +418,7 @@ public class registerActivity extends AppCompatActivity {
                             URLEncoder.encode("contactNumber", "UTF-8") + "=" + URLEncoder.encode(contactNumber, "UTF-8") + "&" +
                             URLEncoder.encode("gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8") + "&" +
                             URLEncoder.encode("pass", "UTF-8") + "=" + URLEncoder.encode(pass, "UTF-8") + "&" +
-                            URLEncoder.encode("Image", "UTF-8") + "=" + URLEncoder.encode(image, "UTF-8") + "&" +
-                            URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8");
+                            URLEncoder.encode("Image", "UTF-8") + "=" + URLEncoder.encode(image, "UTF-8");
                     bw.write(data);
                     bw.flush();
                     bw.close();
@@ -436,6 +434,8 @@ public class registerActivity extends AppCompatActivity {
                     br.close();
                     is.close();
                     huc.disconnect();
+
+                    Log.i("json data sending", respose+" <<==>>");
 
                     return respose;
                 } catch (MalformedURLException e) {
