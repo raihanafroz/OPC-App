@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Complain_list"></activity>
+        <activity android:name=".AdminHome"></activity>
+        <activity android:name=".Complain_list" />
         <activity android:name=".Complain_for_other" />
         <activity android:name=".OffLineMode" />
         <activity android:name=".startProgressBar">

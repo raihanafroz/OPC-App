@@ -265,7 +265,7 @@ public class MySQLDatabaseHelper extends AsyncTask<String, Void, String> {
                 i.putExtra("Email",jo.getString("e-mail"));
                 i.putExtra("Password",jo.getString("password"));
                 //add user on SQLite Database to remember user
-                new SQLiteDatabaseHelper(ctx).create(jo.getString("e-mail"), jo.getString("password"));
+//                new SQLiteDatabaseHelper(ctx).create(jo.getString("e-mail"), jo.getString("password"));
                 ctx.startActivity(i);
             }else{
                 Toast.makeText(ctx, "Many User found.", Toast.LENGTH_SHORT).show();

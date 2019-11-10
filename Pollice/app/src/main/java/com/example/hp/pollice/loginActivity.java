@@ -51,7 +51,7 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         if(new publicClass().checkInternetConnection(this)){
-            checkUserData(true);
+            checkUserData();
         }
 
         user_email=(TextInputEditText) findViewById(R.id.login_email);
@@ -239,7 +239,7 @@ public class loginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Sorry to login"+result, Toast.LENGTH_SHORT).show();
             } else {
                 parse(result, rememberUser);
-                //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -250,39 +250,46 @@ public class loginActivity extends AppCompatActivity {
                 JSONObject jo=null;
                 if(ja.length()==1){
                     jo=ja.getJSONObject(0);
-                    Intent i=new Intent(getApplicationContext(), homeActivity.class);
-                    i.putExtra("Email",jo.getString("e-mail"));
-                    i.putExtra("Password",jo.getString("password"));
-                    //add user on SQLite Database to remember user
-                    //String name=jo.getString("first_name")+" "+jo.getString("last_name");
-                    if(rememberUser) {
-                        new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"));
+                    try {
+                        Intent i;
+                        if(jo.getString("type").equals("Admin")) {
+                            i = new Intent(getApplicationContext(), AdminHome.class);
+                        }else{
+                            i = new Intent(getApplicationContext(), homeActivity.class);
+                        }
+                            i.putExtra("Email", jo.getString("e-mail"));
+                            i.putExtra("Password", jo.getString("password"));
+                        //add user on SQLite Database to remember user
+                        //String name=jo.getString("first_name")+" "+jo.getString("last_name");
+                        if(rememberUser) {
+                            new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"), jo.getString("type"));
+                        }
+                        startActivity(i);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    startActivity(i);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
-                }
-            } catch (JSONException e) {
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-    public void checkUserData(boolean userType){
+    public void checkUserData(){
         Cursor cursor=new SQLiteDatabaseHelper(this).check_user();
         if(cursor!=null){
             if(cursor.getCount()==1){
                 while(cursor.moveToNext()){
                     String email=cursor.getString(0);
                     String pass=cursor.getString(1);
-                    //String userName=cursor.getString(2);
-                    Log.i("json data sending", email+" <<==>> "+pass);
-                    Log.i("json data sending", email+" <<==>> "+pass);
+                    String userType=cursor.getString(2);
+
                     Intent i;
-                    if(userType) {
-                        i = new Intent(getApplicationContext(), homeActivity.class);
+                    if(userType.equals("Admin")) {
+                        i = new Intent(getApplicationContext(), AdminHome.class);
                     }else{
-                        i = new Intent(getApplicationContext(), OffLineMode.class);
-                        //i.putExtra("UserName",userName);
+                        i = new Intent(getApplicationContext(), homeActivity.class);
                     }
                     i.putExtra("Email",email);
                     i.putExtra("Password",pass);
