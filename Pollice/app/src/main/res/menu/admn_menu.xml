@@ -10,7 +10,7 @@
         android:title="Change Details"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/profileSignOut"
+        android:id="@+id/adminSignOut"
         android:title="Log Out"
         app:showAsAction="never"/>
 </menu>

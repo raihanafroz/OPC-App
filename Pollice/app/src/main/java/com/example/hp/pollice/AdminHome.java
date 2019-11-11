@@ -1,6 +1,7 @@
 package com.example.hp.pollice;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +56,10 @@ public class AdminHome extends AppCompatActivity {
         if (item.getItemId()==R.id.new_password_save){
 //            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
 //            SaveBtn();
+        }else if (item.getItemId()==R.id.adminSignOut){
+            new SQLiteDatabaseHelper(getApplicationContext()).drop();
+            Intent i =new Intent(getApplicationContext(), loginActivity.class);
+            startActivity(i);
         }else if(item.getItemId() == android.R.id.home){
             new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
