@@ -1,26 +1,26 @@
-package com.example.hp.pollice;
+package com.example.hp.pollice.ui.home;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.Toast;
+import android.widget.TextView;
+import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import com.example.hp.pollice.AdminGridAdapter;
+import com.example.hp.pollice.AdminHome;
+import com.example.hp.pollice.R;
+import com.example.hp.pollice.publicClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,8 +39,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class AdminHome extends AppCompatActivity {
-    private AppBarConfiguration mAppBarConfiguration;
+public class HomeFragment extends Fragment {
 
     GridView gridView;
     static final String[] MOBILE_OS = new String[] {
@@ -48,88 +47,20 @@ public class AdminHome extends AppCompatActivity {
     String[] MOBILE = new String[] {
             "10022", "100","2001", "5674", "98765" };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home);
+    private HomeViewModel homeViewModel;
+    View root;
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        homeViewModel =
+                ViewModelProviders.of(this).get(HomeViewModel.class);
+        root = inflater.inflate(R.xml.fragment_home, container, false);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        gridView = (GridView) root.findViewById(R.id.gridview);
+//        gridView.setAdapter(new AdminGridAdapter(getActivity(), MOBILE_OS, MOBILE));
+        new gettingData().execute("adminPage");
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-
-        // app bar configuer
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.admin_app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Admin");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
-//        gridView = (GridView) findViewById(R.id.gridview);
-
-//        new gettingData().execute("adminPage");
-
-    }
-
-    /*
-    * creating app bar right menu
-    * */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater mi=getMenuInflater();
-        mi.inflate(R.menu.admin_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    /*
-    * app bar left menu clickable and drawer_layout visiable
-    * */
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.profileEditPassMenu){
-            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
-//            SaveBtn();
-        }else if (item.getItemId()==R.id.adminSignOut){
-            new SQLiteDatabaseHelper(getApplicationContext()).drop();
-            Intent i =new Intent(getApplicationContext(), loginActivity.class);
-            startActivity(i);
-        }
-//        else if(item.getItemId() == android.R.id.home){
-//
-//            Toast.makeText(getApplicationContext(), "savedvwefsdcvsa fa fadsfsf afa fafafa ", Toast.LENGTH_SHORT).show();
-//        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onBackPressed(){
-        new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                AdminHome.this.finishAffinity();     //minimum sdk 16
-                System.exit(0);
-            }
-        }).setNegativeButton("No", null).show();
+        return root;
     }
 
 
@@ -140,7 +71,7 @@ public class AdminHome extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(AdminHome.this);
+            pd = new ProgressDialog(getActivity());
             pd.setTitle("Fatching Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -218,8 +149,10 @@ public class AdminHome extends AppCompatActivity {
 
             String data1[] = new String[data.size()];
             data1= data.toArray(data1);
-            gridView.setAdapter(new AdminGridAdapter(AdminHome.this, MOBILE_OS, data1));
+            gridView.setAdapter(new AdminGridAdapter(getActivity(), MOBILE_OS, data1));
+
         }
     }
+
 
 }

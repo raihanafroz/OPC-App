@@ -1,50 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminHome"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
     <include
-        layout="@layout/default_app_bar"
-        android:id="@+id/admin_app_bar"/>
-
-    <LinearLayout
+        layout="@xml/app_bar_admin"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:weightSum="4">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <GridView
-                android:layout_marginTop="20dp"
-                android:id="@+id/gridview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:numColumns="2"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                android:scrollbarStyle="outsideOverlay"
-                android:verticalScrollbarPosition="right"
-                android:scrollbars="vertical"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@xml/nav_header_admin"
+        app:menu="@menu/activity_admin_drawer" />
 
-        </LinearLayout>
-    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
 
-</LinearLayout>
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".AdminHome"-->
+<!--    android:orientation="vertical">-->
+<!--&lt;!&ndash;    <include&ndash;&gt;-->
+<!--&lt;!&ndash;        layout="@layout/default_app_bar"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/admin_app_bar"/>&ndash;&gt;-->
+<!--    <include-->
+<!--        layout="@xml/app_bar_admin"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:gravity="center|top"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:weightSum="4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_weight="3"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:padding="10dp">&ndash;&gt;-->
+<!--&lt;!&ndash;            <GridView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/gridview"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:numColumns="2"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:verticalSpacing="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:horizontalSpacing="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:scrollbarStyle="outsideOverlay"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:verticalScrollbarPosition="right"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:scrollbars="vertical"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:gravity="center">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+<!--</LinearLayout>-->
