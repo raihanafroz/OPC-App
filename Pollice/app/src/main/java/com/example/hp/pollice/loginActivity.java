@@ -216,6 +216,7 @@ public class loginActivity extends AppCompatActivity {
                     br.close();
                     is.close();
                     huc.disconnect();
+            Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -225,6 +226,7 @@ public class loginActivity extends AppCompatActivity {
                     //return e.getMessage();
                 }
             }
+            Log.i("json result", "null");
             return null;
         }
         @Override
@@ -235,6 +237,8 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
+            Log.i("json result", result);
+
             if (result.equals("Failed") || result.equals(null)) {//login
                 Toast.makeText(getApplicationContext(), "Sorry to login"+result, Toast.LENGTH_SHORT).show();
             } else {

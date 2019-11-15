@@ -1,6 +1,7 @@
 package com.example.hp.pollice;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,11 +40,13 @@ public class AdminGridAdapter extends BaseAdapter {
             textView.setText(cardTitle[position]);
             textLabel.setText(cardLabel[position]);
 
+            //        Log.d("json adapter", cardLabel[position]);
+
             // set image based on selected text
             ImageView imageView = (ImageView) gridView
                     .findViewById(R.id.grid_item_image);
 
-            String mobile = cardTitle[position];
+//            String mobile = cardTitle[position];
 
 //            if (mobile.equals("Windows")) {
                 imageView.setImageResource(R.drawable.user_male);

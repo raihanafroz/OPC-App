@@ -10,37 +10,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="dataCountAdmin.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataCountAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="80" lean-forward="false" selection-start-line="4" selection-start-column="80" selection-end-line="4" selection-end-column="80" />
+            <state relative-caret-position="425">
+              <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
               <folding>
-                <marker date="1573539741847" expanded="true" signature="68:91" ph="SELECT * FRO... user_info" />
-                <marker date="1573539741847" expanded="true" signature="68:113" ph="SELECT * FRO... user_info" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/init.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stationDetails.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stationDetails.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1553109165301" expanded="true" signature="115:170" ph="SELECT * FRO... tbl_station_thana" />
+                <marker date="1573790717133" expanded="true" signature="72:95" ph="SELECT * FRO... user_info" />
+                <marker date="1573790717133" expanded="true" signature="72:117" ph="SELECT * FRO... user_info" />
+                <marker date="1573790717133" expanded="true" signature="212:243" ph="SELECT * FRO... user_info" />
+                <marker date="1573790717133" expanded="true" signature="341:368" ph="SELECT * FRO... tbl_complain1" />
+                <marker date="1573790717133" expanded="true" signature="468:494" ph="SELECT * FRO... user_info" />
+                <marker date="1573790717133" expanded="true" signature="468:495" ph="SELECT * FRO... tbl_complain2" />
+                <marker date="1573790717133" expanded="true" signature="592:618" ph="SELECT * FRO... user_info" />
+                <marker date="1573790717133" expanded="true" signature="592:619" ph="SELECT * FRO... tbl_complain3" />
               </folding>
             </state>
           </provider>
@@ -51,6 +35,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/dataCountAdmin.php" />
       </list>
     </option>
@@ -84,6 +69,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,11 +81,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../policeAPI" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -127,16 +113,16 @@
       <option name="presentableId" value="Default" />
       <updated>1573375656096</updated>
       <workItem from="1573375658307" duration="393000" />
-      <workItem from="1573537947704" duration="2380000" />
+      <workItem from="1573537947704" duration="4346000" />
+      <workItem from="1573790189316" duration="1129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2773000" />
+    <option name="totallyTimeSpent" value="5868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -173,29 +159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1540878087005" expanded="true" signature="189:271" ph="SELECT * FRO... user_info" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding>
-            <marker date="1540878087005" expanded="true" signature="189:271" ph="SELECT * FRO... user_info" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stationDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1553109165301" expanded="true" signature="115:170" ph="SELECT * FRO... tbl_station_thana" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -203,17 +166,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="12" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stationDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataCountAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="80" lean-forward="false" selection-start-line="4" selection-start-column="80" selection-end-line="4" selection-end-column="80" />
+        <state relative-caret-position="425">
+          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
           <folding>
-            <marker date="1573539741847" expanded="true" signature="68:91" ph="SELECT * FRO... user_info" />
-            <marker date="1573539741847" expanded="true" signature="68:113" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="72:95" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="72:117" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="212:243" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="341:368" ph="SELECT * FRO... tbl_complain1" />
+            <marker date="1573790717133" expanded="true" signature="468:494" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="468:495" ph="SELECT * FRO... tbl_complain2" />
+            <marker date="1573790717133" expanded="true" signature="592:618" ph="SELECT * FRO... user_info" />
+            <marker date="1573790717133" expanded="true" signature="592:619" ph="SELECT * FRO... tbl_complain3" />
           </folding>
         </state>
       </provider>

@@ -20,6 +20,8 @@
 			$flag[]=$row;
 			print(json_encode($flag));
 		}
+    }else{
+        print("Failed");
     }
 	
 	mysqli_close($connect);
