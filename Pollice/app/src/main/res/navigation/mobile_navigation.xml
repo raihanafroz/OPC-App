@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.hp.pollice.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@xml/fragment_gallery" />
+        android:name="com.example.hp.pollice.ui.addStation.AddStationFragment"
+        android:label="@string/add_station"
+        tools:layout="@xml/fragment_add_station" />
 
     <fragment
         android:id="@+id/nav_slideshow"

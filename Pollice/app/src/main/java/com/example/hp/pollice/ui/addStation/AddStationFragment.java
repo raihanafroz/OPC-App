@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.gallery;
+package com.example.hp.pollice.ui.addStation;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,23 +14,23 @@ import android.arch.lifecycle.ViewModelProviders;
 
 import com.example.hp.pollice.R;
 
-public class GalleryFragment extends Fragment {
+public class AddStationFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private AddStationViewModel addStationViewModel;
 
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.xml.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        addStationViewModel =
+                ViewModelProviders.of(this).get(AddStationViewModel.class);
+        View root = inflater.inflate(R.xml.fragment_add_station, container, false);
+//        final TextView textView = root.findViewById(R.id.text_gallery);
+//        addStationViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 }
