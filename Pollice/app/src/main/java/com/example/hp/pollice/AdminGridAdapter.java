@@ -48,15 +48,19 @@ public class AdminGridAdapter extends BaseAdapter {
 
 //            String mobile = cardTitle[position];
 
-//            if (mobile.equals("Windows")) {
+            if (cardTitle[position].equals("Users")) {
                 imageView.setImageResource(R.drawable.user_male);
-//            } else if (mobile.equals("iOS")) {
-//                imageView.setImageResource(R.drawable.ios_logo);
-//            } else if (mobile.equals("Blackberry")) {
-//                imageView.setImageResource(R.drawable.blackberry_logo);
-//            } else {
-//                imageView.setImageResource(R.drawable.android_logo);
-//            }
+            } else if (cardTitle[position].equals("Police Station")) {
+                imageView.setImageResource(R.drawable.police_station);
+            } else if (cardTitle[position].equals("Immediate Complain")) {
+                imageView.setImageResource(R.drawable.complain1);
+            } else if (cardTitle[position].equals("Complain For Themself")) {
+                imageView.setImageResource(R.drawable.complain2);
+            } else if (cardTitle[position].equals("Complain For Other")) {
+                imageView.setImageResource(R.drawable.complain3);
+            } else {
+                imageView.setImageResource(R.drawable.user_24dp);
+            }
 
         } else {
             gridView = (View) convertView;

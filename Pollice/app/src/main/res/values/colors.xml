@@ -17,6 +17,7 @@
     <color name="alert_gradint_center">#FFDEDE</color>
 
 
+    <color name="app_default">#2E3092</color>
     <color name="transparent">#00000000</color>
     <color name="page_title">#2E3092</color>
     <color name="input_text_color">#000000</color>

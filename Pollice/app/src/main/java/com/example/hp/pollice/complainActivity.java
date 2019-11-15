@@ -224,8 +224,8 @@ public class complainActivity extends AppCompatActivity {
             pd.dismiss();
             if ((!result.isEmpty())) {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage("01797325129", null, "Hi, i'm attacked by someone at Lat: "+loca[0]+"& Long: "+loca[1]+". Please, help me.", null, null);
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage("01797325129", null, "Hi, i'm attacked by someone at Lat: "+loca[0]+"& Long: "+loca[1]+". Please, help me.", null, null);
 //                callPolice(result, complainActivity.this);
 
             } else {

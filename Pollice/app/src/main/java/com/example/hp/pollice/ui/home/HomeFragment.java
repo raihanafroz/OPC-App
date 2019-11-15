@@ -1,5 +1,6 @@
 package com.example.hp.pollice.ui.home;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     View root;
 
+    @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =

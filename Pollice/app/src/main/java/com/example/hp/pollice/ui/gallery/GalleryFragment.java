@@ -1,5 +1,6 @@
 package com.example.hp.pollice.ui.gallery;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
 
+    @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
