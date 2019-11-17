@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.addStation;
+package com.example.hp.pollice.ui.policeStation;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class AddStationViewModel extends ViewModel {
 
     public AddStationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is addStation fragment");
+        mText.setValue("This is policeStation fragment");
     }
 
     public LiveData<String> getText() {

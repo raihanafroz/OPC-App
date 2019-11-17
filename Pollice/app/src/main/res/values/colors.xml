@@ -26,4 +26,6 @@
     <color name="text_white">#FFFFFF</color>
     <color name="text_blue">#0000FF</color>
     <color name="text_red">#FF0000</color>
+
+    <color name="table_header_background">#EDE7F6</color>
 </resources>

@@ -17,8 +17,8 @@ public class publicClass {
 //    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
 //    String ip_address="192.168.0.111";  //Room WIFI
-    //String ip_address="192.168.43.107";    //phone
-    //String ip_address="6524cecf.ngrok.io";    //port for
+//    String ip_address="192.168.43.107";    //phone
+//    String ip_address="6524cecf.ngrok.io";    //port for
     String ip_address="www.hazipower.com";  //Into a domain
     public String url_reg = "http://"+ip_address+"/New_folder/Pollice/server/insert_data.php";
     public String url_login = "http://"+ip_address+"/New_folder/Pollice/server/login.php";

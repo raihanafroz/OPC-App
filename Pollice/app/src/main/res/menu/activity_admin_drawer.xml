@@ -14,8 +14,8 @@
             android:title="@string/add_station" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_list_24dp"
+            android:title="@string/menu_view_station" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"

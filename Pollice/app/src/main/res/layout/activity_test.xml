@@ -11,139 +11,708 @@
         android:padding="5dp"
         android:orientation="vertical"
         android:gravity="center">
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:orientation="vertical"
-            android:paddingTop="10dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/add_station_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/user_24dp"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/kurale"
-                    android:hint="Station Name"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/input_text_color"
-                    android:textColorHint="@color/input_hint_color"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/add_station_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/phone_24dp"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/kurale"
-                    android:hint="Phone No"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/input_text_color"
-                    android:textColorHint="@color/input_hint_color"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/add_station_latitude"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/location_24dp"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/kurale"
-                    android:hint="Station Latitude"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/input_text_color"
-                    android:textColorHint="@color/input_hint_color"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/add_station_longitude"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/location_24dp"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/kurale"
-                    android:hint="Station Longitude"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/input_text_color"
-                    android:textColorHint="@color/input_hint_color"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
-
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:gravity="center|left"
-                android:layout_margin="6dp">
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+                <TableLayout
+                    android:id="@+id/myTableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*" >
 
-                <Button
-                    android:id="@+id/add_station_btn_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Save"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:background="@drawable/btn_blue"
-                    android:textColor="@color/text_white"
-                    android:textStyle="bold"
-                    android:layout_margin="4dp"
-                    android:onClick="SignIn"/>
+                    <TableRow
+                        android:background="@color/table_header_background"
+                        android:weightSum="11"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold"
+                            android:textScaleX=".9"
+                            android:text="#No" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Station Name"
+                            android:textStyle="bold"
+                            android:textScaleX=".9"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Phoe No"
+                            android:textStyle="bold"
+                            android:textScaleX=".9"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Latitude"
+                            android:textStyle="bold"
+                            android:textScaleX=".9"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Longitude"
+                            android:textStyle="bold"
+                            android:textScaleX=".9"/>
+                    </TableRow>
+
+                    <TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
 
 
-                <Button
-                    android:id="@+id/add_station_btn_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Clear"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:background="@drawable/btn_blue"
-                    android:textColor="@color/text_white"
-                    android:textStyle="bold"
-                    android:layout_margin="4dp"
-                    android:onClick="Signup"/>
+                    </TableRow><TableRow
 
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+
+                    </TableRow><TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"
+                            android:text="1" />
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Badda Thana"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="01234567890"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="23.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="90.123456"
+                            android:textScaleX=".7"
+                            android:textSize="12sp"/>
+
+                    </TableRow>
+                </TableLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="5dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:gravity="center">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center|top"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingTop="10dp">-->
+
+<!--            <android.support.design.widget.TextInputLayout-->
+<!--                android:layout_margin="10dp"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <android.support.design.widget.TextInputEditText-->
+<!--                    android:id="@+id/add_station_name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableLeft="@drawable/user_24dp"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:fontFamily="@font/kurale"-->
+<!--                    android:hint="Station Name"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="10dp"-->
+<!--                    android:textColor="@color/input_text_color"-->
+<!--                    android:textColorHint="@color/input_hint_color"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </android.support.design.widget.TextInputLayout>-->
+<!--            <android.support.design.widget.TextInputLayout-->
+<!--                android:layout_margin="10dp"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <android.support.design.widget.TextInputEditText-->
+<!--                    android:id="@+id/add_station_phone"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableLeft="@drawable/phone_24dp"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:fontFamily="@font/kurale"-->
+<!--                    android:hint="Phone No"-->
+<!--                    android:inputType="phone"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="10dp"-->
+<!--                    android:textColor="@color/input_text_color"-->
+<!--                    android:textColorHint="@color/input_hint_color"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </android.support.design.widget.TextInputLayout>-->
+
+<!--            <android.support.design.widget.TextInputLayout-->
+<!--                android:layout_margin="10dp"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <android.support.design.widget.TextInputEditText-->
+<!--                    android:id="@+id/add_station_latitude"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableLeft="@drawable/location_24dp"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:fontFamily="@font/kurale"-->
+<!--                    android:hint="Station Latitude"-->
+<!--                    android:inputType="phone"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="10dp"-->
+<!--                    android:textColor="@color/input_text_color"-->
+<!--                    android:textColorHint="@color/input_hint_color"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </android.support.design.widget.TextInputLayout>-->
+
+<!--            <android.support.design.widget.TextInputLayout-->
+<!--                android:layout_margin="10dp"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <android.support.design.widget.TextInputEditText-->
+<!--                    android:id="@+id/add_station_longitude"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableLeft="@drawable/location_24dp"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:fontFamily="@font/kurale"-->
+<!--                    android:hint="Station Longitude"-->
+<!--                    android:inputType="phone"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="10dp"-->
+<!--                    android:textColor="@color/input_text_color"-->
+<!--                    android:textColorHint="@color/input_hint_color"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </android.support.design.widget.TextInputLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center|left"-->
+<!--                android:layout_margin="6dp">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/add_station_btn_save"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="Save"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:background="@drawable/btn_blue"-->
+<!--                    android:textColor="@color/text_white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:onClick="SignIn"/>-->
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/add_station_btn_clear"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="Clear"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:background="@drawable/btn_blue"-->
+<!--                    android:textColor="@color/text_white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:onClick="Signup"/>-->
+
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 
 </LinearLayout>
