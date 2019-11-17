@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -42,14 +43,26 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class loginActivity extends AppCompatActivity {
+    public final String MyPREFERENCES = "Profile";
+    public final String MyName= "name";
+    public final String MyEmail = "email";
+    public final String MyPhone = "phone";
+    public final String MyType = "type";
     //EditText user_email;
     CheckBox rememberMe;
     TextInputEditText user_pass,user_email;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
+        // session creating
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+
         if(new publicClass().checkInternetConnection(this)){
             checkUserData();
         }
@@ -255,6 +268,16 @@ public class loginActivity extends AppCompatActivity {
                 if(ja.length()==1){
                     jo=ja.getJSONObject(0);
                     try {
+                        //                    creating seasion data
+//                        SharedPreferences.Editor editor = sharedpreferences.edit();
+//
+//                        editor.putString(MyName, jo.getString("e-mail"));
+//                        editor.putString(MyEmail, jo.getString("e-mail"));
+//                        editor.putString(MyPhone, jo.getString("e-mail"));
+//                        editor.putString(MyType, jo.getString("type"));
+//                        editor.commit();
+
+
                         Intent i;
                         if(jo.getString("type").equals("Admin")) {
                             i = new Intent(getApplicationContext(), AdminHome.class);
@@ -263,11 +286,13 @@ public class loginActivity extends AppCompatActivity {
                         }
                             i.putExtra("Email", jo.getString("e-mail"));
                             i.putExtra("Password", jo.getString("password"));
+
                         //add user on SQLite Database to remember user
                         //String name=jo.getString("first_name")+" "+jo.getString("last_name");
                         if(rememberUser) {
                             new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"), jo.getString("type"));
                         }
+                            new publicClass().setEmail(jo.getString("e-mail"));
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -288,6 +313,16 @@ public class loginActivity extends AppCompatActivity {
                     String email=cursor.getString(0);
                     String pass=cursor.getString(1);
                     String userType=cursor.getString(2);
+
+//                    creating seasion data
+//                    SharedPreferences.Editor editor = sharedpreferences.edit();
+//
+//                    editor.putString(MyName, email);
+//                    editor.putString(MyEmail, email);
+//                    editor.putString(MyPhone, email);
+//                    editor.putString(MyType, userType);
+//                    editor.commit();
+
 
                     Intent i;
                     if(userType.equals("Admin")) {
