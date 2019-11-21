@@ -11,28 +11,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="insert_data.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/insert_data.php">
+      <file leaf-file-name="insert_police_station.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/insert_police_station.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="6" />
+            <state relative-caret-position="136">
+              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
-                <marker date="1573368212585" expanded="true" signature="619:673" ph="SELECT * FRO... user_info" />
-                <marker date="1573368212585" expanded="true" signature="1015:1255" ph="INSERT INTO `user_info`... " />
+                <marker date="1573925350641" expanded="true" signature="458:530" ph="SELECT * FRO... user_info" />
+                <marker date="1573925350641" expanded="true" signature="688:701" ph="INSERT INTO `user_info`... " />
+                <marker date="1573925350641" expanded="true" signature="688:829" ph="INSERT INTO `tbl_station_thana`... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insert_police_station.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/insert_police_station.php">
+      <file leaf-file-name="stationDetails.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stationDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+            <state relative-caret-position="272">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
-                <marker date="1573925350641" expanded="true" signature="458:530" ph="SELECT * FRO... user_info" />
-                <marker date="1573925350641" expanded="true" signature="688:701" ph="INSERT INTO `user_info`... " />
-                <marker date="1573925350641" expanded="true" signature="688:829" ph="INSERT INTO `tbl_station_thana`... " />
+                <marker date="1574175046348" expanded="true" signature="117:172" ph="SELECT * FRO... tbl_station_thana" />
               </folding>
             </state>
           </provider>
@@ -46,6 +45,7 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/dataCountAdmin.php" />
         <option value="$PROJECT_DIR$/insert_police_station.php" />
+        <option value="$PROJECT_DIR$/stationDetails.php" />
       </list>
     </option>
   </component>
@@ -77,7 +77,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -90,6 +89,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -125,11 +125,12 @@
       <workItem from="1573537947704" duration="4346000" />
       <workItem from="1573790189316" duration="1129000" />
       <workItem from="1573920012602" duration="5448000" />
+      <workItem from="1574102050913" duration="1974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11316000" />
+    <option name="totallyTimeSpent" value="13290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -165,20 +166,33 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/insert_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="6" />
+          <folding>
+            <marker date="1573368212585" expanded="true" signature="619:673" ph="SELECT * FRO... user_info" />
+            <marker date="1573368212585" expanded="true" signature="1015:1255" ph="INSERT INTO `user_info`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insert_police_station.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <marker date="1573925350641" expanded="true" signature="458:530" ph="SELECT * FRO... user_info" />
+            <marker date="1573925350641" expanded="true" signature="688:701" ph="INSERT INTO `user_info`... " />
+            <marker date="1573925350641" expanded="true" signature="688:829" ph="INSERT INTO `tbl_station_thana`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dataCountAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1573790717133" expanded="true" signature="72:95" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="72:117" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="212:243" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="341:368" ph="SELECT * FRO... tbl_complain1" />
-            <marker date="1573790717133" expanded="true" signature="468:494" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="468:495" ph="SELECT * FRO... tbl_complain2" />
-            <marker date="1573790717133" expanded="true" signature="592:618" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="592:619" ph="SELECT * FRO... tbl_complain3" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -196,13 +210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stationDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -214,23 +221,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="56" lean-forward="true" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/complainList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1573790717133" expanded="true" signature="72:95" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="72:117" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="212:243" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="341:368" ph="SELECT * FRO... tbl_complain1" />
-            <marker date="1573790717133" expanded="true" signature="468:494" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="468:495" ph="SELECT * FRO... tbl_complain2" />
-            <marker date="1573790717133" expanded="true" signature="592:618" ph="SELECT * FRO... user_info" />
-            <marker date="1573790717133" expanded="true" signature="592:619" ph="SELECT * FRO... tbl_complain3" />
+            <marker date="1572836833405" expanded="true" signature="168:308" ph="SELECT `user... tbl_complain1" />
+            <marker date="1572836833405" expanded="true" signature="582:745" ph="SELECT `id`,... tbl_complain2" />
+            <marker date="1572836833405" expanded="true" signature="1033:1225" ph="SELECT `id`,... tbl_complain3" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/insert_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="6" />
+        <state relative-caret-position="0">
+          <caret line="16" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="6" />
           <folding>
             <marker date="1573368212585" expanded="true" signature="619:673" ph="SELECT * FRO... user_info" />
             <marker date="1573368212585" expanded="true" signature="1015:1255" ph="INSERT INTO `user_info`... " />
@@ -240,12 +249,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/insert_police_station.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
             <marker date="1573925350641" expanded="true" signature="458:530" ph="SELECT * FRO... user_info" />
             <marker date="1573925350641" expanded="true" signature="688:701" ph="INSERT INTO `user_info`... " />
             <marker date="1573925350641" expanded="true" signature="688:829" ph="INSERT INTO `tbl_station_thana`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stationDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <marker date="1574175046348" expanded="true" signature="117:172" ph="SELECT * FRO... tbl_station_thana" />
           </folding>
         </state>
       </provider>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|left"
+    android:orientation="horizontal"
+    android:weightSum="11"
+    android:layout_margin="1dp"
+    android:background="@drawable/table_row_border"
+    android:id="@+id/station_list_table_row">
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textScaleX="0.9"
+        android:textSize="12sp"
+        android:id="@+id/station_list_table_row_station_id"/>
+    <TextView
+        android:layout_weight="4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textScaleX="0.8"
+        android:textSize="12sp"
+        android:id="@+id/station_list_table_row_station_name"/>
+    <TextView
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textScaleX="0.8"
+        android:textSize="12sp"
+        android:id="@+id/station_list_table_row_station_phone"/>
+    <TextView
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textScaleX="0.8"
+        android:textSize="12sp"
+        android:id="@+id/station_list_table_row_station_latitude"/>
+    <TextView
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textScaleX="0.8"
+        android:textSize="12sp"
+        android:id="@+id/station_list_table_row_station_longitude"/>
+</LinearLayout>

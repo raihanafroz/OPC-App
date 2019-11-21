@@ -1,7 +1,7 @@
 <?php
 	require 'init.php';
 	
-	$email=$_POST["user_email"];
+//	$email=$_POST["user_email"];
 	
 	/*$email="raihanafroz9@gmail.com";*/
 	
@@ -13,7 +13,6 @@
         {
             $flag[]=$row;
         }
-		//if($row==null)
         print(json_encode($flag));
     }
 	
