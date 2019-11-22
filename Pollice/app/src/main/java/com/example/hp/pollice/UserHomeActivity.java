@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -35,11 +37,27 @@ public class UserHomeActivity extends AppCompatActivity {
     GridView gridView;
     String email = "";
     String password = "";
+    SwipeRefreshLayout swipeContainer;
     static final String[] dataType = new String[] {"Immediate Complain", "Complain For Me", "Complain For Other", "Total Complain"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.user_refresh);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                if(new publicClass().checkInternetConnection(UserHomeActivity.this)) {
+                    new gettingData().execute("UsaePage");
+                }
+            }
+        });
 
         final Bundle extra=getIntent().getExtras();
         if(extra!=null){
@@ -89,6 +107,7 @@ public class UserHomeActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public void onBackPressed(){
@@ -186,7 +205,7 @@ public class UserHomeActivity extends AppCompatActivity {
             String data1[] = new String[data.size()];
             data1= data.toArray(data1);
             gridView.setAdapter(new UserGridAdapter(UserHomeActivity.this, dataType, data1));
-
+            swipeContainer.setRefreshing(false);
         }
     }
 }
