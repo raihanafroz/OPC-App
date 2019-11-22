@@ -44,18 +44,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="nav_share">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="368" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="nav_slideshow">
                     <value>
                       <LayoutPositions>

@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +35,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-public class homeActivity extends AppCompatActivity {
+public class PhofileActivity extends AppCompatActivity {
 
     Context mContext;
     private TextView profileName,profileEmail,profileGender,profileAddress,profileContactNO,testCase;
@@ -46,7 +44,7 @@ public class homeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_profile);
 
         mContext=this;
 
@@ -56,7 +54,7 @@ public class homeActivity extends AppCompatActivity {
         profileAddress=(TextView)findViewById(R.id.profileAddress);
         profileContactNO=(TextView)findViewById(R.id.profileContactNO);
         profilePic=(ImageView)findViewById(R.id.profilePic);
-        testCase=(TextView)findViewById(R.id.testCase);
+//        testCase=(TextView)findViewById(R.id.testCase);
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
@@ -69,9 +67,9 @@ public class homeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+        new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                homeActivity.this.finishAffinity();     //minimum sdk 16
+                PhofileActivity.this.finishAffinity();     //minimum sdk 16
                 System.exit(0);
             }
         }).setNegativeButton("No", null).show();
@@ -119,7 +117,7 @@ public class homeActivity extends AppCompatActivity {
 
     public void goto_complaine(View view) {
         if(new publicClass().checkInternetConnection(this)) {
-            double loca[] = new publicClass().getLocation(mContext, homeActivity.this);
+            double loca[] = new publicClass().getLocation(mContext, PhofileActivity.this);
             if (loca[0] != 0 && loca[1] != 0) {
                 Intent i = new Intent(getApplicationContext(), complainActivity.class);
                 i.putExtra("User_mail", email);
@@ -130,7 +128,7 @@ public class homeActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
             }
         }else{
-            new Alert_Builder().settingAlert(this, homeActivity.this, false);
+            new Alert_Builder().settingAlert(this, PhofileActivity.this, false);
         }
     }
 
@@ -173,7 +171,7 @@ public class homeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(homeActivity.this);
+            pd = new ProgressDialog(PhofileActivity.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();

@@ -2,8 +2,11 @@ package com.example.hp.pollice;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,10 +19,10 @@ public class publicClass {
 
 //    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
-//    String ip_address="192.168.0.111";  //Room WIFI
+    String ip_address="192.168.0.111";  //Room WIFI
 //    String ip_address="192.168.43.107";    //phone
 //    String ip_address="6524cecf.ngrok.io";    //port for
-    String ip_address="www.raihanafroz.info";  //Into a domain
+//    String ip_address="www.raihanafroz.info";  //Into a domain
     public String url_reg = "http://"+ip_address+"/New_folder/Pollice/server/insert_data.php";
     public String url_login = "http://"+ip_address+"/New_folder/Pollice/server/login.php";
     public String url_checkForForgetPassword = "http://"+ip_address+"/New_folder/Pollice/server/checkForForgetPassword.php";
@@ -81,11 +84,20 @@ public class publicClass {
         return status;
     }
 
-    public String getEmail() {
+    public String checkUserData(Context context){
+        String email = "";
+        Cursor cursor=new SQLiteDatabaseHelper(context).check_user();
+        if(cursor!=null){
+            if(cursor.getCount()==1){
+                while(cursor.moveToNext()){
+                    email=cursor.getString(0);
+                    String pass=cursor.getString(1);
+                    String userType=cursor.getString(2);
+                }
+            }
+        }else {
+            Log.i("json data sending", "cursor null");
+        }
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

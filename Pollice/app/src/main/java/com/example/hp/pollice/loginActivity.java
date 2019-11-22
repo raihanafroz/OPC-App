@@ -6,24 +6,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -126,8 +119,12 @@ public class loginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         // exit from app
-        this.finishAffinity();
-        System.exit(0);
+        new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
+                loginActivity.this.finishAffinity();     //minimum sdk 16
+                System.exit(0);
+            }
+        }).setNegativeButton("No", null).show();
     }
 
 
@@ -282,7 +279,7 @@ public class loginActivity extends AppCompatActivity {
                         if(jo.getString("type").equals("Admin")) {
                             i = new Intent(getApplicationContext(), AdminHome.class);
                         }else{
-                            i = new Intent(getApplicationContext(), homeActivity.class);
+                            i = new Intent(getApplicationContext(), PhofileActivity.class);
                         }
                             i.putExtra("Email", jo.getString("e-mail"));
                             i.putExtra("Password", jo.getString("password"));
@@ -292,7 +289,6 @@ public class loginActivity extends AppCompatActivity {
                         if(rememberUser) {
                             new SQLiteDatabaseHelper(getApplicationContext()).create(jo.getString("e-mail"), jo.getString("password"), jo.getString("type"));
                         }
-                            new publicClass().setEmail(jo.getString("e-mail"));
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -328,7 +324,7 @@ public class loginActivity extends AppCompatActivity {
                     if(userType.equals("Admin")) {
                         i = new Intent(getApplicationContext(), AdminHome.class);
                     }else{
-                        i = new Intent(getApplicationContext(), homeActivity.class);
+                        i = new Intent(getApplicationContext(), PhofileActivity.class);
                     }
                     i.putExtra("Email",email);
                     i.putExtra("Password",pass);

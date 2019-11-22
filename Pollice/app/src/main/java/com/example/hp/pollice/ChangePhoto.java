@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -27,7 +26,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.BitSet;
 
 public class ChangePhoto extends AppCompatActivity {
     private int ImgReq=1;
@@ -154,7 +152,7 @@ public class ChangePhoto extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } else if (result.equals("File deleted")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getApplicationContext(), homeActivity.class);
+                Intent i=new Intent(getApplicationContext(), PhofileActivity.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);

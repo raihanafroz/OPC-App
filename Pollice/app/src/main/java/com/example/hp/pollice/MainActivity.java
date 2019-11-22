@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     //String userName=cursor.getString(2);
                     Intent i;
                     if(userType) {
-                        i = new Intent(getApplicationContext(), homeActivity.class);
+                        i = new Intent(getApplicationContext(), PhofileActivity.class);
                     }else{
                         i = new Intent(getApplicationContext(), OffLineMode.class);
                         //i.putExtra("UserName",userName);

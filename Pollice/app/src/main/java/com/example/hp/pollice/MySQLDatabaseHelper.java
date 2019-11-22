@@ -261,7 +261,7 @@ public class MySQLDatabaseHelper extends AsyncTask<String, Void, String> {
             JSONObject jo=null;
             if(ja.length()==1){
                 jo=ja.getJSONObject(0);
-                Intent i=new Intent(ctx, homeActivity.class);
+                Intent i=new Intent(ctx, PhofileActivity.class);
                 i.putExtra("Email",jo.getString("e-mail"));
                 i.putExtra("Password",jo.getString("password"));
                 //add user on SQLite Database to remember user

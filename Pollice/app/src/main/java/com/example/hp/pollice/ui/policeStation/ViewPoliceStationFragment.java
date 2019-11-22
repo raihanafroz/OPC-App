@@ -21,7 +21,6 @@ import com.example.hp.pollice.AdminStationListAdapter;
 import com.example.hp.pollice.ComplainListAdapter;
 import com.example.hp.pollice.R;
 import com.example.hp.pollice.publicClass;
-import com.example.hp.pollice.ui.slideshow.SlideshowViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +38,6 @@ import java.util.ArrayList;
 
 public class ViewPoliceStationFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
     ListView lv;
     //    TableLayout tl;
 //    TableRow tr;

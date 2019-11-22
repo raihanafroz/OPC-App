@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class EncryptedText {
-    String encrypt(String msg){
+    public String encrypt(String msg){
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");

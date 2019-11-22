@@ -30,14 +30,14 @@
         tools:layout="@xml/fragment_tools" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.hp.pollice.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@xml/fragment_share" />
+        android:id="@+id/nav_send"
+        android:name="com.example.hp.pollice.ui.setings.changePasswordFragment"
+        android:label="@string/admin_change_password"
+        tools:layout="@xml/fragment_change_password" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.hp.pollice.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@xml/fragment_send" />
+        android:id="@+id/nav_admin_logout"
+        android:name="com.example.hp.pollice.ui.policeStation.AdminLogoutFragment"
+        android:label="@string/admin_log_out"
+        tools:layout="@xml/fragment_admin_logout" />
 </navigation>

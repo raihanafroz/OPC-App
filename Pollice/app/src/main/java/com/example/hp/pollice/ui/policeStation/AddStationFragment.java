@@ -38,7 +38,7 @@ public class AddStationFragment extends Fragment {
     private AddStationViewModel addStationViewModel;
     private TextInputEditText thanaName, latitude, logitude, phoneNo;
     private Button save, clear;
-    String email = "raihanafroz9@gmail.com";
+    String email = "";
     View root;
     ViewGroup viewGroup;
     String namePattern = "[a-zA-Z\\s]+";
@@ -49,9 +49,6 @@ public class AddStationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         this.viewGroup = container;
-//        prf = PreferenceManager.getDefaultSharedPreferences(container.getContext());
-//        email = prf.getString("email", null);
-//        email = new publicClass().getEmail();
 
         root = inflater.inflate(R.xml.fragment_add_station, container, false);
 
@@ -61,6 +58,10 @@ public class AddStationFragment extends Fragment {
         logitude = (TextInputEditText) root.findViewById(R.id.add_station_longitude);
         save = (Button) root.findViewById(R.id.add_station_btn_save);
         clear = (Button) root.findViewById(R.id.add_station_btn_clear);
+
+        if(new publicClass().checkInternetConnection(getContext())){
+            email= new publicClass().checkUserData(getContext());
+        }
 
         /*
          *   checking thanaName valid or not

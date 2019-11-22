@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -89,13 +92,12 @@ public class AdminHome extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_tools, R.id.nav_admin_logout, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
         // app bar configuer
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.admin_app_bar);
@@ -109,15 +111,15 @@ public class AdminHome extends AppCompatActivity {
 
     }
 
-    /*
-    * creating app bar right menu
-    * */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater mi=getMenuInflater();
-        mi.inflate(R.menu.admin_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    /*
+//    * creating app bar right menu
+//    * */
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater mi=getMenuInflater();
+//        mi.inflate(R.menu.admin_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     /*
     * app bar left menu clickable and drawer_layout visiable
@@ -137,7 +139,7 @@ public class AdminHome extends AppCompatActivity {
         if (item.getItemId()==R.id.profileEditPassMenu){
             Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
 //            SaveBtn();
-        }else if (item.getItemId()==R.id.adminSignOut){
+        }else if (item.getItemId()==R.id.nav_admin_logout){
             new SQLiteDatabaseHelper(getApplicationContext()).drop();
             Intent i =new Intent(getApplicationContext(), loginActivity.class);
             startActivity(i);
@@ -152,7 +154,7 @@ public class AdminHome extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+        new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
                 AdminHome.this.finishAffinity();     //minimum sdk 16
                 System.exit(0);
@@ -256,7 +258,7 @@ public class AdminHome extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(Void... voids) {
-            String url=new publicClass().url_imgPath+imageName+".JPG";
+            String url=new publicClass().url_imgPath+imageName+".jpg";
             try {
                 URLConnection connection=new URL(url).openConnection();
                 connection.setConnectTimeout(1000 * 60);

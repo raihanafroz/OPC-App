@@ -39,7 +39,7 @@
         <activity android:name=".loginActivity" />
         <activity android:name=".registerActivity" />
         <activity
-            android:name=".homeActivity"
+            android:name=".PhofileActivity"
             android:theme="@style/Profile" />
         <activity android:name=".complainActivity" />
         <activity android:name=".Forget_Password" />
