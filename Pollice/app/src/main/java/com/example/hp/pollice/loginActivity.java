@@ -279,7 +279,7 @@ public class loginActivity extends AppCompatActivity {
                         if(jo.getString("type").equals("Admin")) {
                             i = new Intent(getApplicationContext(), AdminHome.class);
                         }else{
-                            i = new Intent(getApplicationContext(), PhofileActivity.class);
+                            i = new Intent(getApplicationContext(), UserHomeActivity.class);
                         }
                             i.putExtra("Email", jo.getString("e-mail"));
                             i.putExtra("Password", jo.getString("password"));
@@ -324,7 +324,7 @@ public class loginActivity extends AppCompatActivity {
                     if(userType.equals("Admin")) {
                         i = new Intent(getApplicationContext(), AdminHome.class);
                     }else{
-                        i = new Intent(getApplicationContext(), PhofileActivity.class);
+                        i = new Intent(getApplicationContext(), UserHomeActivity.class);
                     }
                     i.putExtra("Email",email);
                     i.putExtra("Password",pass);

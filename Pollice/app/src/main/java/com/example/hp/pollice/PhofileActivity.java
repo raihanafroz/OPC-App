@@ -61,18 +61,12 @@ public class PhofileActivity extends AppCompatActivity {
             password=extra.getString("Password");
         }
         //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+password, Toast.LENGTH_SHORT ).show();
-        new setProfile().execute("Profile",email);
-        new downloadImageFromServer(email).execute();
-    }
-
-    @Override
-    public void onBackPressed(){
-        new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                PhofileActivity.this.finishAffinity();     //minimum sdk 16
-                System.exit(0);
-            }
-        }).setNegativeButton("No", null).show();
+        if(new publicClass().checkInternetConnection(PhofileActivity.this)) {
+            new setProfile().execute("Profile", email);
+            new downloadImageFromServer(email).execute();
+        }else{
+            startActivity(new Intent(getApplicationContext(), loginActivity.class));
+        }
     }
 
     @Override
@@ -261,7 +255,7 @@ public class PhofileActivity extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(Void... voids) {
-            String url=new publicClass().url_imgPath+imageName+".JPG";
+            String url=new publicClass().url_imgPath+imageName+".jpg";
             try {
                 URLConnection connection=new URL(url).openConnection();
                 connection.setConnectTimeout(1000 * 60);
