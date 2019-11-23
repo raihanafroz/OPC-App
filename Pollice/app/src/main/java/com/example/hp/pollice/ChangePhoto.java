@@ -3,13 +3,19 @@ package com.example.hp.pollice;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -25,12 +31,14 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class ChangePhoto extends AppCompatActivity {
     private int ImgReq=1;
     private LinearLayout secndLayout;
-    private ImageView changePhotoImageview;
+    private Button uploaBtn;
+    private ImageView changePhotoImageview, oldPhoto;
     private Bitmap bitmap;
     private String email="",state="";
     @Override
@@ -42,25 +50,57 @@ public class ChangePhoto extends AppCompatActivity {
             email=extra.getString("Email");
             state=extra.getString("From");
         }
-        secndLayout=(LinearLayout)findViewById(R.id.LayoutofChangePhoto);
-        changePhotoImageview=(ImageView)findViewById(R.id.selectPrototToChange);
-        secndLayout.setVisibility(View.INVISIBLE);
+
+        if(new publicClass().checkInternetConnection(ChangePhoto.this)) {
+            new downloadImageFromServer(email).execute();
+        }
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.change_photo_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Change Photo");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        oldPhoto = (ImageView)findViewById(R.id.old_photo_user);
+        changePhotoImageview = (ImageView)findViewById(R.id.new_photo_user);
+        changePhotoImageview.setVisibility(View.INVISIBLE);
+        uploaBtn = (Button) findViewById(R.id.upload_new_photo);
+        uploaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectPhotoBtn();
+            }
+        });
     }
 
-    public void selectPhotoBtn(View view) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi=getMenuInflater();
+        mi.inflate(R.menu.forget_password_app_bar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.app_bar_save_btn){
+            if(new publicClass().checkInternetConnection(ChangePhoto.this)) {
+                new changePhoto().execute("changePhoto",bitmap_to_string(bitmap));
+            }
+        }else if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void selectPhotoBtn() {
         Intent i=new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(i,ImgReq);
     }
 
-    public void cancleBtn(View view) {
-        finish();
-    }
 
-    public void savePhotoBtn(View view) {
-        new changePhoto().execute("changePhoto",bitmap_to_string(bitmap));
-    }
 
     private String bitmap_to_string(Bitmap bitmap){
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
@@ -77,11 +117,12 @@ public class ChangePhoto extends AppCompatActivity {
                 bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),path);
                 changePhotoImageview.setImageBitmap(bitmap);
                 changePhotoImageview.setVisibility(View.VISIBLE);
-                secndLayout.setVisibility(View.VISIBLE);
+                uploaBtn.setText("Change");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
 
@@ -158,6 +199,39 @@ public class ChangePhoto extends AppCompatActivity {
                 startActivity(i);
             } else {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+
+    private class downloadImageFromServer extends AsyncTask<Void, Void, Bitmap>{
+        String imageName="";
+        public downloadImageFromServer(String imageName){
+            this.imageName=imageName;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... voids) {
+            String url=new publicClass().url_imgPath+imageName+".jpg";
+            try {
+                URLConnection connection=new URL(url).openConnection();
+                connection.setConnectTimeout(1000 * 60);
+                connection.setReadTimeout(1000 * 60);
+                return BitmapFactory.decodeStream((InputStream)connection.getContent(), null, null);
+            } catch (IOException e) {
+                e.printStackTrace();
+                //Toast.makeText(SeeImage.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+
+            if (bitmap!=null){
+                oldPhoto.setImageBitmap(bitmap);
             }
         }
     }

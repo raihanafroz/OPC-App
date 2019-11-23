@@ -70,6 +70,14 @@ public class PhofileActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+        i.putExtra("Email", email);
+        i.putExtra("Password", password);
+        startActivity(i);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi=getMenuInflater();
         mi.inflate(R.menu.home_activity_menu, menu);

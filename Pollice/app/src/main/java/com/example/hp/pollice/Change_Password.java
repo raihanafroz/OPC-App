@@ -163,7 +163,7 @@ public class Change_Password extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.new_password_save){
+        if (item.getItemId()==R.id.app_bar_save_btn){
 //            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
             SaveBtn();
         }else if(item.getItemId() == android.R.id.home){
