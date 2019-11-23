@@ -156,7 +156,7 @@ public class Change_Password extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi=getMenuInflater();
-        mi.inflate(R.menu.forget_password_app_bar_menu, menu);
+        mi.inflate(R.menu.app_bar_save_btn, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

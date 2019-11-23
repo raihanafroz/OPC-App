@@ -16,7 +16,7 @@
     </style>
 
     <style name="HeaderBar">
-        <item name="android:background">#27297B</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -77,7 +77,7 @@ public class ChangePhoto extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi=getMenuInflater();
-        mi.inflate(R.menu.forget_password_app_bar_menu, menu);
+        mi.inflate(R.menu.app_bar_save_btn, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -85,7 +85,11 @@ public class ChangePhoto extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.app_bar_save_btn){
             if(new publicClass().checkInternetConnection(ChangePhoto.this)) {
-                new changePhoto().execute("changePhoto",bitmap_to_string(bitmap));
+                if(bitmap == null){
+                    Toast.makeText(getApplicationContext(), "No photo uploaded", Toast.LENGTH_LONG).show();
+                }else {
+                    new changePhoto().execute("changePhoto", bitmap_to_string(bitmap));
+                }
             }
         }else if(item.getItemId() == android.R.id.home){
             onBackPressed();

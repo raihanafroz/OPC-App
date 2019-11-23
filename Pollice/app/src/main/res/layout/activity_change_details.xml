@@ -5,20 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".changeDetails"
-    android:orientation="vertical"
-    android:padding="5dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit Details"
-        android:textSize="60sp"
-        android:textAlignment="center"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:textScaleX="1"
-        android:textColor="@color/black"
-        android:layout_marginBottom="5dp"/>
+    android:orientation="vertical">
+    <include
+        layout="@layout/default_app_bar"
+        android:id="@+id/change_password_app_bar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,125 +19,99 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <android.support.design.widget.TextInputLayout
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="match_parent">
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/changeFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/user_24dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/kurale"
                     android:hint="First Name"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint"
-                    android:maxLines="1"
                     android:inputType="text"
-                    android:id="@+id/CngFirstName"
+                    android:maxLines="1"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp"
+                    android:textColor="@color/input_text_color"
+                    android:textColorHint="@color/input_hint_color"
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/changeLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/user_24dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/kurale"
                     android:hint="Last Name"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint"
-                    android:maxLines="1"
                     android:inputType="text"
-                    android:id="@+id/CngLastName"
+                    android:maxLines="1"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp"
+                    android:textColor="@color/input_text_color"
+                    android:textColorHint="@color/input_hint_color"
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
-           <!-- <android.support.design.widget.TextInputLayout
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="First Name"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint"
-                    android:maxLines="1"
-                    android:inputType="text"
-                    android:id="@+id/CnEmail"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
-            </android.support.design.widget.TextInputLayout>-->
+
             <android.support.design.widget.TextInputLayout
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="match_parent">
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/changePhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Contact NO"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint"
+                    android:drawableLeft="@drawable/phone_24dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/kurale"
+                    android:hint="Phone"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:inputType="text"
-                    android:id="@+id/CngContactNO"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp"
+                    android:textColor="@color/input_text_color"
+                    android:textColorHint="@color/input_hint_color"
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
+
+            <!--        address of user-->
             <android.support.design.widget.TextInputLayout
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="match_parent">
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/changeAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Permanent Address"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/back_hint"
-                    android:maxLines="1"
+                    android:drawableLeft="@drawable/home_24dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/kurale"
+                    android:hint="Address"
                     android:inputType="text"
-                    android:id="@+id/CngAddress"
+                    android:maxLines="1"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp"
+                    android:textColor="@color/input_text_color"
+                    android:textColorHint="@color/input_hint_color"
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Cancel"
-                    android:textSize="30sp"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:textStyle="bold"
-                    android:textScaleX=".8"
-                    android:layout_margin="5dp"
-                    android:onClick="cancel"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Save"
-                    android:textSize="30sp"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:textStyle="bold"
-                    android:textScaleX=".8"
-                    android:layout_margin="5dp"
-                    android:onClick="save"/>
-            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
