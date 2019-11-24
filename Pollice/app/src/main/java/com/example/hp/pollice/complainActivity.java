@@ -13,10 +13,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ import java.net.URLEncoder;
 
 public class complainActivity extends AppCompatActivity {
     private String email,password;
+    private LinearLayout immediateComplain, complainForOther, complainForMe, policeStationList, complainList;
     private double lat,lon, loca[];
     private Button btnSend;
     @Override
@@ -50,7 +54,12 @@ public class complainActivity extends AppCompatActivity {
             lat=extra.getDouble("Latitude");
             lon=extra.getDouble("Longitude");
         }
-        //btnSend=(Button)findViewById(R.id.btnSend);
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.complain_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Complain");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -58,23 +67,74 @@ public class complainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(complainActivity.this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_ASK_PERMISSIONS);
         }
 
+        immediateComplain = (LinearLayout) findViewById(R.id.complain_immediate);
+        complainForMe = (LinearLayout) findViewById(R.id.complain_for_me);
+        complainForOther = (LinearLayout) findViewById(R.id.complain_for_others);
+        policeStationList = (LinearLayout) findViewById(R.id.complain_thana_list);
+        complainList = (LinearLayout) findViewById(R.id.complain_list);
+
+        immediateComplain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loca=new publicClass().getLocation(getApplicationContext(), complainActivity.this);
+                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
+                new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new publicClass().getCurrentDate());
+            }
+        });
+
+        complainForMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), yourComplain.class);
+                i.putExtra("User_mail", email);
+                startActivity(i);
+            }
+        });
+
+        complainForOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Complain_for_other.class);
+                i.putExtra("User_mail", email);
+                startActivity(i);
+            }
+        });
+
+        complainList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Complain_list.class);
+                i.putExtra("User_mail", email);
+                startActivity(i);
+            }
+        });
+
+        policeStationList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), OffLineMode.class);
+                i.putExtra("Email",email);
+                i.putExtra("Password",password);
+                startActivity(i);
+            }
+        });
     }
 
-
-    public void btnSend_click(View view) {
-        //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + lat + "Lon: " + lon, Toast.LENGTH_LONG).show();
-
-        //new complain1().execute("complain", email, email, String.valueOf(lat), String.valueOf(lon));
-
-    }
-
-    public void goToListView(View view) {
-        Intent i = new Intent(getApplicationContext(), OffLineMode.class);
-        i.putExtra("Email",email);
-        i.putExtra("Password",password);
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+        i.putExtra("Email", email);
+        i.putExtra("Password", password);
         startActivity(i);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public class complain1 extends AsyncTask<String, Void, String> {
 
@@ -159,7 +219,6 @@ public class complainActivity extends AppCompatActivity {
         }
     }
 
-
     private class getPhoneNo extends AsyncTask<String, Void, String> {
         ProgressDialog pd;
 
@@ -233,38 +292,6 @@ public class complainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-        public void showComplainList(View view) {
-//            Toast.makeText(getApplicationContext(), "List", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(getApplicationContext(), Complain_list.class);
-            i.putExtra("User_mail", email);
-            startActivity(i);
-        }
-
-        public void complainForOther(View view) {
-            Intent i = new Intent(getApplicationContext(), Complain_for_other.class);
-            i.putExtra("User_mail", email);
-            startActivity(i);
-//            Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_LONG).show();
-        }
-
-
-        public void yourComplain(View view) {
-            Intent i = new Intent(getApplicationContext(), yourComplain.class);
-            i.putExtra("User_mail", email);
-            startActivity(i);
-            // Toast.makeText(getApplicationContext(), "Distence: "+new publicClass().calculateDistanceInMeter(23.748791, 90.407925, 23.745631, 90.406095), Toast.LENGTH_LONG).show();
-        }
-
-
-    public void immediateComplain(View view) {
-        loca=new publicClass().getLocation(this, complainActivity.this);
-        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
-        new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new publicClass().getCurrentDate());
-    }
-
-
 
     void callPolice(final String number, Context context){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
