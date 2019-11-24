@@ -6,12 +6,21 @@ import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,9 +43,11 @@ import java.util.List;
 public class Complain_for_other extends AppCompatActivity {
     public List<String> item = new ArrayList<String>();
     private String email = "";
+    private String password = "";
     private TextInputEditText name, phone, address, complainCuse, complainAddress;
     private EditText complainDescription;
-    private Spinner spinner;
+    private MaterialSpinner spinner;
+    private Button saveBtn, clearBtn;
 
 
     @Override
@@ -44,28 +55,181 @@ public class Complain_for_other extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complain_for_other);
 
-        Bundle extra = getIntent().getExtras();
-        if (extra != null) {
-            email = extra.getString("User_mail");
+        Bundle extra=getIntent().getExtras();
+        if(extra!=null){
+            email=extra.getString("User_mail");
+            password=extra.getString("Password");
         }
 
-        name=(TextInputEditText) findViewById(R.id.name);
-        phone=(TextInputEditText) findViewById(R.id.phone);
-        address=(TextInputEditText) findViewById(R.id.addres);
-        complainCuse=(TextInputEditText) findViewById(R.id.complainCuse);
-        complainAddress=(TextInputEditText) findViewById(R.id.complainAddress);
-        complainDescription=(EditText) findViewById(R.id.complainDescription);
-        spinner = (Spinner) findViewById(R.id.thana);
+        if(new publicClass().checkInternetConnection(Complain_for_other.this)) {
+            new getDataOfStation().execute("Station Details", email);
+        }
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.complain_for_others_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("For others");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        name=(TextInputEditText) findViewById(R.id.complain_for_others_name);
+        phone=(TextInputEditText) findViewById(R.id.complain_for_others_phone);
+        address=(TextInputEditText) findViewById(R.id.complain_for_others_address);
+        complainCuse=(TextInputEditText) findViewById(R.id.complain_for_others_cause);
+        complainAddress=(TextInputEditText) findViewById(R.id.complain_for_others_accurrence_area);
+        complainDescription=(EditText) findViewById(R.id.complain_for_others_description);
+        spinner = (MaterialSpinner) findViewById(R.id.thana);
+        spinner.setFocusableInTouchMode(true);
+        spinner.setFocusable(true);
+        spinner.requestFocus();
+        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                spinner.setError(null);
+            }
+        });
+
+        saveBtn = (Button) findViewById(R.id.complain_for_others_save);
+        clearBtn = (Button) findViewById(R.id.complain_for_others_clear);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makeComplain();
+            }
+        });
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makeComplain();
+            }
+        });
+
+
+        /*
+         *   checking address valid or not
+         **/
+        complainCuse.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    complainCuse.setError(null);
+                }
+                if(!complainCuse.getText().toString().isEmpty()){
+                    complainCuse.setError(null);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+
+        /*
+         *   checking cause valid or not
+         **/
+        complainAddress.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    complainAddress.setError(null);
+                }
+                if(!complainAddress.getText().toString().isEmpty()){
+                    complainAddress.setError(null);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+
+        /*
+         *   checking description valid or not
+         **/
+        complainDescription.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
+                if(i== 0 && i1 ==0 && i2 ==0){
+                    complainDescription.setError(null);
+                }
+                if(!complainDescription.getText().toString().isEmpty()){
+                    complainDescription.setError(null);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+
+
         Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
-        new getDataOfStation().execute("Station Details", email);
+
     }
 
-    public void send_complain(View view) {
-        new complain_for_other().execute("complain3", email, spinner.getSelectedItem().toString(), name.getText().toString(), phone.getText().toString(), address.getText().toString(),
-                complainCuse.getText().toString(), complainAddress.getText().toString(), complainDescription.getText().toString(), new publicClass().getCurrentDate() );
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        i.putExtra("User_mail", email);
+        i.putExtra("Password",password);
+        startActivity(i);
     }
 
-    public void clearField(View view) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi=getMenuInflater();
+        mi.inflate(R.menu.app_bar_save_btn, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        if (item.getItemId()==R.id.app_bar_save_btn){
+            makeComplain();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void makeComplain() {
+        double loca[]=new publicClass().getLocation(this, Complain_for_other.this);
+//        Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
+        if(spinner.getText().toString().equals("Select Police Station")){
+            spinner.setError("Wrong option selected");
+            spinner.setFocusableInTouchMode(true);
+            spinner.setFocusable(true);
+            spinner.requestFocus();
+            spinner.performClick();
+        }else {
+            if (complainCuse.getText().toString().isEmpty()) {
+                complainCuse.setError("Addrss required");
+                complainCuse.requestFocus();
+            } else {
+                if (complainAddress.getText().toString().isEmpty()) {
+                    complainAddress.setError("Cause required");
+                    complainAddress.requestFocus();
+                } else {
+                    if (complainDescription.getText().toString().isEmpty()) {
+                        complainDescription.setError("Description required");
+                        complainDescription.requestFocus();
+                    } else {
+                        new complain_for_other().execute("complain3", email, spinner.getText().toString(), name.getText().toString(), phone.getText().toString(), address.getText().toString(),
+                                complainCuse.getText().toString(), complainAddress.getText().toString(), complainDescription.getText().toString(), new publicClass().getCurrentDate(), String.valueOf(loca[0]), String.valueOf(loca[1]));
+
+                    }
+                }
+            }
+        }
 
     }
 
@@ -98,6 +262,8 @@ public class Complain_for_other extends AppCompatActivity {
                 String complainAddress = voids[7];
                 String complainDescription = voids[8];
                 String currentTime = voids[9];
+                String latitude = voids[10];
+                String longitude = voids[11];
                 try {
                     URL url = new URL(new publicClass().url_complain3);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -113,7 +279,9 @@ public class Complain_for_other extends AppCompatActivity {
                             URLEncoder.encode("complainCuse", "UTF-8") + "=" + URLEncoder.encode(complainCuse, "UTF-8") + "&" +
                             URLEncoder.encode("complainAddress", "UTF-8") + "=" + URLEncoder.encode(complainAddress, "UTF-8") + "&" +
                             URLEncoder.encode("complainDescription", "UTF-8") + "=" + URLEncoder.encode(complainDescription, "UTF-8") + "&" +
-                            URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8");
+                            URLEncoder.encode("currentTime", "UTF-8") + "=" + URLEncoder.encode(currentTime, "UTF-8") + "&" +
+                            URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(latitude, "UTF-8") + "&" +
+                            URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(longitude, "UTF-8");
 //                    Log.i("json data sending", data);
 
                     bw.write(data);
@@ -154,8 +322,7 @@ public class Complain_for_other extends AppCompatActivity {
 //            Log.i("json result", ">"+result+"<");
 
             if (result.equals("Successfully Complained\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), complainActivity.class));
+                onBackPressed();
             } else {
                 Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();

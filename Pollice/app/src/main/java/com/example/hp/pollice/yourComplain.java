@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -67,7 +69,7 @@ public class yourComplain extends AppCompatActivity {
         // app bar configuer
         Toolbar toolbar = (Toolbar) findViewById(R.id.complain_for_me_app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Complain for me");
+        getSupportActionBar().setTitle("For me");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinner = (MaterialSpinner) findViewById(R.id.thana);
@@ -165,7 +167,17 @@ public class yourComplain extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        i.putExtra("User_mail", email);
+        i.putExtra("Password",password);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi=getMenuInflater();
+        mi.inflate(R.menu.app_bar_save_btn, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -173,12 +185,19 @@ public class yourComplain extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home){
             onBackPressed();
         }
+        if (item.getItemId()==R.id.app_bar_save_btn){
+           makeComplain();
+        }
         return super.onOptionsItemSelected(item);
     }
 
 
     public void go(View view) {
+        makeComplain();
+    }
 
+
+    public void makeComplain(){
         double loca[]=new publicClass().getLocation(this, yourComplain.this);
 //        Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
         if(spinner.getText().toString().equals("Select Police Station")){
@@ -207,11 +226,7 @@ public class yourComplain extends AppCompatActivity {
                 }
             }
         }
-
-
-
     }
-
 
 
     public void clearField(View view) {
@@ -387,10 +402,7 @@ public class yourComplain extends AppCompatActivity {
 
             if (result.equals("Successfully Complained\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t")){
 //                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), complainActivity.class);
-                i.putExtra("User_mail", email);
-                i.putExtra("Password",password);
-                startActivity(i);
+                onBackPressed();
             } else {
                 Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();

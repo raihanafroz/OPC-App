@@ -4,7 +4,6 @@
 	
 	$userName="";
 	$thanaId="";
- 	$thanaId="";
 	$email=$_POST['email'];
 	$thanaName=$_POST['thanaName'];
 	$name=$_POST['name'];
@@ -18,7 +17,7 @@
 	$lon=$_POST['longitude'];
 	
 
-	// $email="raihanafroz9@gmail.com";
+	// $email="topu@gmail.com";
 	// $thanaName="Jatrabari Thana";
 	// $name="abcd";
 	// $phone="12345678900";
@@ -62,7 +61,8 @@
 			$userName=$row['first_name']." ".$row['last_name'];
 		}
 	}
-	// echo $name;
+	// echo $userName;
+	// die();
 	
 	//database date formate
 	if($currentTime==""){
@@ -76,6 +76,8 @@
 	$output = "";
 	
 	//insert complain2 into database
+
+
 	
 	
 	$sql_check="SELECT COUNT(`email`) FROM `tbl_complain3` WHERE `email` LIKE '$email';";
