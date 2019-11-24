@@ -21,9 +21,8 @@
  	$thanaId="";
 	$email=$_POST['email'];
 	$thanaName=$_POST['thanaName'];
-	//$lat=$_POST['latitude'];
-	// $lon=$_POST['longitude'];
-
+	$lat=$_POST['latitude'];
+	$lon=$_POST['longitude'];
 	$complainAddress=$_POST['complainAddress'];
 	$complainCuse=$_POST['complainCuse'];
 	$complainDescription=$_POST['complainDescription'];
@@ -76,7 +75,7 @@
 	if($currentTime==""){
 		$complainTime="0000-00-00 00:00:00";
 	}else{
-		$complainTime = date ("Y-m-d h:i:s", strtotime($currentTime));
+		$complainTime = date ("Y-m-d H:i:s", strtotime($currentTime));
 	}
 	
 	
@@ -100,7 +99,7 @@
 		
 		$complainNo+=1;
 		
-		$sql_insert="INSERT INTO `tbl_complain2` (`userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `thanaId`, `complainTime`) VALUES ('$name', '$email', '$complainCuse', '$complainDescription', '$complainAddress', '$complainNo', '$thanaId', '$complainTime');";
+		$sql_insert="INSERT INTO `tbl_complain2` (`userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `latitude`, `longitude`, `thanaId`, `complainTime`) VALUES ('$name', '$email', '$complainCuse', '$complainDescription', '$complainAddress', '$complainNo', '$lat', '$lon', '$thanaId', '$complainTime');";
 		
 		// echo $sql_insert;
 		

@@ -87,6 +87,7 @@ public class complainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), yourComplain.class);
                 i.putExtra("User_mail", email);
+                i.putExtra("Password",password);
                 startActivity(i);
             }
         });
@@ -96,6 +97,7 @@ public class complainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Complain_for_other.class);
                 i.putExtra("User_mail", email);
+                i.putExtra("Password",password);
                 startActivity(i);
             }
         });
@@ -105,6 +107,7 @@ public class complainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Complain_list.class);
                 i.putExtra("User_mail", email);
+                i.putExtra("Password",password);
                 startActivity(i);
             }
         });
@@ -131,7 +134,10 @@ public class complainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
-            onBackPressed();
+            Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+            i.putExtra("Email", email);
+            i.putExtra("Password", password);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

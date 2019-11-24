@@ -14,6 +14,8 @@
 	$complainAddress=$_POST['complainAddress'];
 	$complainDescription=$_POST['complainDescription'];
 	$currentTime=$_POST['currentTime'];
+	$lat=$_POST['latitude'];
+	$lon=$_POST['longitude'];
 	
 
 	// $email="raihanafroz9@gmail.com";
@@ -66,7 +68,7 @@
 	if($currentTime==""){
 		$complainTime="0000-00-00 00:00:00";
 	}else{
-		$complainTime = date ("Y-m-d h:i:s", strtotime($currentTime));
+		$complainTime = date ("Y-m-d H:i:s", strtotime($currentTime));
 	}
 	
 	
@@ -90,7 +92,7 @@
 		
 		$complainNo+=1;
 		
-		$sql_insert="INSERT INTO `tbl_complain3`(`name`, `phone`, `address`, `cause`, `description`, `complainAddress`, `thanaId`, `email`, `userName`, `complainTime`, `usercomplainNo`) VALUES ('$name','$phone', '$address', '$complainCuse', '$complainDescription', '$complainAddress', '$thanaId', '$email', '$userName', '$complainTime', '$complainNo');";
+		$sql_insert="INSERT INTO `tbl_complain3`(`name`, `phone`, `address`, `cause`, `description`, `complainAddress`, `thanaId`, `email`, `userName`, `complainTime`, `usercomplainNo`, `latitude`, `longitude`) VALUES ('$name','$phone', '$address', '$complainCuse', '$complainDescription', '$complainAddress', '$thanaId', '$email', '$userName', '$complainTime', '$complainNo', '$lat', '$lon');";
 		
 		// echo $sql_insert;
 		// var_dump(mysqli_query($connect, $sql_insert));

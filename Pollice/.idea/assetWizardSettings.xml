@@ -171,7 +171,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_format_list_bulleted_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_home_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -181,9 +181,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="cfd1d6" />
-                            <entry key="outputName" value="ic_list_bulleted_24dp" />
-                            <entry key="sourceFile" value="C:\Users\hp" />
+                            <entry key="outputName" value="ic_home_black_24dp" />
+                            <entry key="sourceFile" value="C:\Users\hp\Downloads\images.svg" />
                           </map>
                         </option>
                       </PersistentState>

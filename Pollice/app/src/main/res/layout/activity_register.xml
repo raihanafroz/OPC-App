@@ -305,8 +305,7 @@
                         android:background="@drawable/btn_blue"
                         android:textColor="@color/text_white"
                         android:textStyle="bold"
-                        android:layout_margin="4dp"
-                        android:onClick="reset"/>
+                        android:layout_margin="4dp"/>
 
                 </LinearLayout>
 

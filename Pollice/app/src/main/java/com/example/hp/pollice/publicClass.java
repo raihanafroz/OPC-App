@@ -19,7 +19,7 @@ public class publicClass {
 
 //    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
-    String ip_address="192.168.0.111";  //Room WIFI
+    String ip_address="192.168.0.111";  //Room WIFI?
 //    String ip_address="192.168.43.107";    //phone
 //    String ip_address="6524cecf.ngrok.io";    //port for
 //    String ip_address="www.raihanafroz.info";  //Into a domain

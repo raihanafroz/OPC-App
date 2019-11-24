@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -193,6 +194,7 @@ public class ChangePhoto extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
+            Log.d("json photo", result);
             if(result.equals(null)){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } else if (result.equals("File deleted")){
