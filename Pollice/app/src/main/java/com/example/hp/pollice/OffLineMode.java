@@ -1,9 +1,12 @@
 package com.example.hp.pollice;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +30,6 @@ import java.util.ArrayList;
 
 public class OffLineMode extends AppCompatActivity {
     private String email,password;
-    private TextView txtEmail;
     private ListView listview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +37,40 @@ public class OffLineMode extends AppCompatActivity {
         setContentView(R.layout.activity_off_line_mode);
 
         listview=(ListView)findViewById(R.id.listView);
-        txtEmail=(TextView) findViewById(R.id.userEmail);
 
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
             password=extra.getString("Password");
         }
-        txtEmail.setText("E-mail: "+email);
+
+        if(new publicClass().checkInternetConnection(OffLineMode.this)) {
+            new getDataOfStation().execute("Station Details",email);
+        }
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.police_station_list_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Police station list");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Toast.makeText(getApplicationContext(),email,Toast.LENGTH_SHORT).show();
-        new getDataOfStation().execute("Station Details",email);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        i.putExtra("User_mail", email);
+        i.putExtra("Password",password);
+        startActivity(i);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     private class getDataOfStation extends AsyncTask<String, Void, String> {

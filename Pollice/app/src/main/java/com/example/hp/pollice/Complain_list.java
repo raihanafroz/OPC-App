@@ -1,10 +1,13 @@
 package com.example.hp.pollice;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 
 public class Complain_list extends AppCompatActivity {
     private String email;
+    private String password;
     private ListView listview;
 
     @Override
@@ -40,12 +44,35 @@ public class Complain_list extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("User_mail");
+            password=extra.getString("Password");
         }
-        new getDataOfComplain().execute("Complain List",email);
+
+        if(new publicClass().checkInternetConnection(Complain_list.this)) {
+            new getDataOfComplain().execute("Complain List",email);
+        }
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.complain_list_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Complain list");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        i.putExtra("User_mail", email);
+        i.putExtra("Password",password);
+        startActivity(i);
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private class getDataOfComplain extends AsyncTask<String, Void, String> {
         ProgressDialog pd;
