@@ -230,10 +230,16 @@ public class yourComplain extends AppCompatActivity {
 
 
     public void clearField(View view) {
-        Toast.makeText(getApplicationContext(), description.getText().toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), description.getText().toString(), Toast.LENGTH_SHORT).show();
         currentAddress.setText("");
         cause.setText("");
         description.setText("");
+        spinner.setSelectedIndex(0);
+        spinner.setFocusableInTouchMode(true);
+        spinner.setFocusable(true);
+        spinner.requestFocus();
+        spinner.performClick();
+
     }
 
 

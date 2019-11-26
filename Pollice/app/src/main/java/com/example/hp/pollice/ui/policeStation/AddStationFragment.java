@@ -35,14 +35,13 @@ import java.net.URLEncoder;
 
 public class AddStationFragment extends Fragment {
 
-    private AddStationViewModel addStationViewModel;
+
     private TextInputEditText thanaName, latitude, logitude, phoneNo;
     private Button save, clear;
     String email = "";
     View root;
     ViewGroup viewGroup;
     String namePattern = "[a-zA-Z\\s]+";
-    SharedPreferences prf;
 
 
     @SuppressLint("ResourceType")
@@ -108,13 +107,13 @@ public class AddStationFragment extends Fragment {
                 if(i== 0 && i1 ==0 && i2 ==0){
                     phoneNo.setError(null);
                 }else {
-                    if (charSequence.toString().length() >= 11) {
+                    if (charSequence.toString().length() >= 9) {
                         phoneNo.setError(null);
                     } else {
                         if(phoneNo.getText().toString().isEmpty()){
                             phoneNo.setError(null);
                         }else {
-                            phoneNo.setError("Minimum 11 digit");
+                            phoneNo.setError("Minimum 9 digit");
                         }
                     }
                 }
@@ -215,7 +214,7 @@ public class AddStationFragment extends Fragment {
                 thanaName.requestFocus();
             } else {
                 thanaName.setError(null);
-                if (phoneNo.getText().toString().length() >= 6) {
+                if (phoneNo.getText().toString().length() >= 9) {
                     phoneNo.setError(null);
                     if(latitude.getText().toString().isEmpty()){
                         latitude.requestFocus();
@@ -228,7 +227,7 @@ public class AddStationFragment extends Fragment {
                         }
                     }
                 } else {
-                    phoneNo.setError("Minimum 6 letters");
+                    phoneNo.setError("Minimum 9 digit");
                     phoneNo.requestFocus();
                 }
             }
@@ -308,6 +307,8 @@ public class AddStationFragment extends Fragment {
             pd.dismiss();
 
             if (result.equals("Data added")) {
+                Snackbar.make(root, "Station Added", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
                 clearField();
             }
             Snackbar.make(root, result, Snackbar.LENGTH_LONG)

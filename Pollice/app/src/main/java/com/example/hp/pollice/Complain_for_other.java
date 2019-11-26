@@ -100,7 +100,18 @@ public class Complain_for_other extends AppCompatActivity {
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeComplain();
+                name.setText("");
+                phone.setText("");
+                address.setText("");
+                complainCuse.setText("");
+                complainAddress.setText("");
+                complainDescription.setText("");
+                name.setText("");
+                spinner.setSelectedIndex(0);
+                spinner.setFocusableInTouchMode(true);
+                spinner.setFocusable(true);
+                spinner.requestFocus();
+                spinner.performClick();
             }
         });
 
@@ -171,7 +182,7 @@ public class Complain_for_other extends AppCompatActivity {
         });
 
 
-        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
 
     }
 

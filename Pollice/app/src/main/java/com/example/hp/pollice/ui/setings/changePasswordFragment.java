@@ -39,7 +39,6 @@ public class changePasswordFragment extends Fragment {
 
     private TextInputEditText oldPassword, newPassword, confirmPassword;
     private Button save;
-    private SendViewModel sendViewModel;
     View root;
     String email = "";
     private ViewGroup viewGroup;
@@ -48,8 +47,6 @@ public class changePasswordFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         this.viewGroup = container;
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
         root = inflater.inflate(R.xml.fragment_change_password, container, false);
 //        gettin users email
         if(new publicClass().checkInternetConnection(getContext())){

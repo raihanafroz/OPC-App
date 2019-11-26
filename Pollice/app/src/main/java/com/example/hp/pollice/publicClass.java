@@ -19,7 +19,7 @@ public class publicClass {
 
 //    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
-//    String ip_address="192.168.0.111";  //Room WIFI?
+//    String ip_address="192.168.0.111";  //Room WIFI
 //    String ip_address="192.168.43.107";    //phone
 //    String ip_address="6524cecf.ngrok.io";    //port for
     String ip_address="www.raihanafroz.info";  //Into a domain
@@ -40,6 +40,7 @@ public class publicClass {
     public String url_complainList = "http://"+ip_address+"/New_folder/Pollice/server/complainList.php";
     public String url_adminPage = "http://"+ip_address+"/New_folder/Pollice/server/dataCountAdmin.php";
     public String url_add_station = "http://"+ip_address+"/New_folder/Pollice/server/insert_police_station.php";
+    public String url_update_station = "http://"+ip_address+"/New_folder/Pollice/server/updatePoliceStation.php";
     public String url_userPage = "http://"+ip_address+"/New_folder/Pollice/server/dataCountUser.php";
 
 

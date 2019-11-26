@@ -52,6 +52,8 @@ public class ViewPoliceStationFragment extends Fragment {
         lv = (ListView) root.findViewById(R.id.admin_station_listview);
 
         new getStation().execute("View Station");
+
+
 //        init();
         return root;
 

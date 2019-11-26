@@ -41,7 +41,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public void drop(){
         try{
             sd.execSQL(drop_table);
-            Toast.makeText(context,"Table droped", Toast.LENGTH_LONG).show();
+//            Toast.makeText(context,"Table droped", Toast.LENGTH_LONG).show();
         }catch(Exception e){
             Toast.makeText(context, e.getMessage().toString(), Toast.LENGTH_LONG).show();
         }
@@ -52,12 +52,12 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         try{
             sd.execSQL(check_table);
             b=false;
-            Toast.makeText(context, "Table found.",Toast.LENGTH_LONG).show();
+//            Toast.makeText(context, "Table found.",Toast.LENGTH_LONG).show();
         }catch(Exception e){}
         if(b) {
             try{
                 sd.execSQL(create_table);
-                Toast.makeText(context, "Database table created",Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "Database table created",Toast.LENGTH_LONG).show();
             }catch(Exception e){
                 //Toast.makeText(context, e.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
@@ -70,9 +70,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             cv.put(type, user_type);
             Long id = sd.insert(table_name, null, cv);
             if (id == -1) {
-                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(context, "Data added", Toast.LENGTH_LONG).show();
+//            Toast.makeText(context, "Data added", Toast.LENGTH_LONG).show();
         }
     }
 

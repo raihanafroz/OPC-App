@@ -1,13 +1,16 @@
 package com.example.hp.pollice;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AdminStationListAdapter extends ArrayAdapter<String> {
 
@@ -32,7 +35,7 @@ public class AdminStationListAdapter extends ArrayAdapter<String> {
         this.listThanaId = thanaID;
     }
 
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.admin_station_list_row, null,true);
 
@@ -45,20 +48,32 @@ public class AdminStationListAdapter extends ArrayAdapter<String> {
 
         if(position==0){
             ly.setBackgroundResource(R.drawable.table_header_border);
-//            ly.setMinimumHeight(40);
-//            ly.setPadding(5,5,5,5);
-//            id.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-//            name.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-//            phone.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-//            latitude.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-//            longitude.setTypeface(longitude.getTypeface(), Typeface.BOLD);;
+            ly.setPadding(5,5,5,5);
+            id.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            name.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            phone.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            latitude.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            longitude.setTypeface(longitude.getTypeface(), Typeface.BOLD);;
+        }else {
+            ly.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, AdminEditPoliceStation.class);
+                    i.putExtra("station_id", listThanaId[position]);
+                    i.putExtra("station_name", listName[position]);
+                    i.putExtra("station_phone", listPhone[position]);
+                    i.putExtra("station_latitude", listLatitude[position]);
+                    i.putExtra("station_longitude", listLongitude[position]);
+                    context.startActivity(i);
+                }
+            });
         }
 
         id.setText(String.valueOf(listID[position]));
         name.setText(listName[position]);
         phone.setText(listPhone[position]);
-        longitude.setText(listLatitude[position]);
-        latitude.setText(listLongitude[position]);
+        latitude.setText(listLatitude[position]);
+        longitude.setText(listLongitude[position]);
 
         return rowView;
     };
