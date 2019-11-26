@@ -2,7 +2,6 @@ package com.example.hp.pollice;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -216,7 +215,7 @@ public class AdminEditPoliceStation extends AppCompatActivity {
 
     boolean checkValidation(){
         boolean b = false;
-        if(new publicClass().checkInternetConnection(AdminEditPoliceStation.this)) {
+        if(new PublicClass().checkInternetConnection(AdminEditPoliceStation.this)) {
             if (inputName.getText().toString().isEmpty()) {
                 inputName.requestFocus();
             } else {
@@ -267,7 +266,7 @@ public class AdminEditPoliceStation extends AppCompatActivity {
                 String latitude = voids[4];
                 String longitude = voids[5];
                 try {
-                    URL url = new URL(new publicClass().url_update_station);
+                    URL url = new URL(new PublicClass().url_update_station);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);

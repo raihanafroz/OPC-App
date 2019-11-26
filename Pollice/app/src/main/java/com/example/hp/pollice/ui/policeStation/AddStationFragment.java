@@ -2,7 +2,6 @@ package com.example.hp.pollice.ui.policeStation;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,10 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProviders;
 
+import com.example.hp.pollice.PublicClass;
 import com.example.hp.pollice.R;
-import com.example.hp.pollice.publicClass;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -58,8 +56,8 @@ public class AddStationFragment extends Fragment {
         save = (Button) root.findViewById(R.id.add_station_btn_save);
         clear = (Button) root.findViewById(R.id.add_station_btn_clear);
 
-        if(new publicClass().checkInternetConnection(getContext())){
-            email= new publicClass().checkUserData(getContext());
+        if(new PublicClass().checkInternetConnection(getContext())){
+            email= new PublicClass().checkUserData(getContext());
         }
 
         /*
@@ -209,7 +207,7 @@ public class AddStationFragment extends Fragment {
 
     boolean checkValidation(){
         boolean b = false;
-        if(new publicClass().checkInternetConnection(viewGroup.getContext())) {
+        if(new PublicClass().checkInternetConnection(viewGroup.getContext())) {
             if (thanaName.getText().toString().isEmpty()) {
                 thanaName.requestFocus();
             } else {
@@ -257,7 +255,7 @@ public class AddStationFragment extends Fragment {
                 String stationLatitude = voids[4];
                 String stationLongitude = voids[5];
                 try {
-                    URL url = new URL(new publicClass().url_add_station);
+                    URL url = new URL(new PublicClass().url_add_station);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);

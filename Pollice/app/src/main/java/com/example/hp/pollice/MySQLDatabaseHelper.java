@@ -222,15 +222,15 @@ public class MySQLDatabaseHelper extends AsyncTask<String, Void, String> {
         pd.dismiss();
         if (result.equals("Data Added.")){
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
-            ctx.startActivity(new Intent(ctx, MainActivity.class));
+            ctx.startActivity(new Intent(ctx, Main.class));
         }
         else if(result.equals("Duplicate e-mail")){
             Toast.makeText(ctx, "E-mail already used once", Toast.LENGTH_SHORT).show();
-            ctx.startActivity(new Intent(ctx, registerActivity.class));
+            ctx.startActivity(new Intent(ctx, Register.class));
         }
         else if (result.equals("Forget User Found")){
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
-            Intent i=new Intent(ctx, Change_Password.class);
+            Intent i=new Intent(ctx, ChangePassword.class);
             i.putExtra("Email", forgetPasswordEmail);
             i.putExtra("ContactNumber", forgetPasswordContactNumber);
             i.putExtra("From", "ForgetPass");
@@ -242,7 +242,7 @@ public class MySQLDatabaseHelper extends AsyncTask<String, Void, String> {
         else if (result.equals("Successfully Changed")){
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
             new SQLiteDatabaseHelper(ctx).drop();
-            ctx.startActivity(new Intent(ctx, loginActivity.class));
+            ctx.startActivity(new Intent(ctx, Login.class));
         }
         else if (result.equals("Password not changed")){
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
@@ -261,7 +261,7 @@ public class MySQLDatabaseHelper extends AsyncTask<String, Void, String> {
             JSONObject jo=null;
             if(ja.length()==1){
                 jo=ja.getJSONObject(0);
-                Intent i=new Intent(ctx, PhofileActivity.class);
+                Intent i=new Intent(ctx, Phofile.class);
                 i.putExtra("Email",jo.getString("e-mail"));
                 i.putExtra("Password",jo.getString("password"));
                 //add user on SQLite Database to remember user

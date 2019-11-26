@@ -2,12 +2,10 @@ package com.example.hp.pollice;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,7 +33,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-public class PhofileActivity extends AppCompatActivity {
+public class Phofile extends AppCompatActivity {
 
     Context mContext;
     private TextView profileName,profileEmail,profileGender,profileAddress,profileContactNO,testCase;
@@ -61,17 +59,17 @@ public class PhofileActivity extends AppCompatActivity {
             password=extra.getString("Password");
         }
         //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+password, Toast.LENGTH_SHORT ).show();
-        if(new publicClass().checkInternetConnection(PhofileActivity.this)) {
+        if(new PublicClass().checkInternetConnection(Phofile.this)) {
             new setProfile().execute("Profile", email);
             new downloadImageFromServer(email).execute();
         }else{
-            startActivity(new Intent(getApplicationContext(), loginActivity.class));
+            startActivity(new Intent(getApplicationContext(), Login.class));
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+        Intent i = new Intent(getApplicationContext(), UserHome.class);
         i.putExtra("Email", email);
         i.putExtra("Password", password);
         startActivity(i);
@@ -92,18 +90,18 @@ public class PhofileActivity extends AppCompatActivity {
             i.putExtra("From", "HomeActivity");
             startActivity(i);
         }else if (item.getItemId()==R.id.profileEditPassMenu){
-            Intent i =new Intent(getApplicationContext(), Change_Password.class);
+            Intent i =new Intent(getApplicationContext(), ChangePassword.class);
             i.putExtra("Email", email);
             i.putExtra("From", "HomeActivity");
             startActivity(i);
         }else if (item.getItemId()==R.id.profileDetailsMenu){
-            Intent i =new Intent(getApplicationContext(), changeDetails.class);
+            Intent i =new Intent(getApplicationContext(), ChangeDetails.class);
             i.putExtra("Email", email);
             i.putExtra("From", "HomeActivity");
             startActivity(i);
         }else if (item.getItemId()==R.id.profileSignOut){
             new SQLiteDatabaseHelper(getApplicationContext()).drop();
-            Intent i =new Intent(getApplicationContext(), loginActivity.class);
+            Intent i =new Intent(getApplicationContext(), Login.class);
             startActivity(i);
         }else if (item.getItemId()==R.id.share){
             Intent intent=new Intent(Intent.ACTION_SEND);
@@ -118,10 +116,10 @@ public class PhofileActivity extends AppCompatActivity {
     }
 
     public void goto_complaine(View view) {
-        if(new publicClass().checkInternetConnection(this)) {
-            double loca[] = new publicClass().getLocation(mContext, PhofileActivity.this);
+        if(new PublicClass().checkInternetConnection(this)) {
+            double loca[] = new PublicClass().getLocation(mContext, Phofile.this);
             if (loca[0] != 0 && loca[1] != 0) {
-                Intent i = new Intent(getApplicationContext(), complainActivity.class);
+                Intent i = new Intent(getApplicationContext(), Complain.class);
                 i.putExtra("User_mail", email);
                 i.putExtra("Password", password);
                 i.putExtra("Latitude", loca[0]);
@@ -130,7 +128,7 @@ public class PhofileActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
             }
         }else{
-            new Alert_Builder().settingAlert(this, PhofileActivity.this, false);
+            new Alert_Builder().settingAlert(this, Phofile.this, false);
         }
     }
 
@@ -157,7 +155,7 @@ public class PhofileActivity extends AppCompatActivity {
     }
 
     public void ChangePassBtn(View view) {
-        Intent i=new Intent(getApplicationContext(), Change_Password.class);
+        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
         i.putExtra("Email", email);
         i.putExtra("From", "");
         startActivity(i);
@@ -173,7 +171,7 @@ public class PhofileActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(PhofileActivity.this);
+            pd = new ProgressDialog(Phofile.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -186,7 +184,7 @@ public class PhofileActivity extends AppCompatActivity {
             if (method.equals("Profile")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_profile);
+                    URL url = new URL(new PublicClass().url_profile);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -263,7 +261,7 @@ public class PhofileActivity extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(Void... voids) {
-            String url=new publicClass().url_imgPath+imageName+".jpg";
+            String url=new PublicClass().url_imgPath+imageName+".jpg";
             try {
                 URLConnection connection=new URL(url).openConnection();
                 connection.setConnectTimeout(1000 * 60);

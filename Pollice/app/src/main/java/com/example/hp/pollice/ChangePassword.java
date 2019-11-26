@@ -28,7 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class Change_Password extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
     TextInputEditText oldpass,newpass,confirmpass;
     TextInputLayout layer;
     String email="",state="",contactNumber="";
@@ -251,7 +251,7 @@ public class Change_Password extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Change_Password.this);
+            pd = new ProgressDialog(ChangePassword.this);
             pd.setTitle("Tring to change");
             pd.setMessage("Please wait...");
             pd.show();
@@ -267,7 +267,7 @@ public class Change_Password extends AppCompatActivity {
                 String newPass = voids[3];
                 String contactNumber = voids[4];
                 try {
-                    URL url = new URL(new publicClass().url_changePassword);
+                    URL url = new URL(new PublicClass().url_changePassword);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -315,7 +315,7 @@ public class Change_Password extends AppCompatActivity {
             if (result.equals("Successfully")) {
                 Toast.makeText(getApplicationContext(), "Password Changed"+result, Toast.LENGTH_SHORT).show();
                 new SQLiteDatabaseHelper(getApplicationContext()).drop();
-                startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             } else {
                 oldpass.setError("Old Password Not Match");
                 oldpass.requestFocus();

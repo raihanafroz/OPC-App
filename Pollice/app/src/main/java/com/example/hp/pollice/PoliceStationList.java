@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -28,7 +27,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class OffLineMode extends AppCompatActivity {
+public class PoliceStationList extends AppCompatActivity {
     private String email,password;
     private ListView listview;
     @Override
@@ -44,7 +43,7 @@ public class OffLineMode extends AppCompatActivity {
             password=extra.getString("Password");
         }
 
-        if(new publicClass().checkInternetConnection(OffLineMode.this)) {
+        if(new PublicClass().checkInternetConnection(PoliceStationList.this)) {
             new getDataOfStation().execute("Station Details",email);
         }
 
@@ -58,7 +57,7 @@ public class OffLineMode extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
         i.putExtra("Password",password);
         startActivity(i);
@@ -78,7 +77,7 @@ public class OffLineMode extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(OffLineMode.this);
+            pd = new ProgressDialog(PoliceStationList.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -91,7 +90,7 @@ public class OffLineMode extends AppCompatActivity {
             if (method.equals("Station Details")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_stationDetails);
+                    URL url = new URL(new PublicClass().url_stationDetails);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -141,7 +140,7 @@ public class OffLineMode extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
             }
         }
-        OffLineMode om=new OffLineMode();
+        PoliceStationList om=new PoliceStationList();
         private void parse(String data){
             int t=0;
             ArrayList<String> thanaName=new ArrayList<>();
@@ -171,7 +170,7 @@ public class OffLineMode extends AppCompatActivity {
             listArray = stationName.toArray(listArray);
             listArray1 = phoneNo.toArray(listArray1);
 
-            MyListAdapter adapter=new MyListAdapter(OffLineMode.this, listArray, listArray1, R.drawable.bangladesh_police_government);
+            MyListAdapter adapter=new MyListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
             listview.setAdapter(adapter);
         }
     }
@@ -214,7 +213,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class OffLineMode extends AppCompatActivity {
+public class PoliceStationList extends AppCompatActivity {
     private String email,password;
     private TextView txtEmail;
     private SwipeMenuListView listview;
@@ -244,7 +243,7 @@ public class OffLineMode extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(OffLineMode.this);
+            pd = new ProgressDialog(PoliceStationList.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -257,7 +256,7 @@ public class OffLineMode extends AppCompatActivity {
             if (method.equals("Station Details")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_stationDetails);
+                    URL url = new URL(new PublicClass().url_stationDetails);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -307,7 +306,7 @@ public class OffLineMode extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
             }
         }
-        OffLineMode om=new OffLineMode();
+        PoliceStationList om=new PoliceStationList();
         private void parse(String data){
             int t=0;
             ArrayList<String> thanaName=new ArrayList<>();
@@ -337,7 +336,7 @@ public class OffLineMode extends AppCompatActivity {
             listArray = stationName.toArray(listArray);
             listArray1 = phoneNo.toArray(listArray1);
 
-            MyListAdapter adapter=new MyListAdapter(OffLineMode.this, listArray, listArray1, R.drawable.bangladesh_police_government);
+            MyListAdapter adapter=new MyListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
             listview.setAdapter(adapter);
 
             SwipeMenuCreator creator = new SwipeMenuCreator() {

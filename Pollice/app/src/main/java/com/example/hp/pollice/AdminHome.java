@@ -6,18 +6,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
@@ -141,7 +136,7 @@ public class AdminHome extends AppCompatActivity {
 //            SaveBtn();
         }else if (item.getItemId()==R.id.nav_admin_logout){
             new SQLiteDatabaseHelper(getApplicationContext()).drop();
-            Intent i =new Intent(getApplicationContext(), loginActivity.class);
+            Intent i =new Intent(getApplicationContext(), Login.class);
             startActivity(i);
         }
 //        else if(item.getItemId() == android.R.id.home){
@@ -181,7 +176,7 @@ public class AdminHome extends AppCompatActivity {
             if (method.equals("Profile")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_profile);
+                    URL url = new URL(new PublicClass().url_profile);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -258,7 +253,7 @@ public class AdminHome extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(Void... voids) {
-            String url=new publicClass().url_imgPath+imageName+".jpg";
+            String url=new PublicClass().url_imgPath+imageName+".jpg";
             try {
                 URLConnection connection=new URL(url).openConnection();
                 connection.setConnectTimeout(1000 * 60);
@@ -300,7 +295,7 @@ public class AdminHome extends AppCompatActivity {
             String method = voids[0];
             if (method.equals("adminPage")) {
                 try {
-                    URL url = new URL(new publicClass().url_adminPage);
+                    URL url = new URL(new PublicClass().url_adminPage);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);

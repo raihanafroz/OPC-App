@@ -9,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -32,7 +31,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 
-public class UserHomeActivity extends AppCompatActivity {
+public class UserHome extends AppCompatActivity {
 
     GridView gridView;
     String email = "";
@@ -53,7 +52,7 @@ public class UserHomeActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
-                if(new publicClass().checkInternetConnection(UserHomeActivity.this)) {
+                if(new PublicClass().checkInternetConnection(UserHome.this)) {
                     new gettingData().execute("UsaePage");
                 }
             }
@@ -64,7 +63,7 @@ public class UserHomeActivity extends AppCompatActivity {
             email=extra.getString("Email");
             password=extra.getString("Password");
         }
-        if(new publicClass().checkInternetConnection(UserHomeActivity.this)) {
+        if(new PublicClass().checkInternetConnection(UserHome.this)) {
             new gettingData().execute("UsaePage");
         }
 
@@ -77,8 +76,8 @@ public class UserHomeActivity extends AppCompatActivity {
         profilePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(new publicClass().checkInternetConnection(UserHomeActivity.this)) {
-                    Intent i = new Intent(getApplicationContext(), PhofileActivity.class);
+                if(new PublicClass().checkInternetConnection(UserHome.this)) {
+                    Intent i = new Intent(getApplicationContext(), Phofile.class);
                     i.putExtra("Email", email);
                     i.putExtra("Password", password);
                     startActivity(i);
@@ -89,10 +88,10 @@ public class UserHomeActivity extends AppCompatActivity {
         complainPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(new publicClass().checkInternetConnection(UserHomeActivity.this)) {
-                    double loca[] = new publicClass().getLocation(UserHomeActivity.this, UserHomeActivity.this);
+                if(new PublicClass().checkInternetConnection(UserHome.this)) {
+                    double loca[] = new PublicClass().getLocation(UserHome.this, UserHome.this);
                     if (loca[0] != 0 && loca[1] != 0) {
-                        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), Complain.class);
                         i.putExtra("User_mail", email);
                         i.putExtra("Password", password);
                         i.putExtra("Latitude", loca[0]);
@@ -101,7 +100,7 @@ public class UserHomeActivity extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
                     }
                 }else{
-//                    new Alert_Builder().settingAlert(getApplicationContext(), UserHomeActivity.this, false);
+//                    new Alert_Builder().settingAlert(getApplicationContext(), UserHome.this, false);
                 }
             }
         });
@@ -113,7 +112,7 @@ public class UserHomeActivity extends AppCompatActivity {
     public void onBackPressed(){
         new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                UserHomeActivity.this.finishAffinity();     //minimum sdk 16
+                UserHome.this.finishAffinity();     //minimum sdk 16
                 System.exit(0);
             }
         }).setNegativeButton("No", null).show();
@@ -128,7 +127,7 @@ public class UserHomeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(UserHomeActivity.this);
+            pd = new ProgressDialog(UserHome.this);
             pd.setTitle("Fatching Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -139,7 +138,7 @@ public class UserHomeActivity extends AppCompatActivity {
             String method = voids[0];
             if (method.equals("UsaePage")) {
                 try {
-                    URL url = new URL(new publicClass().url_userPage);
+                    URL url = new URL(new PublicClass().url_userPage);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -204,7 +203,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
             String data1[] = new String[data.size()];
             data1= data.toArray(data1);
-            gridView.setAdapter(new UserGridAdapter(UserHomeActivity.this, dataType, data1));
+            gridView.setAdapter(new UserGridAdapter(UserHome.this, dataType, data1));
             swipeContainer.setRefreshing(false);
         }
     }

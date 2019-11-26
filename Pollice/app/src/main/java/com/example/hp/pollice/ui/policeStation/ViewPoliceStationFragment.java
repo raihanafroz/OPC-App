@@ -2,7 +2,6 @@ package com.example.hp.pollice.ui.policeStation;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -11,16 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.example.hp.pollice.AdminStationListAdapter;
-import com.example.hp.pollice.ComplainListAdapter;
+import com.example.hp.pollice.PublicClass;
 import com.example.hp.pollice.R;
-import com.example.hp.pollice.publicClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -204,7 +199,7 @@ public class ViewPoliceStationFragment extends Fragment {
 //                String stationLatitude = voids[4];
 //                String stationLongitude = voids[5];
                 try {
-                    URL url = new URL(new publicClass().url_stationDetails);
+                    URL url = new URL(new PublicClass().url_stationDetails);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("GET");
                     huc.setDoOutput(true);

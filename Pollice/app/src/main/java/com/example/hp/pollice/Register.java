@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -37,9 +36,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.MessageDigest;
 
-public class registerActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     private MaterialSpinner spinner;
     private TextInputEditText firstName,lastName,email,address,contactNumber,password,confirmPassword;
     private RadioButton male,female;
@@ -309,7 +307,7 @@ public class registerActivity extends AppCompatActivity {
 
             new register_Android_to_Mysql().execute("register", firstName.getText().toString(), lastName.getText().toString(),
                     email.getText().toString(), address.getText().toString(), contactNumber.getText().toString(),
-                    gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new publicClass().getCurrentDate());
+                    gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new PublicClass().getCurrentDate());
         }
     }
 
@@ -386,7 +384,7 @@ public class registerActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(registerActivity.this);
+            pd = new ProgressDialog(Register.this);
             pd.setTitle("Sending Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -405,7 +403,7 @@ public class registerActivity extends AppCompatActivity {
                 String pass = voids[7];
                 String image=voids[8];
                 try {
-                    URL url = new URL(new publicClass().url_reg);
+                    URL url = new URL(new PublicClass().url_reg);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -458,12 +456,12 @@ public class registerActivity extends AppCompatActivity {
             pd.dismiss();
             if (result.equals("Data Added.")){
                 Toast.makeText(getApplicationContext(), "Registration Successfull", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             } else if(result.equals("Already have an account.")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                //new registerActivity().reset(getCurrentFocus());
+                //new Register().reset(getCurrentFocus());
             }
         }
     }

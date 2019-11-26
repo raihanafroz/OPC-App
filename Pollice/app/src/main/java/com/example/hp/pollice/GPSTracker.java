@@ -61,7 +61,7 @@ public class GPSTracker extends Service {
 
     Activity activity;
 
-    //public GPSTracker(Context mContext, MainActivity mainActivity) {
+    //public GPSTracker(Context mContext, Main mainActivity) {
     //}
 
     public GPSTracker(Context context, Activity activity) {

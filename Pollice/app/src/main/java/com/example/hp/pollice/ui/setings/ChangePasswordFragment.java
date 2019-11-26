@@ -14,14 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
 import com.example.hp.pollice.EncryptedText;
+import com.example.hp.pollice.PublicClass;
 import com.example.hp.pollice.R;
 import com.example.hp.pollice.SQLiteDatabaseHelper;
-import com.example.hp.pollice.loginActivity;
-import com.example.hp.pollice.publicClass;
+import com.example.hp.pollice.Login;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,7 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class changePasswordFragment extends Fragment {
+public class ChangePasswordFragment extends Fragment {
 
     private TextInputEditText oldPassword, newPassword, confirmPassword;
     private Button save;
@@ -49,8 +48,8 @@ public class changePasswordFragment extends Fragment {
         this.viewGroup = container;
         root = inflater.inflate(R.xml.fragment_change_password, container, false);
 //        gettin users email
-        if(new publicClass().checkInternetConnection(getContext())){
-            email= new publicClass().checkUserData(getContext());
+        if(new PublicClass().checkInternetConnection(getContext())){
+            email= new PublicClass().checkUserData(getContext());
         }
 
         oldPassword = (TextInputEditText) root.findViewById(R.id.admin_change_password_old);
@@ -220,7 +219,7 @@ public class changePasswordFragment extends Fragment {
                 String newPass = voids[3];
                 String contactNumber = voids[4];
                 try {
-                    URL url = new URL(new publicClass().url_changePassword);
+                    URL url = new URL(new PublicClass().url_changePassword);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -268,7 +267,7 @@ public class changePasswordFragment extends Fragment {
             if (result.equals("Successfully")) {
                 Toast.makeText(getContext(), "Password Changed"+result, Toast.LENGTH_SHORT).show();
                 new SQLiteDatabaseHelper(getContext()).drop();
-                startActivity(new Intent(getContext(), loginActivity.class));
+                startActivity(new Intent(getContext(), Login.class));
             } else {
                 oldPassword.setError("Old Password Not Match");
                 oldPassword.requestFocus();

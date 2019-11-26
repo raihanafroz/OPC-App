@@ -2,26 +2,20 @@ package com.example.hp.pollice.ui.home;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.TextView;
-import android.support.annotation.Nullable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 
 import com.example.hp.pollice.AdminGridAdapter;
-import com.example.hp.pollice.AdminHome;
 import com.example.hp.pollice.R;
-import com.example.hp.pollice.publicClass;
+import com.example.hp.pollice.PublicClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,14 +42,12 @@ public class HomeFragment extends Fragment {
     String[] MOBILE = new String[] {
             "10022", "100","2001", "5674", "98765" };
 
-    private HomeViewModel homeViewModel;
     View root;
 
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+
         root = inflater.inflate(R.xml.fragment_home, container, false);
 
         gridView = (GridView) root.findViewById(R.id.gridview);
@@ -84,7 +76,7 @@ public class HomeFragment extends Fragment {
             String method = voids[0];
             if (method.equals("adminPage")) {
                 try {
-                    URL url = new URL(new publicClass().url_adminPage);
+                    URL url = new URL(new PublicClass().url_adminPage);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);

@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     TextView vr;
 
@@ -24,17 +24,17 @@ public class MainActivity extends AppCompatActivity {
 
         vr = (TextView) findViewById(R.id.version);
 
-        if(new publicClass().checkInternetConnection(getApplicationContext())){
+        if(new PublicClass().checkInternetConnection(getApplicationContext())){
             SQLiteDatabaseHelper sdh = new SQLiteDatabaseHelper(getApplicationContext());
             SQLiteDatabase ad = sdh.getWritableDatabase();
             checkUserData(true);
         }else {
             vr.setText("No Internet");
-            //new Alert_Builder().settingAlert(this.getApplicationContext(),MainActivity.this);
+            //new Alert_Builder().settingAlert(this.getApplicationContext(),Main.this);
             ///checkUserData(false);
             Toast.makeText(getApplicationContext(),"No Internet.",Toast.LENGTH_SHORT).show();
 
-            new Alert_Builder().settingAlert(this,MainActivity.this,true);
+            new Alert_Builder().settingAlert(this, Main.this,true);
         }
     }
 
@@ -42,26 +42,26 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed(){
         new AlertDialog.Builder(this).setIcon(null).setTitle("Closing App Warning!!").setMessage("Are you sure you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                MainActivity.this.finishAffinity();     //minimum sdk 16
+                Main.this.finishAffinity();     //minimum sdk 16
                 System.exit(0);
             }
         }).setNegativeButton("No", null).show();
     }
     public void signin_page(View view) {
-        if(new publicClass().checkInternetConnection(getApplicationContext())){
-            Intent i = new Intent(getApplicationContext(), loginActivity.class);
+        if(new PublicClass().checkInternetConnection(getApplicationContext())){
+            Intent i = new Intent(getApplicationContext(), Login.class);
             startActivity(i);
         }else {
-            new Alert_Builder().settingAlert(this,MainActivity.this,false);
+            new Alert_Builder().settingAlert(this, Main.this,false);
         }
     }
 
     public void signup_page(View view) {
-        if(new publicClass().checkInternetConnection(getApplicationContext())){
-            Intent i = new Intent(getApplicationContext(), registerActivity.class);
+        if(new PublicClass().checkInternetConnection(getApplicationContext())){
+            Intent i = new Intent(getApplicationContext(), Register.class);
             startActivity(i);
         }else {
-            new Alert_Builder().settingAlert(this,MainActivity.this, false);
+            new Alert_Builder().settingAlert(this, Main.this, false);
         }
     }
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*Intent callIntent =new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:+8801797325129"));
-        if (ActivityCompat.checkSelfPermission(MainActivity.this,
+        if (ActivityCompat.checkSelfPermission(Main.this,
                 Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -99,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
                     //String userName=cursor.getString(2);
                     Intent i;
                     if(userType) {
-                        i = new Intent(getApplicationContext(), PhofileActivity.class);
+                        i = new Intent(getApplicationContext(), Phofile.class);
                     }else{
-                        i = new Intent(getApplicationContext(), OffLineMode.class);
+                        i = new Intent(getApplicationContext(), PoliceStationList.class);
                         //i.putExtra("UserName",userName);
                     }
                     i.putExtra("Email",email);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Complain_list"
+    tools:context=".ComplainList"
     android:orientation="vertical">
     <include
         layout="@layout/default_app_bar"

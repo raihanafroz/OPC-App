@@ -22,33 +22,33 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AdminEditPoliceStation"></activity>
         <activity
-            android:name=".UserHomeActivity"
+            android:name=".UserHome"
             android:theme="@style/Profile" />
         <activity
             android:name=".AdminHome"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Complain_list" />
-        <activity android:name=".Complain_for_other" />
-        <activity android:name=".OffLineMode" />
-        <activity android:name=".startProgressBar">
+        <activity android:name=".ComplainList" />
+        <activity android:name=".ComplainForOther" />
+        <activity android:name=".PoliceStationList" />
+        <activity android:name=".StartProgressBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".yourComplain" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".loginActivity" />
-        <activity android:name=".registerActivity" />
+        <activity android:name=".ComplainForMe" />
+        <activity android:name=".Main" />
+        <activity android:name=".Login" />
+        <activity android:name=".Register" />
         <activity
-            android:name=".PhofileActivity"
+            android:name=".Phofile"
             android:theme="@style/Profile" />
-        <activity android:name=".complainActivity" />
-        <activity android:name=".Forget_Password" />
-        <activity android:name=".Change_Password" />
+        <activity android:name=".Complain" />
+        <activity android:name=".ForgetPassword" />
+        <activity android:name=".ChangePassword" />
         <activity android:name=".ChangePhoto" />
-        <activity android:name=".changeDetails" />
+        <activity android:name=".ChangeDetails" />
 
         <meta-data
             android:name="preloaded_fonts"

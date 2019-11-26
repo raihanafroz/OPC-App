@@ -14,7 +14,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.telephony.SmsManager;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +36,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class complainActivity extends AppCompatActivity {
+public class Complain extends AppCompatActivity {
     private String email,password;
     private LinearLayout immediateComplain, complainForOther, complainForMe, policeStationList, complainList;
     private double lat,lon, loca[];
@@ -64,7 +63,7 @@ public class complainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
             int REQUEST_CODE_ASK_PERMISSIONS=123;
-            ActivityCompat.requestPermissions(complainActivity.this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(Complain.this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_ASK_PERMISSIONS);
         }
 
         immediateComplain = (LinearLayout) findViewById(R.id.complain_immediate);
@@ -76,16 +75,16 @@ public class complainActivity extends AppCompatActivity {
         immediateComplain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loca=new publicClass().getLocation(getApplicationContext(), complainActivity.this);
+                loca=new PublicClass().getLocation(getApplicationContext(), Complain.this);
                 Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
-                new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new publicClass().getCurrentDate());
+                new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new PublicClass().getCurrentDate());
             }
         });
 
         complainForMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), yourComplain.class);
+                Intent i = new Intent(getApplicationContext(), ComplainForMe.class);
                 i.putExtra("User_mail", email);
                 i.putExtra("Password",password);
                 startActivity(i);
@@ -95,7 +94,7 @@ public class complainActivity extends AppCompatActivity {
         complainForOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Complain_for_other.class);
+                Intent i = new Intent(getApplicationContext(), ComplainForOther.class);
                 i.putExtra("User_mail", email);
                 i.putExtra("Password",password);
                 startActivity(i);
@@ -105,7 +104,7 @@ public class complainActivity extends AppCompatActivity {
         complainList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Complain_list.class);
+                Intent i = new Intent(getApplicationContext(), ComplainList.class);
                 i.putExtra("User_mail", email);
                 i.putExtra("Password",password);
                 startActivity(i);
@@ -115,7 +114,7 @@ public class complainActivity extends AppCompatActivity {
         policeStationList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), OffLineMode.class);
+                Intent i = new Intent(getApplicationContext(), PoliceStationList.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password",password);
                 startActivity(i);
@@ -125,7 +124,7 @@ public class complainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+        Intent i = new Intent(getApplicationContext(), UserHome.class);
         i.putExtra("Email", email);
         i.putExtra("Password", password);
         startActivity(i);
@@ -134,7 +133,7 @@ public class complainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
-            Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+            Intent i = new Intent(getApplicationContext(), UserHome.class);
             i.putExtra("Email", email);
             i.putExtra("Password", password);
             startActivity(i);
@@ -149,7 +148,7 @@ public class complainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(complainActivity.this);
+            pd = new ProgressDialog(Complain.this);
             pd.setTitle("Sending Complain");
             pd.setMessage("Please wait...");
             pd.show();
@@ -167,7 +166,7 @@ public class complainActivity extends AppCompatActivity {
                 String currentTime = voids[4];
                 eemail=currentemail;
                 try {
-                    URL url = new URL(new publicClass().url_complain1);
+                    URL url = new URL(new PublicClass().url_complain1);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -218,7 +217,7 @@ public class complainActivity extends AppCompatActivity {
                     new getPhoneNo().execute("PhoneNo",eemail);
                 }
 
-                //startActivity(new Intent(getApplicationContext(), complainActivity.class));
+                //startActivity(new Intent(getApplicationContext(), Complain.class));
             } else {
                 Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();
             }
@@ -231,7 +230,7 @@ public class complainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(complainActivity.this);
+            pd = new ProgressDialog(Complain.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -244,7 +243,7 @@ public class complainActivity extends AppCompatActivity {
             if (method.equals("PhoneNo")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_getPhoneNO);
+                    URL url = new URL(new PublicClass().url_getPhoneNO);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -291,7 +290,7 @@ public class complainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 //                SmsManager smsManager = SmsManager.getDefault();
 //                smsManager.sendTextMessage("01797325129", null, "Hi, i'm attacked by someone at Lat: "+loca[0]+"& Long: "+loca[1]+". Please, help me.", null, null);
-//                callPolice(result, complainActivity.this);
+//                callPolice(result, Complain.this);
 
             } else {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();

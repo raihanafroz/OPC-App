@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
@@ -40,7 +38,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Complain_for_other extends AppCompatActivity {
+public class ComplainForOther extends AppCompatActivity {
     public List<String> item = new ArrayList<String>();
     private String email = "";
     private String password = "";
@@ -61,7 +59,7 @@ public class Complain_for_other extends AppCompatActivity {
             password=extra.getString("Password");
         }
 
-        if(new publicClass().checkInternetConnection(Complain_for_other.this)) {
+        if(new PublicClass().checkInternetConnection(ComplainForOther.this)) {
             new getDataOfStation().execute("Station Details", email);
         }
 
@@ -188,7 +186,7 @@ public class Complain_for_other extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
         i.putExtra("Password",password);
         startActivity(i);
@@ -213,8 +211,8 @@ public class Complain_for_other extends AppCompatActivity {
     }
 
     public void makeComplain() {
-        double loca[]=new publicClass().getLocation(this, Complain_for_other.this);
-//        Toast.makeText(getApplicationContext(), new publicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
+        double loca[]=new PublicClass().getLocation(this, ComplainForOther.this);
+//        Toast.makeText(getApplicationContext(), new PublicClass().getCurrentDate()+"Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
         if(spinner.getText().toString().equals("Select Police Station")){
             spinner.setError("Wrong option selected");
             spinner.setFocusableInTouchMode(true);
@@ -235,7 +233,7 @@ public class Complain_for_other extends AppCompatActivity {
                         complainDescription.requestFocus();
                     } else {
                         new complain_for_other().execute("complain3", email, spinner.getText().toString(), name.getText().toString(), phone.getText().toString(), address.getText().toString(),
-                                complainCuse.getText().toString(), complainAddress.getText().toString(), complainDescription.getText().toString(), new publicClass().getCurrentDate(), String.valueOf(loca[0]), String.valueOf(loca[1]));
+                                complainCuse.getText().toString(), complainAddress.getText().toString(), complainDescription.getText().toString(), new PublicClass().getCurrentDate(), String.valueOf(loca[0]), String.valueOf(loca[1]));
 
                     }
                 }
@@ -251,7 +249,7 @@ public class Complain_for_other extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Complain_for_other.this);
+            pd = new ProgressDialog(ComplainForOther.this);
             pd.setTitle("Sending Complain");
             pd.setMessage("Please wait...");
             pd.show();
@@ -259,7 +257,7 @@ public class Complain_for_other extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            String url_reg = new publicClass().url_complain2;
+            String url_reg = new PublicClass().url_complain2;
 //                    Log.i("json data sending", voids);
             String method = voids[0];
 
@@ -276,7 +274,7 @@ public class Complain_for_other extends AppCompatActivity {
                 String latitude = voids[10];
                 String longitude = voids[11];
                 try {
-                    URL url = new URL(new publicClass().url_complain3);
+                    URL url = new URL(new PublicClass().url_complain3);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -350,7 +348,7 @@ public class Complain_for_other extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Complain_for_other.this);
+            pd = new ProgressDialog(ComplainForOther.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -358,12 +356,12 @@ public class Complain_for_other extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            String url_profile = new publicClass().url_thanaList;
+            String url_profile = new PublicClass().url_thanaList;
             String method = voids[0];
             if (method.equals("Station Details")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_stationDetails);
+                    URL url = new URL(new PublicClass().url_stationDetails);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -423,7 +421,7 @@ public class Complain_for_other extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Complain_for_other.this,
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ComplainForOther.this,
                     android.R.layout.simple_spinner_item, item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -24,7 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class Forget_Password extends AppCompatActivity {
+public class ForgetPassword extends AppCompatActivity {
     private TextInputEditText email,contactNumber;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
@@ -101,7 +100,7 @@ public class Forget_Password extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Forget_Password.this);
+            pd = new ProgressDialog(ForgetPassword.this);
             pd.setTitle("Checking User");
             pd.setMessage("Please wait...");
             pd.show();
@@ -116,7 +115,7 @@ public class Forget_Password extends AppCompatActivity {
                 forgetPasswordEmail = voids[1];
                 forgetPasswordContactNumber = voids[2];
                 try {
-                    URL url = new URL(new publicClass().url_checkForForgetPassword);
+                    URL url = new URL(new PublicClass().url_checkForForgetPassword);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -163,7 +162,7 @@ public class Forget_Password extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             if (result.equals("Forget User Found")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getApplicationContext(), Change_Password.class);
+                Intent i=new Intent(getApplicationContext(), ChangePassword.class);
                 i.putExtra("Email", forgetPasswordEmail);
                 i.putExtra("ContactNumber", forgetPasswordContactNumber);
                 i.putExtra("From", "ForgetPass");

@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -29,7 +28,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Complain_list extends AppCompatActivity {
+public class ComplainList extends AppCompatActivity {
     private String email;
     private String password;
     private ListView listview;
@@ -47,7 +46,7 @@ public class Complain_list extends AppCompatActivity {
             password=extra.getString("Password");
         }
 
-        if(new publicClass().checkInternetConnection(Complain_list.this)) {
+        if(new PublicClass().checkInternetConnection(ComplainList.this)) {
             new getDataOfComplain().execute("Complain List",email);
         }
 
@@ -60,7 +59,7 @@ public class Complain_list extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), complainActivity.class);
+        Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
         i.putExtra("Password",password);
         startActivity(i);
@@ -79,7 +78,7 @@ public class Complain_list extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Complain_list.this);
+            pd = new ProgressDialog(ComplainList.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -91,7 +90,7 @@ public class Complain_list extends AppCompatActivity {
             if (method.equals("Complain List")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_complainList);
+                    URL url = new URL(new PublicClass().url_complainList);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -143,7 +142,7 @@ public class Complain_list extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
             }
         }
-//        OffLineMode om=new OffLineMode();
+//        PoliceStationList om=new PoliceStationList();
         private void parse(String data){
             ArrayList<String> serial=new ArrayList<>();
             ArrayList<String> type=new ArrayList<>();
@@ -184,7 +183,7 @@ public class Complain_list extends AppCompatActivity {
             listArray4 = time.toArray(listArray4);
             listArray5 = complainNo.toArray(listArray5);
 
-            ComplainListAdapter adapter=new ComplainListAdapter(Complain_list.this, listArray, listArray1, listArray2, listArray3, listArray4, listArray5);
+            ComplainListAdapter adapter=new ComplainListAdapter(ComplainList.this, listArray, listArray1, listArray2, listArray3, listArray4, listArray5);
             listview.setAdapter(adapter);
         }
     }

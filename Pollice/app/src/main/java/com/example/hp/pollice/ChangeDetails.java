@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +30,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class changeDetails extends AppCompatActivity {
+public class ChangeDetails extends AppCompatActivity {
     TextInputEditText fname,lname,contactNO,address;
     String email="",state="";
     String namePattern = "[a-zA-Z]+";
@@ -53,7 +52,7 @@ public class changeDetails extends AppCompatActivity {
         getSupportActionBar().setTitle("Change Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if(new publicClass().checkInternetConnection(changeDetails.this)) {
+        if(new PublicClass().checkInternetConnection(ChangeDetails.this)) {
             new setProfile().execute("Profile", email);
         }
 
@@ -181,7 +180,7 @@ public class changeDetails extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.app_bar_save_btn){
-            if(new publicClass().checkInternetConnection(changeDetails.this)) {
+            if(new PublicClass().checkInternetConnection(ChangeDetails.this)) {
                 if(validationField()){
                     new changeProfileDetails().execute("ChangeDetails",email,fname.getText().toString(),lname.getText().toString(),contactNO.getText().toString(),address.getText().toString());
                 }
@@ -230,7 +229,7 @@ public class changeDetails extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(changeDetails.this);
+            pd = new ProgressDialog(ChangeDetails.this);
             pd.setTitle("Tring to change");
             pd.setMessage("Please wait...");
             pd.show();
@@ -247,7 +246,7 @@ public class changeDetails extends AppCompatActivity {
                 String contactNumber = voids[4];
                 String address = voids[5];
                 try {
-                    URL url = new URL(new publicClass().url_changeDetails);
+                    URL url = new URL(new PublicClass().url_changeDetails);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -295,13 +294,13 @@ public class changeDetails extends AppCompatActivity {
             pd.dismiss();
             if (result.equals("Successfully Change")) {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(changeDetails.this, PhofileActivity.class);
+                Intent i=new Intent(ChangeDetails.this, Phofile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);
             } else if(result.equals("Nothing to change")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                /*Intent i=new Intent(changeDetails.this, PhofileActivity.class);
+                /*Intent i=new Intent(ChangeDetails.this, Phofile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);*/
@@ -319,7 +318,7 @@ public class changeDetails extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(changeDetails.this);
+            pd = new ProgressDialog(ChangeDetails.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -332,7 +331,7 @@ public class changeDetails extends AppCompatActivity {
             if (method.equals("Profile")) { //        select data from database
                 String user_email = voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_profile);
+                    URL url = new URL(new PublicClass().url_profile);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);

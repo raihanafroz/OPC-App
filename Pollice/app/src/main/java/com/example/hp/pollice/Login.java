@@ -35,7 +35,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class loginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     public final String MyPREFERENCES = "Profile";
     public final String MyName= "name";
     public final String MyEmail = "email";
@@ -56,7 +56,7 @@ public class loginActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
 
-        if(new publicClass().checkInternetConnection(this)){
+        if(new PublicClass().checkInternetConnection(this)){
             checkUserData();
         }
 
@@ -121,7 +121,7 @@ public class loginActivity extends AppCompatActivity {
         // exit from app
         new AlertDialog.Builder(this).setIcon(null).setTitle("Warning!!").setMessage("Are you want to quit?").setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt){
-                loginActivity.this.finishAffinity();     //minimum sdk 16
+                Login.this.finishAffinity();     //minimum sdk 16
                 System.exit(0);
             }
         }).setNegativeButton("No", null).show();
@@ -130,7 +130,7 @@ public class loginActivity extends AppCompatActivity {
 
     boolean checkValidation(){
         boolean b = false;
-        if(new publicClass().checkInternetConnection(this)) {
+        if(new PublicClass().checkInternetConnection(this)) {
             if (user_email.getText().toString().isEmpty()) {
                 user_email.requestFocus();
             } else {
@@ -168,11 +168,11 @@ public class loginActivity extends AppCompatActivity {
     }
 
     public void gotoforgetPage(View view) {
-        startActivity(new Intent(getApplicationContext(), Forget_Password.class));
+        startActivity(new Intent(getApplicationContext(), ForgetPassword.class));
     }
 
     public void Signup(View view) {
-        startActivity(new Intent(getApplicationContext(), registerActivity.class));
+        startActivity(new Intent(getApplicationContext(), Register.class));
     }
 
 
@@ -184,7 +184,7 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(loginActivity.this);
+            pd = new ProgressDialog(Login.this);
             pd.setTitle("Fatching Data");
             pd.setMessage("Please wait...");
             pd.show();
@@ -202,7 +202,7 @@ public class loginActivity extends AppCompatActivity {
                 String user_password = voids[2];
 
                 try {
-                    URL url = new URL(new publicClass().url_login);
+                    URL url = new URL(new PublicClass().url_login);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -279,7 +279,7 @@ public class loginActivity extends AppCompatActivity {
                         if(jo.getString("type").equals("Admin")) {
                             i = new Intent(getApplicationContext(), AdminHome.class);
                         }else{
-                            i = new Intent(getApplicationContext(), UserHomeActivity.class);
+                            i = new Intent(getApplicationContext(), UserHome.class);
                         }
                             i.putExtra("Email", jo.getString("e-mail"));
                             i.putExtra("Password", jo.getString("password"));
@@ -324,7 +324,7 @@ public class loginActivity extends AppCompatActivity {
                     if(userType.equals("Admin")) {
                         i = new Intent(getApplicationContext(), AdminHome.class);
                     }else{
-                        i = new Intent(getApplicationContext(), UserHomeActivity.class);
+                        i = new Intent(getApplicationContext(), UserHome.class);
                     }
                     i.putExtra("Email",email);
                     i.putExtra("Password",pass);

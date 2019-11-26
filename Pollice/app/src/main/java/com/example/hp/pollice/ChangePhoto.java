@@ -52,7 +52,7 @@ public class ChangePhoto extends AppCompatActivity {
             state=extra.getString("From");
         }
 
-        if(new publicClass().checkInternetConnection(ChangePhoto.this)) {
+        if(new PublicClass().checkInternetConnection(ChangePhoto.this)) {
             new downloadImageFromServer(email).execute();
         }
 
@@ -85,7 +85,7 @@ public class ChangePhoto extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.app_bar_save_btn){
-            if(new publicClass().checkInternetConnection(ChangePhoto.this)) {
+            if(new PublicClass().checkInternetConnection(ChangePhoto.this)) {
                 if(bitmap == null){
                     Toast.makeText(getApplicationContext(), "No photo uploaded", Toast.LENGTH_LONG).show();
                 }else {
@@ -151,7 +151,7 @@ public class ChangePhoto extends AppCompatActivity {
             if (method == "changePhoto") {
                 String image=voids[1];
                 try {
-                    URL url = new URL(new publicClass().url_changePhoto);
+                    URL url = new URL(new PublicClass().url_changePhoto);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
@@ -199,7 +199,7 @@ public class ChangePhoto extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } else if (result.equals("File deleted")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getApplicationContext(), PhofileActivity.class);
+                Intent i=new Intent(getApplicationContext(), Phofile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);
@@ -219,7 +219,7 @@ public class ChangePhoto extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(Void... voids) {
-            String url=new publicClass().url_imgPath+imageName+".jpg";
+            String url=new PublicClass().url_imgPath+imageName+".jpg";
             try {
                 URLConnection connection=new URL(url).openConnection();
                 connection.setConnectTimeout(1000 * 60);
