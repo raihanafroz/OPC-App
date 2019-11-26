@@ -33,7 +33,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-public class Phofile extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     Context mContext;
     private TextView profileName,profileEmail,profileGender,profileAddress,profileContactNO,testCase;
@@ -59,7 +59,7 @@ public class Phofile extends AppCompatActivity {
             password=extra.getString("Password");
         }
         //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+password, Toast.LENGTH_SHORT ).show();
-        if(new PublicClass().checkInternetConnection(Phofile.this)) {
+        if(new PublicClass().checkInternetConnection(Profile.this)) {
             new setProfile().execute("Profile", email);
             new downloadImageFromServer(email).execute();
         }else{
@@ -117,7 +117,7 @@ public class Phofile extends AppCompatActivity {
 
     public void goto_complaine(View view) {
         if(new PublicClass().checkInternetConnection(this)) {
-            double loca[] = new PublicClass().getLocation(mContext, Phofile.this);
+            double loca[] = new PublicClass().getLocation(mContext, Profile.this);
             if (loca[0] != 0 && loca[1] != 0) {
                 Intent i = new Intent(getApplicationContext(), Complain.class);
                 i.putExtra("User_mail", email);
@@ -128,7 +128,7 @@ public class Phofile extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
             }
         }else{
-            new Alert_Builder().settingAlert(this, Phofile.this, false);
+            new AlertBuilder().settingAlert(this, Profile.this, false);
         }
     }
 
@@ -171,7 +171,7 @@ public class Phofile extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd = new ProgressDialog(Phofile.this);
+            pd = new ProgressDialog(Profile.this);
             pd.setTitle("Downloading Data");
             pd.setMessage("Please wait...");
             pd.show();

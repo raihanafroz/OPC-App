@@ -1,4 +1,4 @@
-package com.example.hp.pollice;
+package com.example.hp.pollice.Adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,13 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MyListAdapter  extends ArrayAdapter<String> {
+import com.example.hp.pollice.R;
+
+public class PoliceStationListAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final String[] maintitle;
     private final String[] sub_title;
     Integer image;
 
-    MyListAdapter(Activity context, String[] maintitle, String[] subtitle, Integer img) {
+    public PoliceStationListAdapter(Activity context, String[] maintitle, String[] subtitle, Integer img) {
         super(context, R.layout.list_view_row_item, maintitle);
         // TODO Auto-generated constructor stub
 

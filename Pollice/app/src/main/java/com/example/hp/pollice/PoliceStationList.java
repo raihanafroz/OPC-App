@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.hp.pollice.Adapter.PoliceStationListAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -170,7 +172,7 @@ public class PoliceStationList extends AppCompatActivity {
             listArray = stationName.toArray(listArray);
             listArray1 = phoneNo.toArray(listArray1);
 
-            MyListAdapter adapter=new MyListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
+            PoliceStationListAdapter adapter=new PoliceStationListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
             listview.setAdapter(adapter);
         }
     }
@@ -336,7 +338,7 @@ public class PoliceStationList extends AppCompatActivity {
             listArray = stationName.toArray(listArray);
             listArray1 = phoneNo.toArray(listArray1);
 
-            MyListAdapter adapter=new MyListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
+            PoliceStationListAdapter adapter=new PoliceStationListAdapter(PoliceStationList.this, listArray, listArray1, R.drawable.bangladesh_police_government);
             listview.setAdapter(adapter);
 
             SwipeMenuCreator creator = new SwipeMenuCreator() {

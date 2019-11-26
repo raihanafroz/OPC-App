@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.policeStation;
+package com.example.hp.pollice.AdminFragment.policeStation;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
-import com.example.hp.pollice.AdminStationListAdapter;
+import com.example.hp.pollice.Adapter.AdminStationListAdapter;
 import com.example.hp.pollice.PublicClass;
 import com.example.hp.pollice.R;
 

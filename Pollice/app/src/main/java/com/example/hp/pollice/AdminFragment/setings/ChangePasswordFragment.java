@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.setings;
+package com.example.hp.pollice.AdminFragment.setings;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;

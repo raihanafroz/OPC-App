@@ -1,4 +1,4 @@
-package com.example.hp.pollice;
+package com.example.hp.pollice.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hp.pollice.R;
 
 public class ComplainListAdapter extends ArrayAdapter<String> {
 

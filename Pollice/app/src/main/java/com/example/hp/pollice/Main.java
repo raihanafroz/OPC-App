@@ -30,11 +30,11 @@ public class Main extends AppCompatActivity {
             checkUserData(true);
         }else {
             vr.setText("No Internet");
-            //new Alert_Builder().settingAlert(this.getApplicationContext(),Main.this);
+            //new AlertBuilder().settingAlert(this.getApplicationContext(),Main.this);
             ///checkUserData(false);
             Toast.makeText(getApplicationContext(),"No Internet.",Toast.LENGTH_SHORT).show();
 
-            new Alert_Builder().settingAlert(this, Main.this,true);
+            new AlertBuilder().settingAlert(this, Main.this,true);
         }
     }
 
@@ -52,7 +52,7 @@ public class Main extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), Login.class);
             startActivity(i);
         }else {
-            new Alert_Builder().settingAlert(this, Main.this,false);
+            new AlertBuilder().settingAlert(this, Main.this,false);
         }
     }
 
@@ -61,7 +61,7 @@ public class Main extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), Register.class);
             startActivity(i);
         }else {
-            new Alert_Builder().settingAlert(this, Main.this, false);
+            new AlertBuilder().settingAlert(this, Main.this, false);
         }
     }
 
@@ -99,7 +99,7 @@ public class Main extends AppCompatActivity {
                     //String userName=cursor.getString(2);
                     Intent i;
                     if(userType) {
-                        i = new Intent(getApplicationContext(), Phofile.class);
+                        i = new Intent(getApplicationContext(), Profile.class);
                     }else{
                         i = new Intent(getApplicationContext(), PoliceStationList.class);
                         //i.putExtra("UserName",userName);

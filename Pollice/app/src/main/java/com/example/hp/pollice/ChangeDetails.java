@@ -294,13 +294,13 @@ public class ChangeDetails extends AppCompatActivity {
             pd.dismiss();
             if (result.equals("Successfully Change")) {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(ChangeDetails.this, Phofile.class);
+                Intent i=new Intent(ChangeDetails.this, Profile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);
             } else if(result.equals("Nothing to change")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                /*Intent i=new Intent(ChangeDetails.this, Phofile.class);
+                /*Intent i=new Intent(ChangeDetails.this, Profile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);*/

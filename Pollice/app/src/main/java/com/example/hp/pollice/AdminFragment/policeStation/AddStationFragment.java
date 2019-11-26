@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.policeStation;
+package com.example.hp.pollice.AdminFragment.policeStation;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;

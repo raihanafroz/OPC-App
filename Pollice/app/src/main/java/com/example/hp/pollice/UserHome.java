@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
+import com.example.hp.pollice.Adapter.UserGridAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,7 +79,7 @@ public class UserHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(new PublicClass().checkInternetConnection(UserHome.this)) {
-                    Intent i = new Intent(getApplicationContext(), Phofile.class);
+                    Intent i = new Intent(getApplicationContext(), Profile.class);
                     i.putExtra("Email", email);
                     i.putExtra("Password", password);
                     startActivity(i);
@@ -100,7 +102,7 @@ public class UserHome extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1], Toast.LENGTH_LONG).show();
                     }
                 }else{
-//                    new Alert_Builder().settingAlert(getApplicationContext(), UserHome.this, false);
+//                    new AlertBuilder().settingAlert(getApplicationContext(), UserHome.this, false);
                 }
             }
         });

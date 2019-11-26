@@ -42,7 +42,7 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity
-            android:name=".Phofile"
+            android:name=".Profile"
             android:theme="@style/Profile" />
         <activity android:name=".Complain" />
         <activity android:name=".ForgetPassword" />

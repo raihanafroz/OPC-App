@@ -1,7 +1,6 @@
-package com.example.hp.pollice;
+package com.example.hp.pollice.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AdminGridAdapter extends BaseAdapter {
+import com.example.hp.pollice.R;
+
+public class UserGridAdapter  extends BaseAdapter {
     private Context context;
     private final String[] cardTitle;
     private final String[] cardLabel;
 
-    public AdminGridAdapter(Context context, String[] title, String[] label) {
+    public UserGridAdapter(Context context, String[] title, String[] label) {
         this.context = context;
         this.cardTitle = title;
         this.cardLabel = label;
@@ -32,11 +33,11 @@ public class AdminGridAdapter extends BaseAdapter {
             gridView = new View(context);
 
             // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.admin_grid_view_item, null);
+            gridView = inflater.inflate(R.layout.user_grid_view_item, null);
 
             // set value into textview
-            TextView textView = (TextView) gridView.findViewById(R.id.grid_item_title);
-            TextView textLabel = (TextView) gridView.findViewById(R.id.grid_item_label);
+            TextView textView = (TextView) gridView.findViewById(R.id.user_grid_item_title);
+            TextView textLabel = (TextView) gridView.findViewById(R.id.user_grid_item_label);
             textView.setText(cardTitle[position]);
             textLabel.setText(cardLabel[position]);
 
@@ -44,22 +45,18 @@ public class AdminGridAdapter extends BaseAdapter {
 
             // set image based on selected text
             ImageView imageView = (ImageView) gridView
-                    .findViewById(R.id.grid_item_image);
+                    .findViewById(R.id.user_grid_item_image);
 
 //            String mobile = cardTitle[position];
 
-            if (cardTitle[position].equals("Users")) {
-                imageView.setImageResource(R.drawable.user_male);
-            } else if (cardTitle[position].equals("Police Station")) {
-                imageView.setImageResource(R.drawable.police_station);
-            } else if (cardTitle[position].equals("Immediate Complain")) {
+            if (cardTitle[position].equals("Immediate Complain")) {
                 imageView.setImageResource(R.drawable.complain1);
-            } else if (cardTitle[position].equals("Complain For Themself")) {
+            } else if (cardTitle[position].equals("Complain For Me")) {
                 imageView.setImageResource(R.drawable.complain2);
             } else if (cardTitle[position].equals("Complain For Other")) {
                 imageView.setImageResource(R.drawable.complain3);
             } else {
-                imageView.setImageResource(R.drawable.user_24dp);
+                imageView.setImageResource(R.drawable.total);
             }
 
         } else {

@@ -1,4 +1,4 @@
-package com.example.hp.pollice.ui.home;
+package com.example.hp.pollice.AdminFragment.home;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProviders;
 
-import com.example.hp.pollice.AdminGridAdapter;
+import com.example.hp.pollice.Adapter.AdminGridAdapter;
 import com.example.hp.pollice.R;
 import com.example.hp.pollice.PublicClass;
 

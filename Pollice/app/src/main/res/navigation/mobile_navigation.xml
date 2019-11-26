@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.hp.pollice.ui.home.HomeFragment"
+        android:name="com.example.hp.pollice.AdminFragment.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@xml/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.hp.pollice.ui.policeStation.AddStationFragment"
+        android:name="com.example.hp.pollice.AdminFragment.policeStation.AddStationFragment"
         android:label="@string/add_station"
         tools:layout="@xml/fragment_add_station" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.hp.pollice.ui.policeStation.ViewPoliceStationFragment"
+        android:name="com.example.hp.pollice.AdminFragment.policeStation.ViewPoliceStationFragment"
         android:label="@string/menu_view_station"
         tools:layout="@xml/fragment_view_station_list" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.example.hp.pollice.ui.tools.ToolsFragment"
+        android:name="com.example.hp.pollice.AdminFragment.tools.ToolsFragment"
         android:label="@string/menu_tools"
         tools:layout="@xml/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.hp.pollice.ui.setings.ChangePasswordFragment"
+        android:name="com.example.hp.pollice.AdminFragment.setings.ChangePasswordFragment"
         android:label="@string/admin_change_password"
         tools:layout="@xml/fragment_change_password" />
 
     <fragment
         android:id="@+id/nav_admin_logout"
-        android:name="com.example.hp.pollice.ui.policeStation.AdminLogoutFragment"
+        android:name="com.example.hp.pollice.AdminFragment.setings.AdminLogoutFragment"
         android:label="@string/admin_log_out"
         tools:layout="@xml/fragment_admin_logout" />
 </navigation>

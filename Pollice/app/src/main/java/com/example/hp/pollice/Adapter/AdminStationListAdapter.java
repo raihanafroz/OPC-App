@@ -1,4 +1,4 @@
-package com.example.hp.pollice;
+package com.example.hp.pollice.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hp.pollice.AdminEditPoliceStation;
+import com.example.hp.pollice.R;
 
 public class AdminStationListAdapter extends ArrayAdapter<String> {
 

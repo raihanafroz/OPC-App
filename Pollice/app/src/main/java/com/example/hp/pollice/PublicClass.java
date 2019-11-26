@@ -2,7 +2,6 @@ package com.example.hp.pollice;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -80,7 +79,7 @@ public class PublicClass {
             //we are connected to a network
             status = true;
         } else {
-            new Alert_Builder().noInternet(context).show();
+            new AlertBuilder().noInternet(context).show();
             status = false;
         }
         return status;

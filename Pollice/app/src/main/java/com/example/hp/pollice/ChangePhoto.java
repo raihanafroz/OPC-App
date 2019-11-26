@@ -199,7 +199,7 @@ public class ChangePhoto extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } else if (result.equals("File deleted")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getApplicationContext(), Phofile.class);
+                Intent i=new Intent(getApplicationContext(), Profile.class);
                 i.putExtra("Email",email);
                 i.putExtra("Password","");
                 startActivity(i);

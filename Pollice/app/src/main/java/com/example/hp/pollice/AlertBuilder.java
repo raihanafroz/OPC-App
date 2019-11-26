@@ -12,7 +12,7 @@ import android.view.Gravity;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Alert_Builder {
+public class AlertBuilder {
     void create_alart_1_btn(String ttl, String msg, Context context){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         TextView title = new TextView(context);
