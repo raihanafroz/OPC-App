@@ -20,7 +20,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminEditPoliceStation"></activity>
+        <activity android:name=".AdminViewComplainDetails"></activity>
+        <activity android:name=".AdminComplainForOthersView" />
+        <activity android:name=".AdminComplainView" />
+        <activity android:name=".AdminImmediateComplainView" />
+        <activity android:name=".Test" />
+        <activity android:name=".AdminEditPoliceStation" />
         <activity
             android:name=".UserHome"
             android:theme="@style/Profile" />
@@ -41,7 +46,7 @@
         <activity android:name=".Main" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" />
         <activity android:name=".Complain" />
         <activity android:name=".ForgetPassword" />
         <activity android:name=".ChangePassword" />

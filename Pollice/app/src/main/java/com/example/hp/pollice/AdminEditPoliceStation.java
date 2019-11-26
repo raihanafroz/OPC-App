@@ -317,7 +317,7 @@ public class AdminEditPoliceStation extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Update Successfull",Toast.LENGTH_LONG).show();
                 onBackPressed();
             } else {
-                Snackbar.make(new View(getApplicationContext()), result, Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(android.R.id.content), result, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         }

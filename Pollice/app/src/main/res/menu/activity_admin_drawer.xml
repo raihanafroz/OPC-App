@@ -16,10 +16,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_list_numbered_24dp"
             android:title="@string/menu_view_station" />
-<!--        <item-->
-<!--            android:id="@+id/nav_tools"-->
-<!--            android:icon="@drawable/ic_menu_manage"-->
-<!--            android:title="@string/menu_tools" />-->
+        <item
+            android:id="@+id/nav_complain"
+            android:icon="@drawable/complain_24dp"
+            android:title="@string/menu_complain" />
     </group>
 
     <item android:title="Manage">

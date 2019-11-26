@@ -25,7 +25,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:orientation="horizontal"
-                android:background="@drawable/sadow"
+                android:background="@drawable/shadow"
                 android:gravity="center|left"
                 android:id="@+id/complain_immediate">
                 <LinearLayout
@@ -61,7 +61,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:orientation="horizontal"
-                android:background="@drawable/sadow"
+                android:background="@drawable/shadow"
                 android:gravity="center|left"
                 android:id="@+id/complain_for_me">
                 <LinearLayout
@@ -97,7 +97,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:orientation="horizontal"
-                android:background="@drawable/sadow"
+                android:background="@drawable/shadow"
                 android:gravity="center|left"
                 android:id="@+id/complain_for_others">
                 <LinearLayout
@@ -133,7 +133,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:orientation="horizontal"
-                android:background="@drawable/sadow"
+                android:background="@drawable/shadow"
                 android:gravity="center|left"
                 android:id="@+id/complain_list">
                 <LinearLayout
@@ -168,7 +168,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:orientation="horizontal"
-                android:background="@drawable/sadow"
+                android:background="@drawable/shadow"
                 android:gravity="center|left"
                 android:id="@+id/complain_thana_list">
                 <LinearLayout

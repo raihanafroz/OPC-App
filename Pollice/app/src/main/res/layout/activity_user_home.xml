@@ -46,7 +46,7 @@
                     android:layout_margin="10dp"
                     android:padding="10dp"
                     android:orientation="horizontal"
-                    android:background="@drawable/sadow"
+                    android:background="@drawable/shadow"
                     android:gravity="center|left"
                     android:id="@+id/user_profile">
                     <LinearLayout
@@ -80,7 +80,7 @@
                     android:padding="10dp"
                     android:layout_margin="10dp"
                     android:orientation="horizontal"
-                    android:background="@drawable/sadow"
+                    android:background="@drawable/shadow"
                     android:gravity="center|left"
                     android:id="@+id/user_complain">
                     <LinearLayout

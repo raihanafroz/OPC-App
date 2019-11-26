@@ -41,6 +41,8 @@ public class PublicClass {
     public String url_add_station = "http://"+ip_address+"/New_folder/Pollice/server/insert_police_station.php";
     public String url_update_station = "http://"+ip_address+"/New_folder/Pollice/server/updatePoliceStation.php";
     public String url_userPage = "http://"+ip_address+"/New_folder/Pollice/server/dataCountUser.php";
+    public String url_adminImmediateComplain = "http://"+ip_address+"/New_folder/Pollice/server/complain1List.php";
+    public String url_adminUserList = "http://"+ip_address+"/New_folder/Pollice/server/userListForAdmin.php";
 
 
 

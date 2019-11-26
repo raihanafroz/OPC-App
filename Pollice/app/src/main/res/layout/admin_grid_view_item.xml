@@ -3,8 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:orientation="vertical"
     android:background="@drawable/border_5dp"
+    android:orientation="vertical"
     android:gravity="center|left">
     <TextView
         android:id="@+id/grid_item_title"
