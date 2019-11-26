@@ -35,7 +35,7 @@ public class ChangePassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change__password);
+        setContentView(R.layout.activity_change_password);
 
         // app bar configuer
         Toolbar toolbar = (Toolbar) findViewById(R.id.change_password_app_bar);

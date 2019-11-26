@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -58,6 +59,14 @@ public class Profile extends AppCompatActivity {
             email=extra.getString("Email");
             password=extra.getString("Password");
         }
+
+        // app bar configuer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.profile_app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+password, Toast.LENGTH_SHORT ).show();
         if(new PublicClass().checkInternetConnection(Profile.this)) {
             new setProfile().execute("Profile", email);
@@ -111,6 +120,8 @@ public class Profile extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_SUBJECT, sub);
             intent.putExtra(Intent.EXTRA_TEXT, body);
             startActivity(Intent.createChooser(intent,"Share With"));
+        }else if(item.getItemId() == android.R.id.home){
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

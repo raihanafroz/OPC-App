@@ -4,399 +4,201 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".Profile"
+    android:orientation="vertical">
+    <include
+        layout="@layout/default_app_bar"
+        android:id="@+id/profile_app_bar"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/layout">
-
-
-            <ImageView
-                android:id="@+id/header_cover_image"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/colorPrimary"
-                android:scaleType="centerCrop"/>
-
-            <ImageView
-                android:id="@+id/profilePic"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_below="@+id/header_cover_image"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="-130dp"
-                android:elevation="5dp"
-                android:background="@drawable/border_10dp"
-                android:padding="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/boy" />
+            android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/profile_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/header_cover_image"
-                android:elevation="4dp"
-                android:paddingBottom="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="100dp"
-                    android:text="Owner"
-                    android:id="@+id/profileName"
-                    android:fontFamily="@font/kurale"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textScaleX="1.2"
-                    android:textColor="@color/black"/>
-            </RelativeLayout>
-
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/profile_layout"
-                android:layout_margin="5dp"
-                android:layout_marginTop="5dp"
-                android:elevation="4dp"
-                android:orientation="vertical"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:paddingRight="5dp"
-                android:paddingLeft="5dp"
-                android:gravity="center">
-                <LinearLayout
+                android:id="@+id/layout">
+
+
+                <ImageView
+                    android:id="@+id/header_cover_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/header_cover_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-130dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/border_10dp"
+                    android:padding="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/boy" />
+
+                <RelativeLayout
+                    android:id="@+id/profile_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/sadow">
-                    <LinearLayout
+                    android:layout_below="@+id/header_cover_image"
+                    android:elevation="4dp"
+                    android:paddingBottom="24dp">
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:text="Owner"
+                        android:id="@+id/profileName"
+                        android:fontFamily="@font/kurale"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textScaleX="1.2"
+                        android:textColor="@color/black"/>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/profile_layout"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="5dp"
+                    android:elevation="4dp"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="5dp"
-                        android:gravity="left">
+                        android:gravity="center"
+                        android:background="@drawable/sadow">
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="2dp"
-                            android:gravity="center|left">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="E-mail: "
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
-                                android:padding="2dp"
-                                android:maxLines="1"/>
-                            <TextView
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:gravity="left">
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Email@email.com"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
+                                android:orientation="horizontal"
                                 android:padding="2dp"
-                                android:maxLines="1"
-                                android:id="@+id/profileEmail"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="2dp"
-                            android:gravity="center|left">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="Gender: "
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
-                                android:padding="2dp"
-                                android:maxLines="1"/>
-                            <TextView
+                                android:gravity="center|left">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="E-mail: "
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Email@email.com"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"
+                                    android:id="@+id/profileEmail"/>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Male/Female"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
+                                android:orientation="horizontal"
                                 android:padding="2dp"
-                                android:maxLines="1"
-                                android:id="@+id/profileGender"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="2dp"
-                            android:gravity="center|left">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="Address: "
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
-                                android:padding="2dp"
-                                android:maxLines="1"/>
-                            <TextView
+                                android:gravity="center|left">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Gender: "
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Male/Female"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"
+                                    android:id="@+id/profileGender"/>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Bangladesh"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
+                                android:orientation="horizontal"
                                 android:padding="2dp"
-                                android:maxLines="1"
-                                android:id="@+id/profileAddress"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="2dp"
-                            android:gravity="center|left">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="ContactNO: "
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
-                                android:padding="2dp"
-                                android:maxLines="1"/>
-                            <TextView
+                                android:gravity="center|left">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Address: "
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bangladesh"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"
+                                    android:id="@+id/profileAddress"/>
+                            </LinearLayout>
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="0123456789"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/kurale"
+                                android:orientation="horizontal"
                                 android:padding="2dp"
-                                android:maxLines="1"
-                                android:id="@+id/profileContactNO"/>
+                                android:gravity="center|left">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="ContactNO: "
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0123456789"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:fontFamily="@font/kurale"
+                                    android:padding="2dp"
+                                    android:maxLines="1"
+                                    android:id="@+id/profileContactNO"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:scrollbars="vertical">-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Profile"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textSize="60sp"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textScaleX="1.5"-->
-<!--                android:layout_marginBottom="5dp"/>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="3dp">-->
-<!--                <ImageView-->
-<!--                    android:layout_width="128dp"-->
-<!--                    android:layout_height="128dp"-->
-<!--                    android:src="@drawable/user_male"-->
-<!--                    android:id="@+id/profilePic" />-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Profile Name"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textSize="25sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:id="@+id/profileName"/>-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="5dp">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="E-mail: "-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="1"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Email@email.com"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:id="@+id/profileEmail"/>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:padding="5dp">-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="Gender: "-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp"-->
-<!--                android:padding="2dp"-->
-<!--                android:maxLines="1"/>-->
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Male/Female"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp"-->
-<!--                android:padding="2dp"-->
-<!--                android:maxLines="1"-->
-<!--                android:id="@+id/profileGender"/>-->
-<!--        </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="5dp">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="Address: "-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="1"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Bangladesh"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="2"-->
-<!--                    android:id="@+id/profileAddress"/>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="5dp">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="ContactNO: "-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="1"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="0123456789"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:padding="2dp"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:id="@+id/profileContactNO"/>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center">-->
-
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:onClick="goto_complaine"-->
-<!--                    android:text="Complain"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAllCaps="false"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textScaleX=".8"-->
-<!--                    android:textSize="30sp"-->
-<!--                    android:textStyle="bold" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="Exit"-->
-<!--                    android:textSize="30sp"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAllCaps="false"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textScaleX=".8"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:onClick="goto_exit"/>-->
-<!--                &lt;!&ndash;<Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="Complain"-->
-<!--                    android:textSize="30sp"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAllCaps="false"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textScaleX=".8"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:onClick="goto_complaine"/>&ndash;&gt;-->
-<!--            </LinearLayout>-->
-
-<!--            &lt;!&ndash;test case &ndash;&gt;-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/testCase"-->
-<!--                    />-->
-<!--            </LinearLayout>-->
-
-
-<!--        </LinearLayout>-->
-
-<!--    </ScrollView>-->
-
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>
