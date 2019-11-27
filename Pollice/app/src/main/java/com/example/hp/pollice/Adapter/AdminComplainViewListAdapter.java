@@ -13,17 +13,20 @@ import android.widget.TextView;
 import com.example.hp.pollice.AdminViewComplainDetails;
 import com.example.hp.pollice.R;
 
-public class AdminImmediateComplainListAdapter extends ArrayAdapter<String> {
+public class AdminComplainViewListAdapter extends ArrayAdapter<String> {
     private final Activity activity;
-    private final String[] listID, listUserName, listEmail, listLatitude, listLongitude, listTime, listStationName, listStationId, listAddress, listGender, listUserPhone;
+    private final String[] listID, listUserName, listEmail, listLatitude, listLongitude, listCause, listComplainAddress, listDescription, listTime, listStationName, listStationId, listAddress, listGender, listUserPhone;
 
-    public AdminImmediateComplainListAdapter(
+    public AdminComplainViewListAdapter(
         Activity activity,
         String[] listArrayID,
         String[] listArrayUserName,
         String[] listArrayEmail,
         String[] listArrayLatitude,
         String[] listArrayLongitude,
+        String[] listArrayCause,
+        String[] listArrayComplainAddress,
+        String[] listArrayDescription,
         String[] listArrayTime,
         String[] listArrayStationName,
         String[] listArrayStationId,
@@ -40,6 +43,9 @@ public class AdminImmediateComplainListAdapter extends ArrayAdapter<String> {
         this.listEmail = listArrayEmail;
         this.listLatitude = listArrayLatitude;
         this.listLongitude = listArrayLongitude;
+        this.listCause = listArrayCause;
+        this.listComplainAddress = listArrayComplainAddress;
+        this.listDescription = listArrayDescription;
         this.listTime = listArrayTime;
         this.listStationName = listArrayStationName;
         this.listStationId = listArrayStationId;
@@ -57,7 +63,8 @@ public class AdminImmediateComplainListAdapter extends ArrayAdapter<String> {
         TextView email = (TextView) rowView.findViewById(R.id.admin_immediate_complain_email);
         TextView station = (TextView) rowView.findViewById(R.id.admin_immediate_complain_station);
         TextView time = (TextView) rowView.findViewById(R.id.admin_immediate_complain_time);
-        final String complainDetails = "Time: "+listTime[position]+"\nLatitude: "+listLatitude[position]+"\nLongitude: "+listLongitude[position];
+        final String complainDetails = "Time: "+listTime[position]+"\nLatitude: "+listLatitude[position]+"\nLongitude: "+listLongitude[position]
+                +"\nCause: "+listCause[position]+"\nComplain Area: "+listComplainAddress[position]+"\nDescription: "+listDescription[position];
         if(position==0){
             ly.setBackgroundResource(R.drawable.table_header_border);
             ly.setPadding(5,5,5,5);
@@ -70,7 +77,7 @@ public class AdminImmediateComplainListAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(activity, AdminViewComplainDetails.class);
-                    i.putExtra("Title", "Immediate Complain");
+                    i.putExtra("Title", "Complain");
                     i.putExtra("UserName", "Name: "+listUserName[position]);
                     i.putExtra("UserPhone", "NO: "+listUserPhone[position]);
                     i.putExtra("UserGender", "Gender: "+listGender[position]);

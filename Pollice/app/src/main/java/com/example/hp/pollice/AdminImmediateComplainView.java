@@ -175,7 +175,7 @@ public class AdminImmediateComplainView extends AppCompatActivity {
             if (method.equals("View Immediate Complain")) {
                 String email = voids[1];
                 try {
-                    URL url = new URL(new PublicClass().url_adminImmediateComplain);
+                    URL url = new URL(new PublicClass().url_adminImmediateComplainList);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestMethod("POST");
                     huc.setDoOutput(true);
