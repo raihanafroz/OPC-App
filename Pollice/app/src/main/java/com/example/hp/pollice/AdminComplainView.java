@@ -35,9 +35,7 @@ import java.util.List;
 
 public class AdminComplainView extends AppCompatActivity {
 
-//    String[] listArrayCause,
-//    String[] listArrayComplainAddress,
-//    String[] listArrayDescription,
+
 
     public List<String> item = new ArrayList<String>();
     ListView lv;

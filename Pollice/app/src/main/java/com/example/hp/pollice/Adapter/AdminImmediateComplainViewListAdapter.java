@@ -13,11 +13,11 @@ import android.widget.TextView;
 import com.example.hp.pollice.AdminViewComplainDetails;
 import com.example.hp.pollice.R;
 
-public class AdminImmediateComplainListAdapter extends ArrayAdapter<String> {
+public class AdminImmediateComplainViewListAdapter extends ArrayAdapter<String> {
     private final Activity activity;
     private final String[] listID, listUserName, listEmail, listLatitude, listLongitude, listTime, listStationName, listStationId, listAddress, listGender, listUserPhone;
 
-    public AdminImmediateComplainListAdapter(
+    public AdminImmediateComplainViewListAdapter(
         Activity activity,
         String[] listArrayID,
         String[] listArrayUserName,

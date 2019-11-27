@@ -42,8 +42,9 @@ public class PublicClass {
     public String url_update_station = "http://"+ip_address+"/New_folder/Pollice/server/updatePoliceStation.php";
     public String url_userPage = "http://"+ip_address+"/New_folder/Pollice/server/dataCountUser.php";
     public String url_adminUserList = "http://"+ip_address+"/New_folder/Pollice/server/userListForAdmin.php";
-    public String url_adminImmediateComplainList = "http://"+ip_address+"/New_folder/Pollice/server/complain1List.php";
+    public String url_adminImmediateComplainList = "http://"+ip_address+"/New_folder/Pollice/server/complain_1_List.php";
     public String url_adminComplainList = "http://"+ip_address+"/New_folder/Pollice/server/complain_2_List.php";
+    public String url_adminComplainForOtherList = "http://"+ip_address+"/New_folder/Pollice/server/complain_3_List.php";
 
 
 

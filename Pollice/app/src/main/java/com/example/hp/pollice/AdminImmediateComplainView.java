@@ -8,12 +8,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.hp.pollice.Adapter.AdminImmediateComplainListAdapter;
+import com.example.hp.pollice.Adapter.AdminImmediateComplainViewListAdapter;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import org.json.JSONArray;
@@ -302,7 +301,7 @@ public class AdminImmediateComplainView extends AppCompatActivity {
         listArrayGender = listGender.toArray(listArrayGender);
         listArrayUserPhone = listUserPhone.toArray(listArrayUserPhone);
 
-        AdminImmediateComplainListAdapter adapter=new AdminImmediateComplainListAdapter(
+        AdminImmediateComplainViewListAdapter adapter=new AdminImmediateComplainViewListAdapter(
             AdminImmediateComplainView.this,
                 listArrayID,
                 listArrayUserName,
