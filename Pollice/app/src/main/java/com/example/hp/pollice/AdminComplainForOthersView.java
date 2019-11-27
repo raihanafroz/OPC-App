@@ -96,7 +96,6 @@ public class AdminComplainForOthersView extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            String url_profile = new PublicClass().url_thanaList;
             String method = voids[0];
             if (method.equals("User List")) {
                 try {

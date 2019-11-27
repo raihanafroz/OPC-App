@@ -85,7 +85,7 @@ public class AdminComplainForOtherViewListAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(activity, AdminViewComplainDetails.class);
-                    i.putExtra("Title", "Complain");
+                    i.putExtra("Title", "Complain for others");
                     i.putExtra("UserName", "Name: "+listUserName[position]);
                     i.putExtra("UserPhone", "NO: "+listUserPhone[position]);
                     i.putExtra("UserGender", "Gender: "+listGender[position]);

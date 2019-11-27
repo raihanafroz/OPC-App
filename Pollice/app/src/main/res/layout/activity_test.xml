@@ -4,144 +4,219 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Test">
-    <LinearLayout
+    tools:context=".Test"
+    android:orientation="vertical">
+    <include
+        layout="@layout/default_app_bar"
+        android:id="@+id/admin_user_details_app_bar"/>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:gravity="center">
-        <ScrollView
+        android:scrollbars="vertical">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
-            <LinearLayout
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/header_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop"/>
+
+            <ImageView
+                android:id="@+id/admin_user_details_pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/header_cover_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-130dp"
+                android:elevation="5dp"
+                android:background="@drawable/border_10dp"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/boy" />
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center|top"
-                android:layout_marginTop="10dp">
+                android:layout_below="@+id/header_cover_image"
+                android:elevation="4dp"
+                android:paddingBottom="20dp">
 
-<!--                immediate complain-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="Owner"
+                    android:id="@+id/admin_user_details_Name"
+                    android:fontFamily="@font/kurale"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textScaleX="1.2"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/profile_layout"
+                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:gravity="center">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/shadow">
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:padding="10dp"
-                        android:orientation="horizontal"
-                        android:background="@drawable/shadow1"
-                        android:gravity="center|left"
-                        android:id="@+id/admin_immediate_complain">
-                        <LinearLayout
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/complain1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:text="Immediate Complain"
-                            android:textSize="30sp"
-                            android:textScaleX="0.9"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
-                            android:textColor="@color/black"
-                            android:textAlignment="center"
-                            android:fontFamily="@font/kurale"/>
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:gravity="left">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="center|right">
-                            <LinearLayout
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/ic_arrow_right_24dp"/>
+                            android:padding="2dp"
+                            android:gravity="center|left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="E-mail: "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Email@email.com"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"
+                                android:id="@+id/admin_user_details__email"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp"
+                            android:gravity="center|left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Gender: "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Male/Female"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"
+                                android:id="@+id/admin_user_details_gender"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp"
+                            android:gravity="center|left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Address: "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bangladesh"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"
+                                android:id="@+id/admin_user_details_address"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp"
+                            android:gravity="center|left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="ContactNO: "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0123456789"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"
+                                android:id="@+id/admin_user_details_phone"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp"
+                            android:gravity="center|left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="ContactNO: "
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="2019-11-28 12:12:12"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/kurale"
+                                android:padding="2dp"
+                                android:maxLines="1"
+                                android:id="@+id/admin_user_details_time"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-
-
-<!--                complain-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:padding="10dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/shadow1"
-                    android:gravity="center|left"
-                    android:id="@+id/admin_complain">
-                    <LinearLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/complain2"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="Complain"
-                        android:textSize="30sp"
-                        android:textScaleX="0.9"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/kurale"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:orientation="horizontal"
-                        android:gravity="center|right">
-                        <LinearLayout
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/ic_arrow_right_24dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-
-<!--                complain for Others-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:padding="10dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/shadow1"
-                    android:gravity="center|left"
-                    android:id="@+id/admin_complain_for_other">
-                    <LinearLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/complain3"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="Complain for others"
-                        android:textSize="30sp"
-                        android:textScaleX="0.9"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/kurale"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:orientation="horizontal"
-                        android:gravity="center|right">
-                        <LinearLayout
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/ic_arrow_right_24dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

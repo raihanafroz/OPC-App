@@ -30,6 +30,12 @@
         tools:layout="@xml/fragment_complain" />
 
     <fragment
+        android:id="@+id/nav_userList"
+        android:name="com.example.hp.pollice.AdminFragment.userList.UserListFragment"
+        android:label="@string/menu_user_list"
+        tools:layout="@xml/fragment_user_list" />
+
+    <fragment
         android:id="@+id/nav_send"
         android:name="com.example.hp.pollice.AdminFragment.setings.ChangePasswordFragment"
         android:label="@string/admin_change_password"
