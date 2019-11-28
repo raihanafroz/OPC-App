@@ -24,7 +24,7 @@
         <activity android:name=".AdminComplainForOthersView" />
         <activity android:name=".AdminComplainView" />
         <activity android:name=".AdminImmediateComplainView" />
-        <activity android:name=".Test" />
+        <activity android:name=".AdminViewUserDetails" />
         <activity android:name=".AdminEditPoliceStation" />
         <activity
             android:name=".UserHome"

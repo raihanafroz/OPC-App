@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hp.pollice.R;
-import com.example.hp.pollice.Test;
+import com.example.hp.pollice.AdminViewUserDetails;
 
 
 public class AdminUserListViewListAdapter extends ArrayAdapter<String> {
@@ -62,7 +62,7 @@ public class AdminUserListViewListAdapter extends ArrayAdapter<String> {
             ly.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(activity, Test.class);
+                    Intent i = new Intent(activity, AdminViewUserDetails.class);
                     i.putExtra("Title", "User Details");
                     i.putExtra("UserID", listUserId[position]);
                     i.putExtra("UserName", listName[position]);

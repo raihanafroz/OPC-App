@@ -15,14 +15,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class Test extends AppCompatActivity {
+public class AdminViewUserDetails extends AppCompatActivity {
     String title, userId, userName, userEmail, userPhone, userAddress, userGender, userTime;
     TextView name, email, phone, address, gender, time;
     ImageView userPic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_admin_view_user_details);
 
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
@@ -57,7 +57,7 @@ public class Test extends AppCompatActivity {
         gender.setText(userGender);
         time.setText(userTime);
 
-        if(new PublicClass().checkInternetConnection(Test.this)) {
+        if(new PublicClass().checkInternetConnection(AdminViewUserDetails.this)) {
             new downloadImageFromServer(userEmail).execute();
         }
 
