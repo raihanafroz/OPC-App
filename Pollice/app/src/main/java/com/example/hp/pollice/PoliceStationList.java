@@ -87,7 +87,6 @@ public class PoliceStationList extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            String url_profile = "http://192.168.0.100/New_folder/Pollice/server/profile.php";
             String method = voids[0];
             if (method.equals("Station Details")) { //        select data from database
                 String user_email = voids[1];

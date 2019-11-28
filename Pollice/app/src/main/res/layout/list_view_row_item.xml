@@ -75,6 +75,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/call"
                     android:src="@drawable/phone"/>
             </LinearLayout>
             <LinearLayout
@@ -86,6 +87,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/message"
                     android:src="@drawable/message"/>
             </LinearLayout>
 

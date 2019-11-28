@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 import com.example.hp.pollice.PublicClass;
 import com.example.hp.pollice.R;
@@ -305,13 +306,12 @@ public class AddStationFragment extends Fragment {
             pd.dismiss();
 
             if (result.equals("Data added")) {
-                Snackbar.make(root, "Station Added", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Toast.makeText(root.getContext(), "Station Added", Toast.LENGTH_LONG).show();
                 clearField();
-            }
-            Snackbar.make(root, result, Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            } else {
+                Snackbar.make(root, result, Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
+            }
         }
 
     }
