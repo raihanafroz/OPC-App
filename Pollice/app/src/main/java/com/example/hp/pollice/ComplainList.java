@@ -152,6 +152,7 @@ public class ComplainList extends AppCompatActivity {
             ArrayList<String> cause=new ArrayList<>();
             ArrayList<String> time=new ArrayList<>();
             ArrayList<String> complainNo=new ArrayList<>();
+            ArrayList<String> complainStatus=new ArrayList<>();
             try{
                 JSONArray ja=new JSONArray(data);
                 JSONObject jo=null;
@@ -164,28 +165,31 @@ public class ComplainList extends AppCompatActivity {
                     cause.add(jo.getString("cause"));
                     time.add(jo.getString("time"));
                     complainNo.add(jo.getString("complainNo"));
+                    complainStatus.add(jo.getString("status"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            setListItem(serial,type, email, cause, time, complainNo);
+            setListItem(serial,type, email, cause, time, complainNo, complainStatus);
             //Toast.makeText(getApplicationContext(), String.valueOf(t),Toast.LENGTH_SHORT).show();
         }
-        public void setListItem(ArrayList<String> serial,ArrayList<String> type, ArrayList<String> email, ArrayList<String> cause, ArrayList<String> time, ArrayList<String> complainNo){
+        public void setListItem(ArrayList<String> serial,ArrayList<String> type, ArrayList<String> email, ArrayList<String> cause, ArrayList<String> time, ArrayList<String> complainNo, ArrayList<String> complainStatus){
             String listArray[] = new String[serial.size()];
             String listArray1[] = new String[type.size()];
             String listArray2[] = new String[email.size()];
             String listArray3[] = new String[cause.size()];
             String listArray4[] = new String[time.size()];
             String listArray5[] = new String[complainNo.size()];
+            String listArray6[] = new String[complainStatus.size()];
             listArray = serial.toArray(listArray);
             listArray1 = type.toArray(listArray1);
             listArray2 = email.toArray(listArray2);
             listArray3 = cause.toArray(listArray3);
             listArray4 = time.toArray(listArray4);
             listArray5 = complainNo.toArray(listArray5);
+            listArray6 = complainStatus.toArray(listArray6);
 
-            ComplainListAdapter adapter=new ComplainListAdapter(ComplainList.this, listArray, listArray1, listArray2, listArray3, listArray4, listArray5);
+            ComplainListAdapter adapter=new ComplainListAdapter(ComplainList.this, listArray, listArray1, listArray2, listArray3, listArray4, listArray5, listArray6);
             listview.setAdapter(adapter);
         }
     }

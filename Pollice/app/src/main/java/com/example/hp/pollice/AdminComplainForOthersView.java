@@ -249,6 +249,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         ArrayList<String> listAddress = new ArrayList<>();
         ArrayList<String> listGender = new ArrayList<>();
         ArrayList<String> listUserPhone = new ArrayList<>();
+        ArrayList<String> listComplainStatus = new ArrayList<>();
 
         listID.add("#ID");
         listOtherName.add("Victim Name");
@@ -267,6 +268,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         listAddress.add("Address");
         listGender.add("Gender");
         listUserPhone.add("User Phone No");
+        listComplainStatus.add("Status");
         try {
             JSONArray array = new JSONArray(data);
 
@@ -277,7 +279,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
                 listOtherName.add(object.getString("otherName"));
                 listOtherPhone.add(object.getString("otherPhone"));
                 listOtherAddress.add(object.getString("otherAddress"));
-                listUserName.add(object.getString("userName"));
+                listUserName.add(object.getString("first_name") + " " + object.getString("last_name"));
                 listEmail.add(object.getString("email"));
                 listLatitude.add(object.getString("latitude"));
                 listLongitude.add(object.getString("longitude"));
@@ -290,6 +292,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
                 listAddress.add(object.getString("address"));
                 listGender.add(object.getString("gender"));
                 listUserPhone.add(object.getString("contact_number"));
+                listComplainStatus.add(object.getString("status"));
             }
 
         } catch (
@@ -314,6 +317,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         String listArrayAddress[] = new String[listAddress.size()];
         String listArrayGender[] = new String[listGender.size()];
         String listArrayUserPhone[] = new String[listUserPhone.size()];
+        String listArrayComplainStatus[] = new String[listComplainStatus.size()];
 
         listArrayID = listID.toArray(listArrayID);
         listArrayOtherName = listOtherName.toArray(listArrayOtherName);
@@ -332,6 +336,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         listArrayAddress = listAddress.toArray(listArrayAddress);
         listArrayGender = listGender.toArray(listArrayGender);
         listArrayUserPhone = listUserPhone.toArray(listArrayUserPhone);
+        listArrayComplainStatus = listComplainStatus.toArray(listArrayComplainStatus);
 
         AdminComplainForOtherViewListAdapter adapter=new AdminComplainForOtherViewListAdapter(
                 AdminComplainForOthersView.this,
@@ -351,7 +356,8 @@ public class AdminComplainForOthersView extends AppCompatActivity {
                 listArrayStationId,
                 listArrayAddress,
                 listArrayGender,
-                listArrayUserPhone
+                listArrayUserPhone,
+                listArrayComplainStatus
         );
         lv.setAdapter(adapter);
     }

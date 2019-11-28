@@ -9,7 +9,7 @@
     $complain2;
     $complain3;
     
-    $sql_insert="SELECT `userName`, `email`, `latitude`, `longitude`, `usercomplainNo`, `thanaId`, `complainTime` FROM `tbl_complain1` WHERE `email`='$email';";
+    $sql_insert="SELECT `userName`, `email`, `latitude`, `longitude`, `usercomplainNo`, `thanaId`, `complainTime`, `status` FROM `tbl_complain1` WHERE `email`='$email';";
 	$query=mysqli_query($connect,$sql_insert);
 	if($query)
     {
@@ -24,7 +24,7 @@
 
 
 
-    $sql_insert1="SELECT `id`, `userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `thanaId`, `complainTime` FROM `tbl_complain2` WHERE `email`='$email';";
+    $sql_insert1="SELECT `id`, `userName`, `email`, `cause`, `description`, `currentAddress`, `usercomplainNo`, `thanaId`, `complainTime`, `status` FROM `tbl_complain2` WHERE `email`='$email';";
     $query1=mysqli_query($connect,$sql_insert1);
     if($query1)
     {
@@ -38,7 +38,7 @@
     }
 
 
-    $sql_insert2="SELECT `id`, `name`, `phone`, `address`, `cause`, `description`, `complainAddress`, `thanaId`, `email`, `userName`, `usercomplainNo`, `complainTime` FROM `tbl_complain3` WHERE `email`='$email';";
+    $sql_insert2="SELECT `id`, `name`, `phone`, `address`, `cause`, `description`, `complainAddress`, `thanaId`, `email`, `userName`, `usercomplainNo`, `complainTime`, `status` FROM `tbl_complain3` WHERE `email`='$email';";
     $query2=mysqli_query($connect,$sql_insert2);
     if($query2)
     {
@@ -59,6 +59,7 @@
             'cause' => '',
             'time' => $value['complainTime'],
             'complainNo' => $value['usercomplainNo'],
+            'status' => $value['status']
         ];
         $newArray[]=$rowItem;
     }
@@ -71,6 +72,7 @@
             'cause' => $value['cause'],
             'time' => $value['complainTime'],
             'complainNo' => $value['usercomplainNo'],
+            'status' => $value['status']
         ];
         $newArray[]=$rowItem1;
     }
@@ -83,6 +85,7 @@
             'cause' => $value['cause'],
             'time' => $value['complainTime'],
             'complainNo' => $value['usercomplainNo'],
+            'status' => $value['status']
         ];
         $newArray[]=$rowItem2;
     }

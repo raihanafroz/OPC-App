@@ -16,6 +16,12 @@
     <color name="alert_gradint_end">#D0F7FF</color>
     <color name="alert_gradint_center">#FFDEDE</color>
 
+    <color name="color_sent">#00BFFF</color>
+    <color name="color_done">#228B22</color>
+    <color name="color_working">#D88A00</color>
+    <color name="color_reject">#C90000</color>
+
+
 
     <color name="app_default">#2E3092</color>
     <color name="transparent">#00000000</color>

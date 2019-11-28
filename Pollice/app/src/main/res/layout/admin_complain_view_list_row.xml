@@ -25,19 +25,12 @@
                 android:textSize="12sp"
                 android:id="@+id/admin_complain_view_id"/>
             <TextView
-                android:layout_weight="3"
+                android:layout_weight="5.5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textScaleX="0.8"
                 android:textSize="12sp"
                 android:id="@+id/admin_complain_view_email"/>
-            <TextView
-                android:layout_weight="4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textScaleX="0.8"
-                android:textSize="12sp"
-                android:id="@+id/admin_complain_view_station"/>
             <TextView
                 android:layout_weight="3"
                 android:layout_width="0dp"
@@ -45,6 +38,13 @@
                 android:textScaleX="0.8"
                 android:textSize="12sp"
                 android:id="@+id/admin_complain_view_time"/>
+            <TextView
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textScaleX="0.8"
+                android:textSize="12sp"
+                android:id="@+id/admin_complain_view_status"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
