@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,15 +39,32 @@ public class ViewPoliceStationFragment extends Fragment {
 //    TableRow tr;
 //    TextView stationId, stationName, stationPhone, stationLatitude, stationLongitude;
     View root;
+    SwipeRefreshLayout swipeContainer;
 
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         root = inflater.inflate(R.xml.fragment_view_station_list, container, false);
-        lv = (ListView) root.findViewById(R.id.admin_station_listview);
 
-        new getStation().execute("View Station");
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) root.findViewById(R.id.refresh);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                if(new PublicClass().checkInternetConnection(root.getContext())) {
+                    new getStation().execute("View Station");
+                }
+            }
+        });
+        lv = (ListView) root.findViewById(R.id.admin_station_listview);
+        if(new PublicClass().checkInternetConnection(root.getContext())) {
+            new getStation().execute("View Station");
+        }
 
 
 //        init();
@@ -183,6 +201,8 @@ public class ViewPoliceStationFragment extends Fragment {
 
         AdminStationListAdapter adapter=new AdminStationListAdapter(getActivity(), listArray, listArray1, listArray2, listArray3, listArray4, listArray5);
         lv.setAdapter(adapter);
+        swipeContainer.setRefreshing(false);
+
     }
 
 }

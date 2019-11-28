@@ -3,6 +3,7 @@ package com.example.hp.pollice;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -40,10 +41,27 @@ public class AdminComplainView extends AppCompatActivity {
     public List<String> item = new ArrayList<String>();
     ListView lv;
     private MaterialSpinner spinner;
+    SwipeRefreshLayout swipeContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_complain_view);
+
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.refresh);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                if(new PublicClass().checkInternetConnection(AdminComplainView.this)) {
+                    new getDataOfUser().execute("User List");
+                    new getImmediateComplainData().execute("View Complain", "");
+                }
+            }
+        });
 
         lv = (ListView) findViewById(R.id.admin_complain_view_listview);
         spinner = (MaterialSpinner) findViewById(R.id.admin_complain_view_spinner);
@@ -350,5 +368,6 @@ public class AdminComplainView extends AppCompatActivity {
                 listArrayComplainID
         );
         lv.setAdapter(adapter);
+        swipeContainer.setRefreshing(false);
     }
 }

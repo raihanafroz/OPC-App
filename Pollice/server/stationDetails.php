@@ -5,7 +5,7 @@
 	
 	/*$email="raihanafroz9@gmail.com";*/
 	
-	$sql_insert="SELECT * FROM `tbl_station_thana` WHERE `phoneNo` != '';";
+	$sql_insert="SELECT * FROM `tbl_station_thana` ORDER BY `thanaName`;";
 	$query=mysqli_query($connect,$sql_insert);
 	if($query)
     {

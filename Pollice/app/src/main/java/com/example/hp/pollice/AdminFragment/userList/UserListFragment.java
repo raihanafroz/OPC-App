@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +39,26 @@ public class UserListFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     ListView lv;
     View root;
+    SwipeRefreshLayout swipeContainer;
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.xml.fragment_user_list, container, false);
+
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) root.findViewById(R.id.refresh);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                if(new PublicClass().checkInternetConnection(root.getContext())) {
+                    new getDataOfUser().execute("User List");
+                }
+            }
+        });
 
         lv = (ListView) root.findViewById(R.id.admin_user_view_listview);
 
@@ -171,6 +188,7 @@ public class UserListFragment extends Fragment {
 
         AdminUserListViewListAdapter adapter=new AdminUserListViewListAdapter(getActivity(), listArrayID, listArrayUserId, listArrayName, listArrayPhone, listArrayEmail, listArrayAddress, listArrayGender, listArrayTime);
         lv.setAdapter(adapter);
+        swipeContainer.setRefreshing(false);
     }
 
 

@@ -377,6 +377,10 @@ public class Register extends AppCompatActivity {
         return false;
     }
 
+    public void gotoLogin(View view) {
+        startActivity(new Intent(getApplicationContext(), Login.class));
+    }
+
     public class register_Android_to_Mysql extends AsyncTask<String, Void, String> {
 
         ProgressDialog pd;
