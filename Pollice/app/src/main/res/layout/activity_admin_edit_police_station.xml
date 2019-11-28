@@ -124,6 +124,18 @@
                 android:textColor="@color/text_white"
                 android:textStyle="bold"
                 android:layout_margin="4dp"/>
+            <Button
+                android:id="@+id/admin_edit_police_station_btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Delete"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:background="@drawable/btn_blue"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:layout_margin="4dp"/>
 
 
         </LinearLayout>

@@ -29,7 +29,7 @@
                 android:layout_height="150dp"
                 android:layout_below="@+id/header_cover_image"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="-130dp"
+                android:layout_marginTop="-100dp"
                 android:elevation="5dp"
                 android:background="@drawable/border_10dp"
                 android:padding="5dp"
@@ -215,6 +215,134 @@
                                 android:id="@+id/admin_user_details_time"/>
                         </LinearLayout>
                     </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shadow">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:gravity="center|left">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Immediately: "
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"
+                            android:id="@+id/admin_user_details_immediate_count"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:gravity="center|left">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Complain: "
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"
+                            android:id="@+id/admin_user_details_complain_count"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:gravity="center|left">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Other Complain: "
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"
+                            android:id="@+id/admin_user_details_complain_other_count"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:gravity="center|left">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Total Complain: "
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/kurale"
+                            android:padding="2dp"
+                            android:maxLines="1"
+                            android:id="@+id/admin_user_details_complain_total_count"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+                    <Button
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:text="Suspend"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:background="@drawable/btn_blue"
+                        android:textColor="@color/text_white"
+                        android:textStyle="bold"
+                        android:layout_margin="4dp"
+                        android:id="@+id/user_suspend"/>
+
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

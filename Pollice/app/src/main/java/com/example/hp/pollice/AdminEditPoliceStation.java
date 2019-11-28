@@ -33,7 +33,7 @@ import java.net.URLEncoder;
 public class AdminEditPoliceStation extends AppCompatActivity {
     private String stationId,stationName,stationPhone,stationLatitude,stationLongitude;
     private TextInputEditText inputName, inputPhone, inputLatitude, inputLongitude;
-    private Button save;
+    private Button save, delete;
     String namePattern = "[a-zA-Z\\s]+";
     Activity activity;
     @Override
@@ -70,6 +70,14 @@ public class AdminEditPoliceStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateStation();
+            }
+        });
+
+        delete = (Button) findViewById(R.id.admin_edit_police_station_btn_delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new deletePoliceStation().execute("Delete Station", stationId);
             }
         });
 
@@ -323,5 +331,76 @@ public class AdminEditPoliceStation extends AppCompatActivity {
         }
     }
 
+    public class deletePoliceStation extends AsyncTask<String, Void, String> {
 
+        ProgressDialog pd;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pd = new ProgressDialog(AdminEditPoliceStation.this);
+            pd.setTitle("Sending Data");
+            pd.setMessage("Please wait...");
+            pd.show();
+        }
+
+        @Override
+        protected String doInBackground(String... voids) {
+            String method = voids[0];
+            if (method == "Delete Station") {
+                String id = voids[1];
+                try {
+                    URL url = new URL(new PublicClass().url_adminDeletePoliceStation);
+                    HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+                    huc.setRequestMethod("POST");
+                    huc.setDoOutput(true);
+                    OutputStream os = huc.getOutputStream();
+                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                    String data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+                    bw.write(data);
+                    bw.flush();
+                    bw.close();
+                    os.close();
+
+                    InputStream is = huc.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
+                    String respose = "";
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        respose += line;
+                    }
+                    br.close();
+                    is.close();
+                    huc.disconnect();
+
+                    Log.i("json data sending", respose+" <<==>>");
+
+                    return respose;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    //return e.getMessage();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    //return e.getMessage();
+                }
+            }
+            return null;
+        }
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            pd.dismiss();
+            if(result.equals("Successfully")){
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }else{
+                Snackbar.make(findViewById(android.R.id.content), result, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }
+    }
 }
