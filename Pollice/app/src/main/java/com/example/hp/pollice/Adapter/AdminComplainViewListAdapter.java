@@ -16,7 +16,7 @@ import com.example.hp.pollice.R;
 
 public class AdminComplainViewListAdapter extends ArrayAdapter<String> {
     private final Activity activity;
-    private final String[] listID, listUserName, listEmail, listLatitude, listLongitude, listCause, listComplainAddress, listDescription, listTime, listStationName, listStationId, listAddress, listGender, listUserPhone, listComplainStatus;
+    private final String[] listID, listUserName, listEmail, listLatitude, listLongitude, listCause, listComplainAddress, listDescription, listTime, listStationName, listStationId, listAddress, listGender, listUserPhone, listComplainStatus, listComplainID;
 
     public AdminComplainViewListAdapter(
         Activity activity,
@@ -34,7 +34,8 @@ public class AdminComplainViewListAdapter extends ArrayAdapter<String> {
         String[] listArrayAddress,
         String[] listArrayGender,
         String[] listArrayUserPhone,
-        String[] listArrayComplainStatus) {
+        String[] listArrayComplainStatus,
+        String[] listArrayComplainID) {
 
         super(activity, R.layout.admin_immediate_complain_view_list_row, listArrayID);
         // TODO Auto-generated constructor stub
@@ -55,6 +56,7 @@ public class AdminComplainViewListAdapter extends ArrayAdapter<String> {
         this.listGender = listArrayGender;
         this.listUserPhone = listArrayUserPhone;
         this.listComplainStatus = listArrayComplainStatus;
+        this.listComplainID = listArrayComplainID;
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
@@ -81,6 +83,7 @@ public class AdminComplainViewListAdapter extends ArrayAdapter<String> {
                 public void onClick(View view) {
                     Intent i = new Intent(activity, AdminViewComplainDetails.class);
                     i.putExtra("Title", "Complain");
+                    i.putExtra("ComplainID", listComplainID[position]);
                     i.putExtra("UserName", "Name: "+listUserName[position]);
                     i.putExtra("UserPhone", "NO: "+listUserPhone[position]);
                     i.putExtra("UserGender", "Gender: "+listGender[position]);

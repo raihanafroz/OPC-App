@@ -64,21 +64,18 @@
                         android:textColor="@color/text_color"
                         android:fontFamily="@font/kurale"
                         android:id="@+id/admin_view_complain_details_user_gender"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|right"
-                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center|right"
+                            android:gravity="center|left"
                             android:textSize="16sp"
+                            android:paddingStart="20dp"
                             android:layout_margin="5dp"
                             android:textColor="@color/text_color"
                             android:fontFamily="@font/kurale"
                             android:id="@+id/admin_view_complain_details_user_phone"/>
-                    </LinearLayout>
+
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -89,6 +86,33 @@
                     android:textColor="@color/text_color"
                     android:fontFamily="@font/kurale"
                     android:id="@+id/admin_view_complain_details_station_name"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center|left"
+                    android:padding="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Complain Status"
+                        android:paddingTop="10dp"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/kurale"/>
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:id="@+id/status_spinner"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/kurale"
+                        android:gravity="center|left"
+                        app:ms_padding_left="12dp"/>
+                </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

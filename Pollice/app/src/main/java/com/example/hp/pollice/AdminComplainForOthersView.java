@@ -250,6 +250,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         ArrayList<String> listGender = new ArrayList<>();
         ArrayList<String> listUserPhone = new ArrayList<>();
         ArrayList<String> listComplainStatus = new ArrayList<>();
+        ArrayList<String> listComplainID = new ArrayList<>();
 
         listID.add("#ID");
         listOtherName.add("Victim Name");
@@ -269,6 +270,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         listGender.add("Gender");
         listUserPhone.add("User Phone No");
         listComplainStatus.add("Status");
+        listComplainID.add("ID");
         try {
             JSONArray array = new JSONArray(data);
 
@@ -293,6 +295,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
                 listGender.add(object.getString("gender"));
                 listUserPhone.add(object.getString("contact_number"));
                 listComplainStatus.add(object.getString("status"));
+                listComplainID.add(object.getString("id"));
             }
 
         } catch (
@@ -318,6 +321,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         String listArrayGender[] = new String[listGender.size()];
         String listArrayUserPhone[] = new String[listUserPhone.size()];
         String listArrayComplainStatus[] = new String[listComplainStatus.size()];
+        String listArrayComplainID[] = new String[listComplainID.size()];
 
         listArrayID = listID.toArray(listArrayID);
         listArrayOtherName = listOtherName.toArray(listArrayOtherName);
@@ -337,6 +341,7 @@ public class AdminComplainForOthersView extends AppCompatActivity {
         listArrayGender = listGender.toArray(listArrayGender);
         listArrayUserPhone = listUserPhone.toArray(listArrayUserPhone);
         listArrayComplainStatus = listComplainStatus.toArray(listArrayComplainStatus);
+        listArrayComplainID = listComplainID.toArray(listArrayComplainID);
 
         AdminComplainForOtherViewListAdapter adapter=new AdminComplainForOtherViewListAdapter(
                 AdminComplainForOthersView.this,
@@ -357,7 +362,8 @@ public class AdminComplainForOthersView extends AppCompatActivity {
                 listArrayAddress,
                 listArrayGender,
                 listArrayUserPhone,
-                listArrayComplainStatus
+                listArrayComplainStatus,
+                listArrayComplainID
         );
         lv.setAdapter(adapter);
     }

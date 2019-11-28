@@ -45,6 +45,7 @@ public class PublicClass {
     public String url_adminImmediateComplainList = "http://"+ip_address+"/New_folder/Pollice/server/complain_1_List.php";
     public String url_adminComplainList = "http://"+ip_address+"/New_folder/Pollice/server/complain_2_List.php";
     public String url_adminComplainForOtherList = "http://"+ip_address+"/New_folder/Pollice/server/complain_3_List.php";
+    public String url_adminChangeComplainStatus = "http://"+ip_address+"/New_folder/Pollice/server/changeComplainStatus.php";
 
 
 

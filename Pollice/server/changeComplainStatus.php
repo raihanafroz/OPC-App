@@ -9,11 +9,11 @@
     // $phoneNo="Dhaka";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email=$_POST['email'];
+        $id=$_POST['id'];
         $tableName=$_POST['table_name'];
         $status=$_POST['status'];
 
-        $sql_update = "UPDATE `$tableName` SET `status`= '$status' WHERE `email` = '$email';";
+        $sql_update = "UPDATE `$tableName` SET `status`= '$status' WHERE `id` = '$id';";
 
         $query=mysqli_query($connect, $sql_update);
         if($query)
