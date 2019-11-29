@@ -8,8 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -159,17 +164,32 @@ public class ForgetPassword extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-            if (result.equals("Forget User Found")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(getApplicationContext(), ChangePassword.class);
-                i.putExtra("Email", forgetPasswordEmail);
-                i.putExtra("ContactNumber", forgetPasswordContactNumber);
-                i.putExtra("From", "ForgetPass");
-                startActivity(i);
-            }
-            else if (result.equals("Forget User Not Found")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            Log.i("json res", result);
+            if (result.equals(null) || result.equals("") || result.isEmpty() || result.equals("null")){
+                Toast.makeText(getApplicationContext(), "User Not Found", Toast.LENGTH_SHORT).show();
+            } else{
+//                Toast.makeText(getApplicationContext(), null, Toast.LENGTH_SHORT).show();
+
+                try{
+                    JSONArray ja=new JSONArray(result);
+                    JSONObject jo=null;
+                    if(ja.length()==1){
+                        jo=ja.getJSONObject(0);
+                        try {
+                            Intent i=new Intent(getApplicationContext(), ChangePassword.class);
+                            i.putExtra("Email", jo.getString("e-mail"));
+                            i.putExtra("Id", jo.getString("id"));
+                            i.putExtra("From", "ForgetPass");
+                            startActivity(i);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ import java.net.URLEncoder;
 public class ChangePassword extends AppCompatActivity {
     TextInputEditText oldpass,newpass,confirmpass;
     TextInputLayout layer;
-    String email="",state="",contactNumber="";
+    String email="",state="",contactNumber="", userId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +51,17 @@ public class ChangePassword extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
+            userId=extra.getString("Id");
             state=extra.getString("From");
+            if (state.equals("ForgetPass")){
+                layer.setVisibility(View.INVISIBLE);
+                oldpass.setVisibility(View.INVISIBLE);
+            }else{
+                layer.setVisibility(View.VISIBLE);
+                oldpass.setVisibility(View.VISIBLE);
+            }
         }
-        if (state.equals("ForgetPass")){
-            layer.setVisibility(View.INVISIBLE);
-            oldpass.setVisibility(View.INVISIBLE);
-            contactNumber=extra.getString("ContactNumber");
-        }else{
-            layer.setVisibility(View.VISIBLE);
-            oldpass.setVisibility(View.VISIBLE);
-        }
+
 
 
 
@@ -164,7 +166,6 @@ public class ChangePassword extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.app_bar_save_btn){
-//            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
             SaveBtn();
         }else if(item.getItemId() == android.R.id.home){
             onBackPressed();
@@ -192,7 +193,7 @@ public class ChangePassword extends AppCompatActivity {
                     }else{
                         if(confirmpass.getText().toString().length() >=6){
                             if(confirmpass.getText().toString().equals(newpass.getText().toString())){
-                                new change_Android_to_Mysql().execute("ChangePassword", email, oldpass.getText().toString(), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+                                new change_Android_to_Mysql().execute("ChangePassword", email, oldpass.getText().toString(), new EncryptedText().encrypt(newpass.getText().toString()), userId);
                             }else{
                                 confirmpass.setError("New password not match");
                                 confirmpass.requestFocus();
@@ -222,7 +223,7 @@ public class ChangePassword extends AppCompatActivity {
                             } else {
                                 if (confirmpass.getText().toString().length() >= 6) {
                                     if (confirmpass.getText().toString().equals(newpass.getText().toString())) {
-                                        new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldpass.getText().toString()), new EncryptedText().encrypt(newpass.getText().toString()), contactNumber);
+                                        new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldpass.getText().toString()), new EncryptedText().encrypt(newpass.getText().toString()), userId);
                                     } else {
                                         confirmpass.setError("New password not match");
                                         confirmpass.requestFocus();
@@ -252,7 +253,7 @@ public class ChangePassword extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(ChangePassword.this);
-            pd.setTitle("Tring to change");
+            pd.setTitle("Trying to change");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -265,7 +266,7 @@ public class ChangePassword extends AppCompatActivity {
                 String email = voids[1];
                 String oldPass = voids[2];
                 String newPass = voids[3];
-                String contactNumber = voids[4];
+                String id = voids[4];
                 try {
                     URL url = new URL(new PublicClass().url_changePassword);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -277,7 +278,8 @@ public class ChangePassword extends AppCompatActivity {
                     String data = URLEncoder.encode("user_email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" +
                             URLEncoder.encode("user_oldPass", "UTF-8") + "=" + URLEncoder.encode(oldPass, "UTF-8") + "&" +
                             URLEncoder.encode("user_newPass", "UTF-8") + "=" + URLEncoder.encode(newPass, "UTF-8") + "&" +
-                            URLEncoder.encode("user_contactNumber", "UTF-8") + "=" + URLEncoder.encode(contactNumber, "UTF-8");
+                            URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
+                    Log.i("json data", data);
                     bw.write(data);
                     bw.flush();
                     bw.close();
@@ -312,15 +314,19 @@ public class ChangePassword extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
+            Log.d("json res", result);
             if (result.equals("Successfully")) {
-                Toast.makeText(getApplicationContext(), "Password Changed"+result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Password Change "+result, Toast.LENGTH_SHORT).show();
                 new SQLiteDatabaseHelper(getApplicationContext()).drop();
                 startActivity(new Intent(getApplicationContext(), Login.class));
-            } else {
+            } else if(result.equals("Same")) {
+                Toast.makeText(getApplicationContext(), "Old Password is match with New Password", Toast.LENGTH_SHORT).show();
+            }else {
                 oldpass.setError("Old Password Not Match");
                 oldpass.requestFocus();
-                Toast.makeText(getApplicationContext(), result+"\nPassword not change", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), result+"\nPassword not change", Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 }

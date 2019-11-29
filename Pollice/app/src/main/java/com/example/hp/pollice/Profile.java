@@ -39,7 +39,7 @@ public class Profile extends AppCompatActivity {
     Context mContext;
     private TextView profileName,profileEmail,profileGender,profileAddress,profileContactNO,testCase;
     private ImageView profilePic;
-    private String email,password;
+    private String email,userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class Profile extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
 
         // app bar configuer
@@ -67,7 +67,7 @@ public class Profile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+password, Toast.LENGTH_SHORT ).show();
+        //Toast.makeText(getApplicationContext(), "E-mail: "+email+"\nPass: "+userId, Toast.LENGTH_SHORT ).show();
         if(new PublicClass().checkInternetConnection(Profile.this)) {
             new setProfile().execute("Profile", email);
             new downloadImageFromServer(email).execute();
@@ -80,7 +80,7 @@ public class Profile extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), UserHome.class);
         i.putExtra("Email", email);
-        i.putExtra("Password", password);
+        i.putExtra("Id", userId);
         startActivity(i);
     }
 
@@ -101,11 +101,13 @@ public class Profile extends AppCompatActivity {
         }else if (item.getItemId()==R.id.profileEditPassMenu){
             Intent i =new Intent(getApplicationContext(), ChangePassword.class);
             i.putExtra("Email", email);
+            i.putExtra("Id", userId);
             i.putExtra("From", "HomeActivity");
             startActivity(i);
         }else if (item.getItemId()==R.id.profileDetailsMenu){
             Intent i =new Intent(getApplicationContext(), ChangeDetails.class);
             i.putExtra("Email", email);
+            i.putExtra("Id", userId);
             i.putExtra("From", "HomeActivity");
             startActivity(i);
         }else if (item.getItemId()==R.id.profileSignOut){
@@ -132,7 +134,7 @@ public class Profile extends AppCompatActivity {
             if (loca[0] != 0 && loca[1] != 0) {
                 Intent i = new Intent(getApplicationContext(), Complain.class);
                 i.putExtra("User_mail", email);
-                i.putExtra("Password", password);
+                i.putExtra("Id", userId);
                 i.putExtra("Latitude", loca[0]);
                 i.putExtra("Longitude", loca[1]);
                 startActivity(i);
@@ -165,16 +167,16 @@ public class Profile extends AppCompatActivity {
         return (deg * Math.PI / 180.0);
     }
 
-    public void ChangePassBtn(View view) {
-        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
-        i.putExtra("Email", email);
-        i.putExtra("From", "");
-        startActivity(i);
-    }
-
-    public void goto_exit(View view) {
-        moveTaskToBack(true);
-    }
+//    public void ChangePassBtn(View view) {
+//        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
+//        i.putExtra("Email", email);
+//        i.putExtra("From", "");
+//        startActivity(i);
+//    }
+//
+//    public void goto_exit(View view) {
+//        moveTaskToBack(true);
+//    }
 
     private class setProfile extends AsyncTask<String, Void, String> {
         ProgressDialog pd;

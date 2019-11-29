@@ -41,7 +41,7 @@ public class ChangePhoto extends AppCompatActivity {
     private Button uploaBtn;
     private ImageView changePhotoImageview, oldPhoto;
     private Bitmap bitmap;
-    private String email="",state="";
+    private String email="",state="", userId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,7 @@ public class ChangePhoto extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
+            userId=extra.getString("Id");
             state=extra.getString("From");
         }
 
@@ -198,10 +199,10 @@ public class ChangePhoto extends AppCompatActivity {
             if(result.equals(null)){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } else if (result.equals("File deleted")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Photo Change Success", Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(getApplicationContext(), Profile.class);
                 i.putExtra("Email",email);
-                i.putExtra("Password","");
+                i.putExtra("Id",userId);
                 startActivity(i);
             } else {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();

@@ -37,7 +37,7 @@ public class UserHome extends AppCompatActivity {
 
     GridView gridView;
     String email = "";
-    String password = "";
+    String userId = "";
     SwipeRefreshLayout swipeContainer;
     static final String[] dataType = new String[] {"Immediate Complain", "Complain For Me", "Complain For Other", "Total Complain"};
     @Override
@@ -63,7 +63,7 @@ public class UserHome extends AppCompatActivity {
         final Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
         if(new PublicClass().checkInternetConnection(UserHome.this)) {
             new gettingData().execute("UsaePage");
@@ -81,7 +81,7 @@ public class UserHome extends AppCompatActivity {
                 if(new PublicClass().checkInternetConnection(UserHome.this)) {
                     Intent i = new Intent(getApplicationContext(), Profile.class);
                     i.putExtra("Email", email);
-                    i.putExtra("Password", password);
+                    i.putExtra("Id", userId);
                     startActivity(i);
                 }
             }
@@ -95,7 +95,7 @@ public class UserHome extends AppCompatActivity {
                     if (loca[0] != 0 && loca[1] != 0) {
                         Intent i = new Intent(getApplicationContext(), Complain.class);
                         i.putExtra("User_mail", email);
-                        i.putExtra("Password", password);
+                        i.putExtra("Id", userId);
                         i.putExtra("Latitude", loca[0]);
                         i.putExtra("Longitude", loca[1]);
                         startActivity(i);
@@ -119,8 +119,6 @@ public class UserHome extends AppCompatActivity {
             }
         }).setNegativeButton("No", null).show();
     }
-
-
 
     public class gettingData extends AsyncTask<String, Void, String> {
 

@@ -32,8 +32,8 @@ import java.net.URLEncoder;
 
 public class ChangeDetails extends AppCompatActivity {
     TextInputEditText fname,lname,contactNO,address;
-    String email="",state="";
-    String namePattern = "[a-zA-Z]+";
+    String email="",state="", userId="";
+    String namePattern = "[a-zA-Z\\s]+";
     String addressPattern = "^[#.0-9a-zA-Z\\s,-]+$";
 
     @Override
@@ -43,6 +43,7 @@ public class ChangeDetails extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
+            userId=extra.getString("Id");
             state=extra.getString("From");
         }
 
@@ -182,7 +183,7 @@ public class ChangeDetails extends AppCompatActivity {
         if (item.getItemId()==R.id.app_bar_save_btn){
             if(new PublicClass().checkInternetConnection(ChangeDetails.this)) {
                 if(validationField()){
-                    new changeProfileDetails().execute("ChangeDetails",email,fname.getText().toString(),lname.getText().toString(),contactNO.getText().toString(),address.getText().toString());
+                    new changeProfileDetails().execute("ChangeDetails",userId,fname.getText().toString(),lname.getText().toString(),contactNO.getText().toString(),address.getText().toString());
                 }
             }
         }else if(item.getItemId() == android.R.id.home){
@@ -230,17 +231,16 @@ public class ChangeDetails extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(ChangeDetails.this);
-            pd.setTitle("Tring to change");
+            pd.setTitle("Trying to change");
             pd.setMessage("Please wait...");
             pd.show();
         }
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_changePassword = "http://192.168.0.100/New_folder/Pollice/server/changePassword.php";
             String method = voids[0];
             if (method.equals("ChangeDetails")) { //     Change Details
-                String email = voids[1];
+                String id = voids[1];
                 String fname = voids[2];
                 String lname = voids[3];
                 String contactNumber = voids[4];
@@ -253,7 +253,7 @@ public class ChangeDetails extends AppCompatActivity {
                     huc.setDoInput(true);
                     OutputStream os = huc.getOutputStream();
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String data = URLEncoder.encode("user_email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" +
+                    String data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8") + "&" +
                             URLEncoder.encode("user_firstName", "UTF-8") + "=" + URLEncoder.encode(fname, "UTF-8") + "&" +
                             URLEncoder.encode("user_lastName", "UTF-8") + "=" + URLEncoder.encode(lname, "UTF-8") + "&" +
                             URLEncoder.encode("user_contactNumber", "UTF-8") + "=" + URLEncoder.encode(contactNumber, "UTF-8") + "&" +
@@ -296,7 +296,7 @@ public class ChangeDetails extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(ChangeDetails.this, Profile.class);
                 i.putExtra("Email",email);
-                i.putExtra("Password","");
+                i.putExtra("Id",userId);
                 startActivity(i);
             } else if(result.equals("Nothing to change")){
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();

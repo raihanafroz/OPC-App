@@ -306,7 +306,7 @@ public class AddStationFragment extends Fragment {
             pd.dismiss();
 
             if (result.equals("Data added")) {
-                Toast.makeText(root.getContext(), "Station Added", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "Police Station Added", Toast.LENGTH_LONG).show();
                 clearField();
             } else {
                 Snackbar.make(root, result, Snackbar.LENGTH_LONG).setAction("Action", null).show();
