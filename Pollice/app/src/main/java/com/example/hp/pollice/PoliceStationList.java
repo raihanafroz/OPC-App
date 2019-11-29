@@ -30,7 +30,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class PoliceStationList extends AppCompatActivity {
-    private String email,password;
+    private String email,userId;
     private ListView listview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class PoliceStationList extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
 
         if(new PublicClass().checkInternetConnection(PoliceStationList.this)) {
@@ -61,7 +61,7 @@ public class PoliceStationList extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
-        i.putExtra("Password",password);
+        i.putExtra("Id",userId);
         startActivity(i);
     }
 
@@ -215,7 +215,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class PoliceStationList extends AppCompatActivity {
-    private String email,password;
+    private String email,userId;
     private TextView txtEmail;
     private SwipeMenuListView listview;
     @Override
@@ -229,7 +229,7 @@ public class PoliceStationList extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("Email");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
         txtEmail.setText("E-mail: "+email);
         //Toast.makeText(getApplicationContext(),email,Toast.LENGTH_SHORT).show();

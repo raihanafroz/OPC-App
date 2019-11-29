@@ -44,7 +44,7 @@ import org.json.JSONObject;
 public class ComplainForMe extends AppCompatActivity {
     public List<String> item = new ArrayList<String>();
     private String email="";
-    private String password="";
+    private String userId="";
     private TextInputEditText currentAddress,cause;
     private EditText description;
     private MaterialSpinner spinner;
@@ -56,7 +56,7 @@ public class ComplainForMe extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("User_mail");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
 
         if(new PublicClass().checkInternetConnection(ComplainForMe.this)) {
@@ -166,7 +166,7 @@ public class ComplainForMe extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
-        i.putExtra("Password",password);
+        i.putExtra("Id",userId);
         startActivity(i);
     }
 
@@ -404,7 +404,7 @@ public class ComplainForMe extends AppCompatActivity {
             Log.i("json result", ">"+result+"<");
 
             if (result.equals("Successfully Complained\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t")){
-//                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Successfully Sent", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             } else {
                 Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();

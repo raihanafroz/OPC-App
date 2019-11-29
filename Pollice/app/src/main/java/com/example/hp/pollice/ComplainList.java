@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class ComplainList extends AppCompatActivity {
     private String email;
-    private String password;
+    private String userId;
     private ListView listview;
 
     @Override
@@ -45,7 +45,7 @@ public class ComplainList extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("User_mail");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
         }
 
         if(new PublicClass().checkInternetConnection(ComplainList.this)) {
@@ -63,7 +63,7 @@ public class ComplainList extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), Complain.class);
         i.putExtra("User_mail", email);
-        i.putExtra("Password",password);
+        i.putExtra("Id",userId);
         startActivity(i);
     }
 

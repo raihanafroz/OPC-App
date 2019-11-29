@@ -37,7 +37,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class Complain extends AppCompatActivity {
-    private String email,password;
+    private String email,userId;
     private LinearLayout immediateComplain, complainForOther, complainForMe, policeStationList, complainList;
     private double lat,lon, loca[];
     private Button btnSend;
@@ -49,7 +49,7 @@ public class Complain extends AppCompatActivity {
         Bundle extra=getIntent().getExtras();
         if(extra!=null){
             email=extra.getString("User_mail");
-            password=extra.getString("Password");
+            userId=extra.getString("Id");
             lat=extra.getDouble("Latitude");
             lon=extra.getDouble("Longitude");
         }
@@ -86,7 +86,7 @@ public class Complain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), ComplainForMe.class);
                 i.putExtra("User_mail", email);
-                i.putExtra("Password",password);
+                i.putExtra("Id",userId);
                 startActivity(i);
             }
         });
@@ -96,7 +96,7 @@ public class Complain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), ComplainForOther.class);
                 i.putExtra("User_mail", email);
-                i.putExtra("Password",password);
+                i.putExtra("Id",userId);
                 startActivity(i);
             }
         });
@@ -106,7 +106,7 @@ public class Complain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), ComplainList.class);
                 i.putExtra("User_mail", email);
-                i.putExtra("Password",password);
+                i.putExtra("Id",userId);
                 startActivity(i);
             }
         });
@@ -116,7 +116,7 @@ public class Complain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PoliceStationList.class);
                 i.putExtra("Email",email);
-                i.putExtra("Password",password);
+                i.putExtra("Id",userId);
                 startActivity(i);
             }
         });
@@ -126,7 +126,7 @@ public class Complain extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), UserHome.class);
         i.putExtra("Email", email);
-        i.putExtra("Password", password);
+        i.putExtra("Id", userId);
         startActivity(i);
     }
 
@@ -135,7 +135,7 @@ public class Complain extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home){
             Intent i = new Intent(getApplicationContext(), UserHome.class);
             i.putExtra("Email", email);
-            i.putExtra("Password", password);
+            i.putExtra("Id", userId);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
