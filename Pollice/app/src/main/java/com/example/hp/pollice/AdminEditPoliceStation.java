@@ -77,7 +77,9 @@ public class AdminEditPoliceStation extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new deletePoliceStation().execute("Delete Station", stationId);
+                if(new PublicClass().checkInternetConnection(AdminEditPoliceStation.this)) {
+                    new deletePoliceStation().execute("Delete Station", stationId);
+                }
             }
         });
 

@@ -83,8 +83,10 @@ public class AdminHome extends AppCompatActivity {
         navHeaderEmail = (TextView) navHeader.findViewById(R.id.nav_header_email);
         navHeaderEmail.setText(email);
 
-        new setProfile().execute("Profile", email);
-        new downloadImageFromServer(email).execute();
+        if(new PublicClass().checkInternetConnection(AdminHome.this)) {
+            new setProfile().execute("Profile", email);
+            new downloadImageFromServer(email).execute();
+        }
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -95,16 +97,6 @@ public class AdminHome extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        // app bar configuer
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.admin_app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Admin");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
-//        gridView = (GridView) findViewById(R.id.gridview);
-
-//        new gettingData().execute("adminPage");
 
     }
 
@@ -129,24 +121,6 @@ public class AdminHome extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.profileEditPassMenu){
-            Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
-//            SaveBtn();
-        }else if (item.getItemId()==R.id.nav_admin_logout){
-            new SQLiteDatabaseHelper(getApplicationContext()).drop();
-            Intent i =new Intent(getApplicationContext(), Login.class);
-            startActivity(i);
-        }
-//        else if(item.getItemId() == android.R.id.home){
-//
-//            Toast.makeText(getApplicationContext(), "savedvwefsdcvsa fa fadsfsf afa fafafa ", Toast.LENGTH_SHORT).show();
-//        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
     @Override

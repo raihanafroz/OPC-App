@@ -13,6 +13,7 @@
 	$query=mysqli_query($connect,$sql_insert);
 	if($query)
     {
+        $flag = [];
         while($row=mysqli_fetch_array($query))
         {
             $flag[]=$row;
@@ -28,6 +29,7 @@
     $query1=mysqli_query($connect,$sql_insert1);
     if($query1)
     {
+        $flag1 = [];
         while($row1=mysqli_fetch_array($query1))
         {
             $flag1[]=$row1;
@@ -42,6 +44,7 @@
     $query2=mysqli_query($connect,$sql_insert2);
     if($query2)
     {
+        $flag2 = [];
         while($row2=mysqli_fetch_array($query2))
         {
             $flag2[]=$row2;

@@ -77,7 +77,9 @@ public class Complain extends AppCompatActivity {
             public void onClick(View view) {
                 loca=new PublicClass().getLocation(getApplicationContext(), Complain.this);
 //                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
-                new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new PublicClass().getCurrentDate());
+                if(new PublicClass().checkInternetConnection(Complain.this)) {
+                    new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new PublicClass().getCurrentDate());
+                }
             }
         });
 

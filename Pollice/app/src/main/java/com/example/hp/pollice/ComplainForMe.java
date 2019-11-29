@@ -139,7 +139,6 @@ public class ComplainForMe extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                Toast.makeText(getApplicationContext(), "i="+i+" i2="+i1+" i2="+i2, Toast.LENGTH_LONG).show();
                 if(i== 0 && i1 ==0 && i2 ==0){
                     description.setError(null);
                 }
@@ -150,16 +149,6 @@ public class ComplainForMe extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) { }
         });
-
-
-//        ArrayAdapter<String>adapter = new ArrayAdapter<String>(ComplainForMe.this,
-//                android.R.layout.simple_spinner_item,city);
-//
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(this);
-
-//        GetJsonString();
     }
 
     @Override
@@ -418,24 +407,24 @@ public class ComplainForMe extends AppCompatActivity {
 
 
 
-
-    String loca="";
-
-    private class GeocoderHandler extends Handler {
-        @Override
-        public void handleMessage(Message message) {
-            String locationAddress;
-            switch (message.what) {
-                case 1:
-                    Bundle bundle = message.getData();
-                    locationAddress = bundle.getString("address");
-                    break;
-                default:
-                    locationAddress = null;
-            }
-            //latLongTV.setText(locationAddress);
-            loca=locationAddress;
-        }
-    }
+//
+//    String loca="";
+//
+//    private class GeocoderHandler extends Handler {
+//        @Override
+//        public void handleMessage(Message message) {
+//            String locationAddress;
+//            switch (message.what) {
+//                case 1:
+//                    Bundle bundle = message.getData();
+//                    locationAddress = bundle.getString("address");
+//                    break;
+//                default:
+//                    locationAddress = null;
+//            }
+//            //latLongTV.setText(locationAddress);
+//            loca=locationAddress;
+//        }
+//    }
 
 }

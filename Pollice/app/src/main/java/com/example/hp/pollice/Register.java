@@ -304,10 +304,11 @@ public class Register extends AppCompatActivity {
                     bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_female);
                 }
             }
-
-            new register_Android_to_Mysql().execute("register", firstName.getText().toString(), lastName.getText().toString(),
-                    email.getText().toString(), address.getText().toString(), contactNumber.getText().toString(),
-                    gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new PublicClass().getCurrentDate());
+            if(new PublicClass().checkInternetConnection(Register.this)) {
+                new register_Android_to_Mysql().execute("register", firstName.getText().toString(), lastName.getText().toString(),
+                        email.getText().toString(), address.getText().toString(), contactNumber.getText().toString(),
+                        gender, new EncryptedText().encrypt(password.getText().toString()), bitmap_to_string(bitmap), new PublicClass().getCurrentDate());
+            }
         }
     }
 

@@ -167,16 +167,6 @@ public class Profile extends AppCompatActivity {
         return (deg * Math.PI / 180.0);
     }
 
-//    public void ChangePassBtn(View view) {
-//        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
-//        i.putExtra("Email", email);
-//        i.putExtra("From", "");
-//        startActivity(i);
-//    }
-//
-//    public void goto_exit(View view) {
-//        moveTaskToBack(true);
-//    }
 
     private class setProfile extends AsyncTask<String, Void, String> {
         ProgressDialog pd;

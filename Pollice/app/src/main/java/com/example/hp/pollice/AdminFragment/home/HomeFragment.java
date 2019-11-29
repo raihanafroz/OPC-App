@@ -51,7 +51,9 @@ public class HomeFragment extends Fragment {
 
         gridView = (GridView) root.findViewById(R.id.gridview);
 //        gridView.setAdapter(new AdminGridAdapter(getActivity(), MOBILE_OS, MOBILE));
-        new gettingData().execute("adminPage");
+        if(new PublicClass().checkInternetConnection(root.getContext())) {
+            new gettingData().execute("adminPage");
+        }
 
         return root;
     }
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(getActivity());
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }

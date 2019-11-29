@@ -214,7 +214,9 @@ public class ForgetPassword extends AppCompatActivity {
                 }else{
                     if (contactNumber.getText().toString().length() >= 6) {
                         contactNumber.setError(null);
-                        new ForgetUserCheck_Android_to_Mysql().execute("checkForForgetPassword",email.getText().toString(), contactNumber.getText().toString());
+                        if(new PublicClass().checkInternetConnection(ForgetPassword.this)) {
+                            new ForgetUserCheck_Android_to_Mysql().execute("checkForForgetPassword", email.getText().toString(), contactNumber.getText().toString());
+                        }
                     } else {
                         contactNumber.setError("Minimum 11 digit");
                         contactNumber.requestFocus();

@@ -97,7 +97,9 @@ public class AdminViewComplainDetails extends AppCompatActivity {
                 if(title.equals("Complain")){
                     tableName = "tbl_complain2";
                 }
-                new changeComplainStatus().execute("Change Status", stringComplainID, tableName, spinner.getText().toString());
+                if(new PublicClass().checkInternetConnection(AdminViewComplainDetails.this)) {
+                    new changeComplainStatus().execute("Change Status", stringComplainID, tableName, spinner.getText().toString());
+                }
             }
         });
 

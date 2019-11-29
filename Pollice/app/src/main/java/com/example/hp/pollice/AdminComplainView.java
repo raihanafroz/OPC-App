@@ -68,10 +68,12 @@ public class AdminComplainView extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                if(spinner.getText().toString().equals("Select a user")){
-                    new getImmediateComplainData().execute("View Complain", "");
-                }else{
-                    new getImmediateComplainData().execute("View Complain", spinner.getText().toString());
+                if(new PublicClass().checkInternetConnection(AdminComplainView.this)) {
+                    if(spinner.getText().toString().equals("Select a user")){
+                        new getImmediateComplainData().execute("View Complain", "");
+                    }else{
+                        new getImmediateComplainData().execute("View Complain", spinner.getText().toString());
+                    }
                 }
 //                Toast.makeText(getApplicationContext(), spinner.getText().toString(), Toast.LENGTH_LONG).show();
             }

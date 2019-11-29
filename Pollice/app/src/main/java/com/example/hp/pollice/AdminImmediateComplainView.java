@@ -66,10 +66,12 @@ public class AdminImmediateComplainView extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                if(spinner.getText().toString().equals("Select a user")){
-                    new getImmediateComplainData().execute("View Immediate Complain", "");
-                }else{
-                    new getImmediateComplainData().execute("View Immediate Complain", spinner.getText().toString());
+                if(new PublicClass().checkInternetConnection(AdminImmediateComplainView.this)) {
+                    if (spinner.getText().toString().equals("Select a user")) {
+                        new getImmediateComplainData().execute("View Immediate Complain", "");
+                    } else {
+                        new getImmediateComplainData().execute("View Immediate Complain", spinner.getText().toString());
+                    }
                 }
 //                Toast.makeText(getApplicationContext(), spinner.getText().toString(), Toast.LENGTH_LONG).show();
             }
@@ -107,7 +109,7 @@ public class AdminImmediateComplainView extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminImmediateComplainView.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -181,7 +183,7 @@ public class AdminImmediateComplainView extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminImmediateComplainView.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }

@@ -8,7 +8,7 @@
 	// $address="Dhaka";
 	// $gender="Male";
 	// $contactNmuber="01797325129";
-	$currentTime = date('Y-m-d h:i:s', (time() /*+ (	6 * 3600)*/));
+	$currentTime = date('Y-m-d H:i:s', (time() /*+ (	6 * 3600)*/));
 	// echo $currentTime;
 	
 	$firseName=$_POST['fname'];

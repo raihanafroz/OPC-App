@@ -158,37 +158,39 @@ public class ChangePasswordFragment extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(oldPassword.getText().toString().isEmpty()){
-                    oldPassword.requestFocus();
-                }else {
-                    if (oldPassword.getText().toString().length() >= 6) {
-                        if (newPassword.getText().toString().isEmpty()) {
-                            newPassword.requestFocus();
-                        } else {
-                            if (newPassword.getText().toString().length() >= 6) {
-                                if (confirmPassword.getText().toString().isEmpty()) {
-                                    confirmPassword.requestFocus();
-                                } else {
-                                    if (confirmPassword.getText().toString().length() >= 6) {
-                                        if (confirmPassword.getText().toString().equals(newPassword.getText().toString()))
-                                            new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldPassword.getText().toString()), new EncryptedText().encrypt(newPassword.getText().toString()), userId);
-                                        else {
-                                            confirmPassword.setError("New password not match");
+                if(new PublicClass().checkInternetConnection(root.getContext())) {
+                    if(oldPassword.getText().toString().isEmpty()){
+                        oldPassword.requestFocus();
+                    }else {
+                        if (oldPassword.getText().toString().length() >= 6) {
+                            if (newPassword.getText().toString().isEmpty()) {
+                                newPassword.requestFocus();
+                            } else {
+                                if (newPassword.getText().toString().length() >= 6) {
+                                    if (confirmPassword.getText().toString().isEmpty()) {
+                                        confirmPassword.requestFocus();
+                                    } else {
+                                        if (confirmPassword.getText().toString().length() >= 6) {
+                                            if (confirmPassword.getText().toString().equals(newPassword.getText().toString()))
+                                                new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldPassword.getText().toString()), new EncryptedText().encrypt(newPassword.getText().toString()), userId);
+                                            else {
+                                                confirmPassword.setError("New password not match");
+                                                confirmPassword.requestFocus();
+                                            }
+                                        } else {
+                                            confirmPassword.setError("Minimum 6 characters");
                                             confirmPassword.requestFocus();
                                         }
-                                    } else {
-                                        confirmPassword.setError("Minimum 6 characters");
-                                        confirmPassword.requestFocus();
                                     }
+                                } else {
+                                    newPassword.setError("Minimum 6 characters");
+                                    newPassword.requestFocus();
                                 }
-                            } else {
-                                newPassword.setError("Minimum 6 characters");
-                                newPassword.requestFocus();
                             }
+                        } else {
+                            oldPassword.setError("Minimum 6 characters");
+                            oldPassword.requestFocus();
                         }
-                    } else {
-                        oldPassword.setError("Minimum 6 characters");
-                        oldPassword.requestFocus();
                     }
                 }
             }

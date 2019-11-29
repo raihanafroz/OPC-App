@@ -77,7 +77,9 @@ public class AdminViewUserDetails extends AppCompatActivity {
         suapenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new deleteUser().execute("Delete User", userId);
+                if(new PublicClass().checkInternetConnection(AdminViewUserDetails.this)) {
+                    new deleteUser().execute("Delete User", userId);
+                }
             }
         });
 

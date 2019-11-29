@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/nav_header_desc"
             android:padding="4dp"
+            android:scaleType="fitXY"
             android:src="@drawable/user_male"/>
     </LinearLayout>
 
