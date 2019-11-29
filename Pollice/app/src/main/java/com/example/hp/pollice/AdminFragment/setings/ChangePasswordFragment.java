@@ -39,7 +39,7 @@ public class ChangePasswordFragment extends Fragment {
     private TextInputEditText oldPassword, newPassword, confirmPassword;
     private Button save;
     View root;
-    String email = "";
+    String email = "", userId= "";
     private ViewGroup viewGroup;
 
     @SuppressLint("ResourceType")
@@ -49,7 +49,8 @@ public class ChangePasswordFragment extends Fragment {
         root = inflater.inflate(R.xml.fragment_change_password, container, false);
 //        gettin users email
         if(new PublicClass().checkInternetConnection(getContext())){
-            email= new PublicClass().checkUserData(getContext());
+            email= new PublicClass().checkUserEmail(getContext());
+            userId= new PublicClass().checkUserId(getContext());
         }
 
         oldPassword = (TextInputEditText) root.findViewById(R.id.admin_change_password_old);
@@ -170,7 +171,7 @@ public class ChangePasswordFragment extends Fragment {
                                 } else {
                                     if (confirmPassword.getText().toString().length() >= 6) {
                                         if (confirmPassword.getText().toString().equals(newPassword.getText().toString()))
-                                            new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldPassword.getText().toString()), new EncryptedText().encrypt(newPassword.getText().toString()), "");
+                                            new change_Android_to_Mysql().execute("ChangePassword", email, new EncryptedText().encrypt(oldPassword.getText().toString()), new EncryptedText().encrypt(newPassword.getText().toString()), userId);
                                         else {
                                             confirmPassword.setError("New password not match");
                                             confirmPassword.requestFocus();
@@ -204,7 +205,7 @@ public class ChangePasswordFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(viewGroup.getContext());
-            pd.setTitle("Tring to change");
+            pd.setTitle("Trying to change");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -217,7 +218,7 @@ public class ChangePasswordFragment extends Fragment {
                 String email = voids[1];
                 String oldPass = voids[2];
                 String newPass = voids[3];
-                String contactNumber = voids[4];
+                String id = voids[4];
                 try {
                     URL url = new URL(new PublicClass().url_changePassword);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -229,7 +230,7 @@ public class ChangePasswordFragment extends Fragment {
                     String data = URLEncoder.encode("user_email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&" +
                             URLEncoder.encode("user_oldPass", "UTF-8") + "=" + URLEncoder.encode(oldPass, "UTF-8") + "&" +
                             URLEncoder.encode("user_newPass", "UTF-8") + "=" + URLEncoder.encode(newPass, "UTF-8") + "&" +
-                            URLEncoder.encode("user_contactNumber", "UTF-8") + "=" + URLEncoder.encode(contactNumber, "UTF-8");
+                            URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
                     bw.write(data);
                     bw.flush();
                     bw.close();

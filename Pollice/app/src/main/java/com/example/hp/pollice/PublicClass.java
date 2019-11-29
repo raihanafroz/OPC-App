@@ -92,20 +92,33 @@ public class PublicClass {
         return status;
     }
 
-    public String checkUserData(Context context){
+    public String checkUserEmail(Context context){
         String email = "";
         Cursor cursor=new SQLiteDatabaseHelper(context).check_user();
         if(cursor!=null){
             if(cursor.getCount()==1){
                 while(cursor.moveToNext()){
-                    email=cursor.getString(0);
-                    String pass=cursor.getString(1);
-                    String userType=cursor.getString(2);
+                    email=cursor.getString(1);
                 }
             }
         }else {
             Log.i("json data sending", "cursor null");
         }
         return email;
+    }
+
+    public String checkUserId(Context context){
+        String id = "";
+        Cursor cursor=new SQLiteDatabaseHelper(context).check_user();
+        if(cursor!=null){
+            if(cursor.getCount()==1){
+                while(cursor.moveToNext()){
+                    id=cursor.getString(0);
+                }
+            }
+        }else {
+            Log.i("json data sending", "cursor null");
+        }
+        return id;
     }
 }

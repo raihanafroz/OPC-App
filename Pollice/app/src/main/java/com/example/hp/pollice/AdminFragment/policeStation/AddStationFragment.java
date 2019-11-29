@@ -58,7 +58,7 @@ public class AddStationFragment extends Fragment {
         clear = (Button) root.findViewById(R.id.add_station_btn_clear);
 
         if(new PublicClass().checkInternetConnection(getContext())){
-            email= new PublicClass().checkUserData(getContext());
+            email= new PublicClass().checkUserEmail(getContext());
         }
 
         /*
