@@ -124,10 +124,10 @@ public class ViewPoliceStationFragment extends Fragment {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -182,7 +182,7 @@ public class ViewPoliceStationFragment extends Fragment {
 
         } catch (
                 JSONException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         String listArray[] = new String[listID.size()];

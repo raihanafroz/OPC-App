@@ -124,7 +124,7 @@ public class AdminViewUserDetails extends AppCompatActivity {
                 connection.setReadTimeout(1000 * 60);
                 return BitmapFactory.decodeStream((InputStream)connection.getContent(), null, null);
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
                 return null;
             }
         }
@@ -147,7 +147,7 @@ public class AdminViewUserDetails extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminViewUserDetails.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -184,10 +184,10 @@ public class AdminViewUserDetails extends AppCompatActivity {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -214,7 +214,7 @@ public class AdminViewUserDetails extends AppCompatActivity {
                     otherComplain.setText(String.valueOf(jo.getString("complain_for_others")));
                     total.setText(String.valueOf(jo.getString("total_complain")));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
         }
@@ -266,10 +266,10 @@ public class AdminViewUserDetails extends AppCompatActivity {
 
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }

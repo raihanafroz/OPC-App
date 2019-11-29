@@ -286,10 +286,10 @@ public class AddStationFragment extends Fragment {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }

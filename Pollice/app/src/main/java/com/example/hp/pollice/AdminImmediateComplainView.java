@@ -218,10 +218,10 @@ public class AdminImmediateComplainView extends AppCompatActivity {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -296,9 +296,8 @@ public class AdminImmediateComplainView extends AppCompatActivity {
                 listComplainID.add(object.getString("id"));
             }
 
-        } catch (
-                JSONException e) {
-            e.printStackTrace();
+        } catch ( JSONException e) {
+//            e.printStackTrace();
         }
 
         String listArrayID[] = new String[listID.size()];

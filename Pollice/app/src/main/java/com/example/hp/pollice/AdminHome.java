@@ -203,10 +203,10 @@ public class AdminHome extends AppCompatActivity {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -242,7 +242,7 @@ public class AdminHome extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
@@ -262,7 +262,7 @@ public class AdminHome extends AppCompatActivity {
                 connection.setReadTimeout(1000 * 60);
                 return BitmapFactory.decodeStream((InputStream)connection.getContent(), null, null);
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
                 //Toast.makeText(SeeImage.this,e.getMessage(),Toast.LENGTH_SHORT).show();
                 return null;
             }
@@ -287,7 +287,7 @@ public class AdminHome extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminHome.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -323,10 +323,10 @@ public class AdminHome extends AppCompatActivity {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -358,7 +358,7 @@ public class AdminHome extends AppCompatActivity {
                     data.add(String.valueOf(jo.getString("complain_for_me")));
                     data.add(String.valueOf(jo.getString("complain_for__others")));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
 

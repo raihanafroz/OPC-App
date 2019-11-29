@@ -18,17 +18,17 @@ public class PublicClass {
 
 //    String ip_address="192.168.43.159";    //phone
 //    String ip_address="192.168.43.32";    //phone
-    String ip_address="192.168.0.111";  //Room WIFI
+//    String ip_address="192.168.0.111";  //Room WIFI
 //    String ip_address="192.168.43.107";    //phone
 //    String ip_address="6524cecf.ngrok.io";    //port for
-//    String ip_address="www.raihanafroz.info";  //Into a domain
+    String ip_address="www.raihanafroz.info";  //Into a domain
     public String url_reg = "http://"+ip_address+"/New_folder/Pollice/server/insert_data.php";
     public String url_login = "http://"+ip_address+"/New_folder/Pollice/server/login.php";
     public String url_checkForForgetPassword = "http://"+ip_address+"/New_folder/Pollice/server/checkForForgetPassword.php";
     public String url_profile = "http://"+ip_address+"/New_folder/Pollice/server/profile.php";
     public String url_changePassword = "http://"+ip_address+"/New_folder/Pollice/server/changePassword.php";
     public String url_changePhoto = "http://"+ip_address+"/New_folder/Pollice/server/changePhoto.php";
-    public String url_changeDetails = "http://"+ip_address+"/New_folder/Pollice/server/ChangeDetails.php";
+    public String url_changeDetails = "http://"+ip_address+"/New_folder/Pollice/server/changeDetails.php";
     public String url_imgPath= "http://"+ip_address+"/New_folder/Pollice/server/Profile_Pic/";
     public String url_getPhoneNO = "http://"+ip_address+"/New_folder/Pollice/server/getPhoneNO.php";
     public String url_stationDetails = "http://"+ip_address+"/New_folder/Pollice/server/stationDetails.php";

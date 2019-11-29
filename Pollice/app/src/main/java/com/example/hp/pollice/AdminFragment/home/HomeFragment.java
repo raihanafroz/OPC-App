@@ -101,10 +101,10 @@ public class HomeFragment extends Fragment {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment {
                     data.add(String.valueOf(jo.getString("complain_for_me")));
                     data.add(String.valueOf(jo.getString("complain_for__others")));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
 

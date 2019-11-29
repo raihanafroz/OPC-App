@@ -222,10 +222,10 @@ public class Profile extends AppCompatActivity {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -261,7 +261,7 @@ public class Profile extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
@@ -281,7 +281,7 @@ public class Profile extends AppCompatActivity {
                 connection.setReadTimeout(1000 * 60);
                 return BitmapFactory.decodeStream((InputStream)connection.getContent(), null, null);
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
                 //Toast.makeText(SeeImage.this,e.getMessage(),Toast.LENGTH_SHORT).show();
                 return null;
             }

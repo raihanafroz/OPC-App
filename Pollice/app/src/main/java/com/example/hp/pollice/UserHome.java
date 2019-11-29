@@ -128,7 +128,7 @@ public class UserHome extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(UserHome.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -164,10 +164,10 @@ public class UserHome extends AppCompatActivity {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -197,7 +197,7 @@ public class UserHome extends AppCompatActivity {
                     data.add(String.valueOf(jo.getString("complain_for_others")));
                     data.add(String.valueOf(jo.getString("total_complain")));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
 

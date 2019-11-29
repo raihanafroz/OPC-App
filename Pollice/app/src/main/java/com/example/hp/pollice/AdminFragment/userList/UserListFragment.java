@@ -78,7 +78,7 @@ public class UserListFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(root.getContext());
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -104,10 +104,10 @@ public class UserListFragment extends Fragment {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -165,7 +165,7 @@ public class UserListFragment extends Fragment {
 
         } catch (
                 JSONException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         String listArrayID[] = new String[listID.size()];

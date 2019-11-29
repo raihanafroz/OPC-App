@@ -147,10 +147,10 @@ public class ForgetPassword extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), respose, Toast.LENGTH_SHORT).show();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     return e.getMessage();
                 }
             }
@@ -182,13 +182,13 @@ public class ForgetPassword extends AppCompatActivity {
                             i.putExtra("From", "ForgetPass");
                             startActivity(i);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+//                            e.printStackTrace();
                         }
                     }else{
                         Toast.makeText(getApplicationContext(), "Many User found.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
         }

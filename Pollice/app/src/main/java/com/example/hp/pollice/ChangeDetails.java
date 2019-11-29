@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -275,11 +276,11 @@ public class ChangeDetails extends AppCompatActivity {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    //return e.getMessage();
+//                    e.printStackTrace();
+//                    return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    //return e.getMessage();
+//                    e.printStackTrace();
+//                    return e.getMessage();
                 }
             }
             return null;
@@ -292,6 +293,7 @@ public class ChangeDetails extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
+
             if (result.equals("Successfully Change")) {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(ChangeDetails.this, Profile.class);

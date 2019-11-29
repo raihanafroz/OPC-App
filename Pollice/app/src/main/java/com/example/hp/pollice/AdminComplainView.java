@@ -109,7 +109,7 @@ public class AdminComplainView extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminComplainView.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -136,10 +136,10 @@ public class AdminComplainView extends AppCompatActivity {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -164,7 +164,7 @@ public class AdminComplainView extends AppCompatActivity {
                         item.add(jo.getString("e-mail"));
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "No User found.", Toast.LENGTH_SHORT).show();
@@ -183,7 +183,7 @@ public class AdminComplainView extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(AdminComplainView.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
@@ -220,10 +220,10 @@ public class AdminComplainView extends AppCompatActivity {
                     Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -311,7 +311,7 @@ public class AdminComplainView extends AppCompatActivity {
 
         } catch (
                 JSONException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         String listArrayID[] = new String[listID.size()];

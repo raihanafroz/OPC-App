@@ -117,10 +117,10 @@ public class ComplainList extends AppCompatActivity {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
@@ -168,7 +168,7 @@ public class ComplainList extends AppCompatActivity {
                     complainStatus.add(jo.getString("status"));
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             setListItem(serial,type, email, cause, time, complainNo, complainStatus);
             //Toast.makeText(getApplicationContext(), String.valueOf(t),Toast.LENGTH_SHORT).show();

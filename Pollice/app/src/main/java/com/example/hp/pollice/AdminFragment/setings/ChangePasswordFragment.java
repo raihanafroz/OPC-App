@@ -212,7 +212,6 @@ public class ChangePasswordFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_changePassword = "http://192.168.0.100/New_folder/Pollice/server/changePassword.php";
             String method = voids[0];
             if (method.equals("ChangePassword")) { //     Change password
                 String email = voids[1];
@@ -248,10 +247,10 @@ public class ChangePasswordFragment extends Fragment {
                     huc.disconnect();
                     return respose;
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     //return e.getMessage();
                 }
             }
