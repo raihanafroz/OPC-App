@@ -177,7 +177,6 @@ public class Login extends AppCompatActivity {
 
 
     public class login_Android_to_Mysql extends AsyncTask<String, Void, String> {
-
         ProgressDialog pd;
         boolean rememberUser= false;
 
@@ -185,14 +184,12 @@ public class Login extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pd = new ProgressDialog(Login.this);
-            pd.setTitle("Fatching Data");
+            pd.setTitle("Fetching Data");
             pd.setMessage("Please wait...");
             pd.show();
         }
-
         @Override
         protected String doInBackground(String... voids) {
-            //String url_login = "http://192.168.0.100/New_folder/Pollice/server/login.php";
             String method = voids[0];
             if(voids[3].equals("yes")){
                 rememberUser= true;
@@ -226,7 +223,7 @@ public class Login extends AppCompatActivity {
                     br.close();
                     is.close();
                     huc.disconnect();
-            Log.i("json result res", respose);
+                    Log.i("json result res", respose);
                     return respose;
                 } catch (MalformedURLException e) {
 //                    e.printStackTrace();
@@ -243,7 +240,6 @@ public class Login extends AppCompatActivity {
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);
         }
-
         @Override
         protected void onPostExecute(String result) {
             pd.dismiss();
@@ -317,5 +313,4 @@ public class Login extends AppCompatActivity {
             Log.i("json data sending", "cursor null");
         }
     }
-
 }

@@ -76,7 +76,7 @@ public class Complain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loca=new PublicClass().getLocation(getApplicationContext(), Complain.this);
-                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + loca[0] + "Lon: " + loca[1]+"\n"+email, Toast.LENGTH_LONG).show();
                 new complain1().execute("complain", email, String.valueOf(lat), String.valueOf(lon), new PublicClass().getCurrentDate());
             }
         });
@@ -156,8 +156,6 @@ public class Complain extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_reg = "http://192.168.0.100/New_folder/Pollice/server/insert_data.php";
-
             String method = voids[0];
             if (method == "complain") {
                 String currentemail = voids[1];
@@ -216,8 +214,6 @@ public class Complain extends AppCompatActivity {
                 if(eemail!=""){
                     new getPhoneNo().execute("PhoneNo",eemail);
                 }
-
-                //startActivity(new Intent(getApplicationContext(), Complain.class));
             } else {
                 Toast.makeText(getApplicationContext(), "Sorry to complain", Toast.LENGTH_SHORT).show();
             }
@@ -238,7 +234,6 @@ public class Complain extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... voids) {
-            //String url_getPhoneNO = "http://192.168.0.100/New_folder/Pollice/server/profile.php";
             String method = voids[0];
             if (method.equals("PhoneNo")) { //        select data from database
                 String user_email = voids[1];
@@ -288,8 +283,10 @@ public class Complain extends AppCompatActivity {
             pd.dismiss();
             if ((!result.isEmpty())) {
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+
 //                SmsManager smsManager = SmsManager.getDefault();
 //                smsManager.sendTextMessage("01797325129", null, "Hi, i'm attacked by someone at Lat: "+loca[0]+"& Long: "+loca[1]+". Please, help me.", null, null);
+
 //                callPolice(result, Complain.this);
 
             } else {

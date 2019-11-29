@@ -55,7 +55,7 @@ public class UserHome extends AppCompatActivity {
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
                 if(new PublicClass().checkInternetConnection(UserHome.this)) {
-                    new gettingData().execute("UsaePage");
+                    new gettingData().execute("UserPage");
                 }
             }
         });
@@ -66,7 +66,7 @@ public class UserHome extends AppCompatActivity {
             userId=extra.getString("Id");
         }
         if(new PublicClass().checkInternetConnection(UserHome.this)) {
-            new gettingData().execute("UsaePage");
+            new gettingData().execute("UserPage");
         }
 
 
@@ -136,7 +136,7 @@ public class UserHome extends AppCompatActivity {
         @Override
         protected String doInBackground(String... voids) {
             String method = voids[0];
-            if (method.equals("UsaePage")) {
+            if (method.equals("UserPage")) {
                 try {
                     URL url = new URL(new PublicClass().url_userPage);
                     HttpURLConnection huc = (HttpURLConnection) url.openConnection();

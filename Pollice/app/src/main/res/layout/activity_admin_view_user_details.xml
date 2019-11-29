@@ -42,13 +42,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_cover_image"
                 android:elevation="4dp"
-                android:paddingBottom="20dp">
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="50dp"
                     android:text="Owner"
                     android:id="@+id/admin_user_details_Name"
                     android:fontFamily="@font/kurale"
